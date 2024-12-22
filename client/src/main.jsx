@@ -9,6 +9,10 @@ import Tweets, {action as sendTweetAction, loader as tweetLoader} from './routes
 import {loader as initialTweetLoader} from './routes/loaders/initialTweetsLoader'
 import AdminRoot from './routes/admin/adminRoot'
 import EditUser, {action as edituserAction, loader as editUserLoader} from './routes/admin/users/editUser'
+import CreateResidence from './routes/admin/listings/residence/createResidence'
+import ResidenceStep1 from './routes/admin/listings/residence/step1'
+import ResidenceStep2 from './routes/admin/listings/residence/step2'
+import ResidenceStep3 from './routes/admin/listings/residence/step3'
 
 const router = createBrowserRouter([
   {
@@ -24,34 +28,58 @@ const router = createBrowserRouter([
         action: loginAction,
       },
       {
-        path: "/admin",
+        path: '/admin',
         element: <AdminRoot />,
         errorElement: <ErrorPage />,
-        children: [{
-          path: "/admin/profile/:id",
-          element: <EditUser />,
-          errorElement: <ErrorPage />,
-          action: edituserAction,
-          loader: editUserLoader
-        }]
-      }
+        children: [
+          {
+            path: '/admin/profile/:id',
+            element: <EditUser />,
+            errorElement: <ErrorPage />,
+            action: edituserAction,
+            loader: editUserLoader,
+          },
+          {
+            path: '/admin/listing/residence',
+            element: <CreateResidence />,
+            errorElement: <ErrorPage />,
+            children: [
+              {
+                index: true,
+                element: <ResidenceStep1 />,
+                errorElement: <ErrorPage />,
+              },
+              {
+                path: '/admin/listing/residence/2',
+                element: <ResidenceStep2 />,
+                errorElement: <ErrorPage />,
+              },
+              {
+                path: '/admin/listing/residence/3',
+                element: <ResidenceStep3 />,
+                errorElement: <ErrorPage />,
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   {
-    path: "/loaders",
+    path: '/loaders',
     children: [
       {
-        path: "/loaders/initialtweets",
-        loader: initialTweetLoader
-      }
-    ]
+        path: '/loaders/initialtweets',
+        loader: initialTweetLoader,
+      },
+    ],
   },
   {
     path: '/tweets',
     element: <Tweets />,
     errorElement: <ErrorPage />,
     action: sendTweetAction,
-    loader: tweetLoader
+    loader: tweetLoader,
   },
 ])
 

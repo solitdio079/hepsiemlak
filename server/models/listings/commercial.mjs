@@ -11,9 +11,7 @@ const commercialSchema = new Schema({
     state: {
       type: String,
     },
-    usage: {
-      type: String,
-    },
+   
     floor: {
       total: Number,
       specific: Number,

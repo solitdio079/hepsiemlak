@@ -11,13 +11,16 @@ export default function AdminRoot() {
       <div className="flex flex-col items-center lg:items-start lg:flex-row p-10">
         <ul className="menu menu-horizontal lg:w-1/4 lg:menu-vertical bg-base-200 rounded-box m-5">
           <li>
-            <NavLink to={`/admin/profile/${user._id}`} >Profile</NavLink>
+            <NavLink to={`/admin/profile/${user._id}`}>Profile</NavLink>
           </li>
           <li>
             <NavLink to="/admin/tweets">Tweets</NavLink>
           </li>
           <li>
             <NavLink to="/admin/notifications">Notifications</NavLink>
+          </li>
+          <li>
+            <NavLink to="/admin/listing/residence">Residences</NavLink>
           </li>
         </ul>
         <Outlet />
