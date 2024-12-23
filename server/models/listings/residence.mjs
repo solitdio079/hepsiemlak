@@ -3,6 +3,10 @@ import Listing from './listing.mjs'
 
 const residenceSchema = new Schema({
     details: {
+        numberOfRooms: {
+            rooms: Number,
+            hall: Number
+        },
         numberOfToilets: Number,
         heating: {
             heatingType: String,
@@ -16,7 +20,7 @@ const residenceSchema = new Schema({
             specific: Number
         },
         furnishing: {
-            type: Boolean
+            type: String
         }
     }
 })

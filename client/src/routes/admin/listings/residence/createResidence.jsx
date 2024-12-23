@@ -15,7 +15,7 @@ export default function CreateResidence() {
             <li className={step >= 2 ? 'step step-primary' : 'step'}></li>
             <li className={step >= 3 ? 'step step-primary' : 'step'}></li>
             <li className={step >= 4 ? 'step step-primary' : 'step'}></li>
-            <li className={step >= 5 ? 'step step-primary' : 'step'}></li>
+            
                 </ul>
                 
                 <Outlet/>

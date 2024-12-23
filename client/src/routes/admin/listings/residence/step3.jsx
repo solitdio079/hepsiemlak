@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { stepContext } from '../../../../utils/contexts'
-//import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 
 export default function ResidenceStep3() {
-  //const navigate = useNavigate()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -18,7 +18,7 @@ export default function ResidenceStep3() {
   const onSubmit = (data) => {
     sessionStorage.setItem('step-3', JSON.stringify(data))
     setStep(4)
-    //navigate('/admin/listing/residence/3')
+    navigate('/admin/listing/residence/4')
   }
     useEffect(() => {
       setStep(3)
@@ -43,11 +43,16 @@ export default function ResidenceStep3() {
           type="text"
           className="input input-bordered"
           defaultValue={step3 ? step3.numOfRooms : '2+1'}
-          {...register('numOfRooms', { required: true })}
+          {...register('numOfRooms', {
+            required: true,
+            pattern: /^[0-9]{1}\+[0-9]{1}$/i,
+          })}
         />
         {/* errors will return when field validation fails  */}
         {errors.numOfRooms && (
-          <span className="text-red-600">This field is required</span>
+          <span className="text-red-600">
+            This field is required should conform to 2+1 pattern
+          </span>
         )}
       </div>
       <div className="form-control m-1">
@@ -72,7 +77,10 @@ export default function ResidenceStep3() {
         <input
           className="input input-bordered"
           defaultValue={step3 ? step3.heating : ''}
-          {...register('heating', { required: true })}
+          {...register('heating', {
+            required: true,
+            pattern: /^[A-Za-z]+\/[A-Za-z]+$/i,
+          })}
         />
 
         {/* errors will return when field validation fails  */}
@@ -88,9 +96,9 @@ export default function ResidenceStep3() {
               type="radio"
               name="furnishing"
               {...register('furnishing')}
-                          className="radio checked:bg-red-500"
-                          value="No"
-              defaultChecked={step3.furnishing === "No"}
+              className="radio checked:bg-red-500"
+              value="No"
+              defaultChecked={step3.furnishing === 'No'}
             />
           </label>
         </div>
@@ -101,9 +109,9 @@ export default function ResidenceStep3() {
               type="radio"
               {...register('furnishing')}
               name="furnishing"
-                          className="radio checked:bg-blue-500"
-                          value="Yes"
-              defaultChecked = {step3.furnishing === "Yes"}
+              className="radio checked:bg-blue-500"
+              value="Yes"
+              defaultChecked={step3.furnishing === 'Yes'}
             />
           </label>
         </div>
@@ -118,10 +126,13 @@ export default function ResidenceStep3() {
           <span className="label-text">Floor*</span>
         </label>
         <input
-          type="number"
+          type="text"
           className="input input-bordered"
           defaultValue={step3 ? step3.floor : ''}
-          {...register('floor', { required: true, min: 1 })}
+          {...register('floor', {
+            required: true,
+            pattern: /^[0-9]+\/[0-9]+$/i,
+          })}
         />
         {/* errors will return when field validation fails  */}
         {errors.floor && (
@@ -131,7 +142,10 @@ export default function ResidenceStep3() {
         )}
       </div>
 
-      <div className="form-control mt-6">
+      <div className="form-control mt-6 flex  flex-row justify-between">
+        <Link to={'/admin/listing/residence/2'} className="btn btn-primary">
+          Back
+        </Link>
         <button type="submit" className="btn btn-primary">
           Next
         </button>

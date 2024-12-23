@@ -17,7 +17,7 @@ const listingSchema = new Schema({
         district: String,
         street: String,
         door: String,
-        zip: String
+        city: String
     },
     area: {
         net: Number,
@@ -38,10 +38,9 @@ const listingSchema = new Schema({
         type: String
     },
     owner: {
-        type: String,
         name: String,
         picture: String,
-        status: String
+        email: String
     }
 }, options)
 

@@ -44,7 +44,9 @@ export default function ResidenceStep1() {
           {...register('title', { required: true })}
         />
         {errors.title && (
-          <span className="text-red-600">This field is required</span>
+          <span className="text-red-600">
+            This field is required and should only be letters.
+          </span>
         )}
       </div>
 
@@ -92,8 +94,13 @@ export default function ResidenceStep1() {
         <input
           type="text"
           className="input input-bordered"
-          defaultValue={step1 ? step1.location : 'Kastamonu'}
-          {...register('location', { required: true })}
+          defaultValue={
+            step1 ? step1.location : 'Pays,ville,district,rue,porte'
+          }
+          {...register('location', {
+            required: true,
+            pattern: /^[A-Za-z]+,[A-Za-z]+,[A-Za-z]+,[A-Za-z]+,[1-9]+$/i,
+          })}
         />
         {/* errors will return when field validation fails  */}
         {errors.location && (

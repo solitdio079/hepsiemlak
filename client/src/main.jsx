@@ -13,6 +13,7 @@ import CreateResidence from './routes/admin/listings/residence/createResidence'
 import ResidenceStep1 from './routes/admin/listings/residence/step1'
 import ResidenceStep2 from './routes/admin/listings/residence/step2'
 import ResidenceStep3 from './routes/admin/listings/residence/step3'
+import ResidenceStep4, {action as createResidenceAction} from './routes/admin/listings/residence/step4'
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,12 @@ const router = createBrowserRouter([
                 path: '/admin/listing/residence/3',
                 element: <ResidenceStep3 />,
                 errorElement: <ErrorPage />,
+              },
+              {
+                path: '/admin/listing/residence/4',
+                element: <ResidenceStep4 />,
+                errorElement: <ErrorPage />,
+                action: createResidenceAction
               },
             ],
           },

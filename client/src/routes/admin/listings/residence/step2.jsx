@@ -1,7 +1,7 @@
 import { useEffect,useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { stepContext } from '../../../../utils/contexts'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 export default function ResidenceStep2() {
  const navigate = useNavigate()
@@ -40,10 +40,13 @@ export default function ResidenceStep2() {
           <span className="label-text">Area(m²)*</span>
         </label>
         <input
-          type="number"
+          type="text"
           className="input input-bordered"
           defaultValue={step2 ? step2.area : ''}
-          {...register('area', { required: true, min: 30 })}
+          {...register('area', {
+            required: true,
+            pattern: /^[0-9]+\/[0-9]+$/i,
+          })}
         />
         {/* errors will return when field validation fails  */}
         {errors.area && (
@@ -106,7 +109,10 @@ export default function ResidenceStep2() {
         )}
       </div>
 
-      <div className="form-control mt-6">
+      <div className="form-control mt-6 flex  flex-row justify-between">
+        <Link to={'/admin/listing/residence/'} className="btn btn-primary">
+          Back
+        </Link>
         <button type="submit" className="btn btn-primary">
           Next
         </button>
