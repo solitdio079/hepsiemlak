@@ -30,6 +30,7 @@ export async function action({ request }) {
             body: formData
         })
         const response = await req.json()
+        console.log(response)
         return response
     } catch (error) {
         return {error: error.message}

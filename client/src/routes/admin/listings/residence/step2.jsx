@@ -65,8 +65,8 @@ export default function ResidenceStep2() {
           {...register('adType', { required: true })}
         >
           <option value="">Chosissez...</option>
-          <option value="for_rent">For Rent</option>
-          <option value="for_sale">For Sale</option>
+          <option value="For Rent">For Rent</option>
+          <option value="For Sale">For Sale</option>
         </select>
 
         {/* errors will return when field validation fails  */}

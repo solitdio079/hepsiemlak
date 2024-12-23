@@ -14,7 +14,9 @@ import ResidenceStep1 from './routes/admin/listings/residence/step1'
 import ResidenceStep2 from './routes/admin/listings/residence/step2'
 import ResidenceStep3 from './routes/admin/listings/residence/step3'
 import ResidenceStep4, {action as createResidenceAction} from './routes/admin/listings/residence/step4'
-
+import { action as logoutAction } from './routes/logout'
+import { loader as singleListingLoader } from './loaders/singleListingLoader'
+import {loader as allListingsLoader} from './loaders/allListingLoader'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -23,10 +25,30 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        path: "/loaders",
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            path: "/loaders/allListingLoader",
+            loader: allListingsLoader
+        },
+          {
+          path: '/loaders/singleListingLoader/:id',
+          loader: singleListingLoader
+
+        }]
+      
+      },
+    
+      {
         path: '/login',
         element: <Login />,
         errorElement: <ErrorPage />,
         action: loginAction,
+      },
+      {
+        path: "/logout",
+        action: logoutAction
       },
       {
         path: '/admin',

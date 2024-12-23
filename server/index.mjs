@@ -51,8 +51,7 @@ app.use((req, res, next) => {
 })
 app.use(cors(corsOptions))
 
-app.use('/users', usersRouter)
-app.use('/listings', listingRouter)
+
 
 app.use(express.json())
 app.use(cookieParser('yes'))
@@ -71,7 +70,8 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 const port = process.env.PORT
-
+app.use('/users', usersRouter)
+app.use('/listings', listingRouter)
 app.use('/auth', authRouter)
 app.use('/tweets', tweetsRouter)
 app.get('/', (req, res) => {

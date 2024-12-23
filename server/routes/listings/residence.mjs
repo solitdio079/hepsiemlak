@@ -27,20 +27,20 @@ const router = Router()
 
 router.post("/", upload.array("images", 20), async (req, res) => {
   if (!req.user) return res.send({ error: 'Not logged in!' })
-  
+  console.log(typeof(req.body.adType))
   const numberOfRooms = {}
   const heating = {}
   const floor = {}
   const area = {}
   const location = {}
-  const numberOfToilets = req.body.numberOfToilets
+  const numberOfToilets = req.body.numOfToilets
   const furnishing = req.body.furnishing
   const state = req.body.state
   
 
   // Set number of Rooms
-  numberOfRooms.rooms = req.body.numberOfRooms.split("+")[0]
-  numberOfRooms.hall = req.body.numberOfRooms.split("+")[1]
+  numberOfRooms.rooms = req.body.numOfRooms.split("+")[0]
+  numberOfRooms.hall = req.body.numOfRooms.split("+")[1]
   //Set heating
   heating.heatingType = req.body.heating.split("/")[0]
   heating.fuel = req.body.heating.split("/")[1]
@@ -60,7 +60,7 @@ router.post("/", upload.array("images", 20), async (req, res) => {
 
   const details = { numberOfRooms, numberOfToilets, heating, floor, furnishing, state }
  
-  for (key in details) {
+  for (const key in details) {
     if (details[key]) {
       delete req.body[key]
     }

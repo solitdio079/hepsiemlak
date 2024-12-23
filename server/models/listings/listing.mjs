@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
-const options = { discriminatorKey: 'adType', timestamps: true }
+const options = { discriminatorKey: 'type', timestamps: true }
 const listingSchema = new Schema({
     title: {
         type: String,

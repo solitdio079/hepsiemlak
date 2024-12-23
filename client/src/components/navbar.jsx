@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { FaCircleInfo, FaRegBell } from "react-icons/fa6";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink,Form } from "react-router-dom";
 import { url } from "../utils/serverUrl";
 import { io } from 'socket.io-client'
 
@@ -215,7 +215,10 @@ export default function Navbar({ user }) {
                     </li>
 
                     <li>
-                      <a>Logout</a>
+                      <Form method="post" action="/logout">
+                          <button type="submit" className="btn btn-danger">Logout</button>
+                      </Form>
+                     
                     </li>
                   </ul>
                 </div>
