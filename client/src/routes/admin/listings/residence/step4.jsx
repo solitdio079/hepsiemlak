@@ -107,7 +107,7 @@ export default function ResidenceStep4() {
           Back
         </Link>
         <button type="submit" className="btn btn-primary">
-          Submit
+          {fetcher.state === "idle" ? 'Submit': <span className='loading loading-spinner'></span>}
               </button>
               <Toaster/>
       </div>
