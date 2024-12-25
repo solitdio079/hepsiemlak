@@ -11,6 +11,9 @@ const userSchema = new Schema({
     picture: {
         type: String
     },
+    phone: {
+        type:String
+    },
     notifUrl: {
         type: Object
     }

@@ -6,7 +6,7 @@ import Root, {loader as rootLoader} from './routes/root'
 import ErrorPage from './error-page'
 import Login, {action as loginAction} from './routes/login'
 import Tweets, {action as sendTweetAction, loader as tweetLoader} from './routes/tweets'
-import {loader as initialTweetLoader} from './routes/loaders/initialTweetsLoader'
+import {loader as initialTweetLoader} from './loaders/initialTweetsLoader'
 import AdminRoot from './routes/admin/adminRoot'
 import EditUser, {action as edituserAction, loader as editUserLoader} from './routes/admin/users/editUser'
 import CreateResidence from './routes/admin/listings/residence/createResidence'
@@ -17,6 +17,8 @@ import ResidenceStep4, {action as createResidenceAction} from './routes/admin/li
 import { action as logoutAction } from './routes/logout'
 import { loader as singleListingLoader } from './loaders/singleListingLoader'
 import {loader as allListingsLoader} from './loaders/allListingLoader'
+import SingleListing from './routes/listings/singleListing'
+import ListingList from './routes/listings/listingList'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -25,29 +27,39 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/listings",
+        path: '/listings',
         children: [
           {
-            path: "/listings/single/:id"
-          }
-        ]
-    },
+            path: '/listings/single/:id',
+            element: <SingleListing />,
+            errorElement: <ErrorPage />,
+          },
+          {
+            path: '/listings/list/:type',
+            element: <ListingList />,
+            errorElement: <ErrorPage />,
+          },
+        ],
+      },
       {
-        path: "/loaders",
+        path: '/loaders',
         errorElement: <ErrorPage />,
         children: [
           {
-            path: "/loaders/allListingLoader",
-            loader: allListingsLoader
-        },
+            path: '/loaders/initialtweets',
+            loader: initialTweetLoader,
+          },
           {
-          path: '/loaders/singleListingLoader/:id',
-          loader: singleListingLoader
-
-        }]
-      
+            path: '/loaders/allListingLoader',
+            loader: allListingsLoader,
+          },
+          {
+            path: '/loaders/singleListingLoader/:id',
+            loader: singleListingLoader,
+          },
+        ],
       },
-    
+
       {
         path: '/login',
         element: <Login />,
@@ -55,9 +67,10 @@ const router = createBrowserRouter([
         action: loginAction,
       },
       {
-        path: "/logout",
-        action: logoutAction
+        path: '/logout',
+        action: logoutAction,
       },
+
       {
         path: '/admin',
         element: <AdminRoot />,
@@ -94,7 +107,7 @@ const router = createBrowserRouter([
                 path: '/admin/listing/residence/4',
                 element: <ResidenceStep4 />,
                 errorElement: <ErrorPage />,
-                action: createResidenceAction
+                action: createResidenceAction,
               },
             ],
           },
@@ -102,15 +115,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: '/loaders',
-    children: [
-      {
-        path: '/loaders/initialtweets',
-        loader: initialTweetLoader,
-      },
-    ],
-  },
+
   {
     path: '/tweets',
     element: <Tweets />,

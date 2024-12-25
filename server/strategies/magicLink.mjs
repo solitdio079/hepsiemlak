@@ -61,7 +61,8 @@ passport.serializeUser(function (user, cb) {
          _id: user._id,
          email: user.email,
          fullName: user.fullName,
-         notifUrl: user.notifUrl.endpoint,
+          notifUrl: user.notifUrl.endpoint,
+         phone: user.phone || null
         })
       return 
     }

@@ -1,4 +1,4 @@
-import { url } from "../../utils/serverUrl"
+import { url } from "../utils/serverUrl"
 
 export async function loader() {
     try {

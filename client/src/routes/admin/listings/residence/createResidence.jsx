@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { stepContext } from '../../../../utils/contexts'
 import { Outlet } from 'react-router-dom'
-import ResidenceDetails from '../../../../components/listings/residenceDetails'
+//import ResidenceDetails from '../../../../components/listings/residenceDetails'
 
 export default function CreateResidence() {
   
@@ -10,7 +10,7 @@ export default function CreateResidence() {
 
     return (
         <>
-            <ResidenceDetails/>
+            
         <stepContext.Provider value={{ step, setStep }}>
           <div className="flex flex-col w-full">
             <ul className="steps">

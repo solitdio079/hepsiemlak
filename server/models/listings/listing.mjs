@@ -28,7 +28,8 @@ const listingSchema = new Schema({
         required: true
     },
     price: {
-        Type: Number
+        type: Number,
+        required: true
     },
     category: {
         type: String,

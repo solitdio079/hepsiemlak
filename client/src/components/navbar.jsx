@@ -161,6 +161,14 @@ export default function Navbar({ user }) {
                   <NavLink to="/tweets">Tweets</NavLink>
                 </li>
                 <li>
+                  <NavLink to="/listings/list/Residence">Residence</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/listings/single/676ac70db01669e51b538f6a">
+                    Test
+                  </NavLink>
+                </li>
+                <li>
                   <a>Item 3</a>
                 </li>
               </ul>
@@ -178,6 +186,14 @@ export default function Navbar({ user }) {
               </li>
               <li>
                 <NavLink to="/tweets">Tweets</NavLink>
+              </li>
+              <li>
+                <NavLink to="/listings/list/Residence">Residence</NavLink>
+              </li>
+              <li>
+                <NavLink to="/listings/single/676ac70db01669e51b538f6a">
+                  Test
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -216,9 +232,10 @@ export default function Navbar({ user }) {
 
                     <li>
                       <Form method="post" action="/logout">
-                          <button type="submit" className="btn btn-danger">Logout</button>
+                        <button type="submit" className="btn btn-danger">
+                          Logout
+                        </button>
                       </Form>
-                     
                     </li>
                   </ul>
                 </div>
@@ -264,10 +281,17 @@ export default function Navbar({ user }) {
                         : ''}
                     </div>
                     <div className="card-actions">
-                      {user.notifUrl ? '':  <button onClick={askPermission} className="btn btn-primary btn-block" disabled={!pushFeature}>
-                        Enable Notifications
-                      </button>}
-                     
+                      {user.notifUrl ? (
+                        ''
+                      ) : (
+                        <button
+                          onClick={askPermission}
+                          className="btn btn-primary btn-block"
+                          disabled={!pushFeature}
+                        >
+                          Enable Notifications
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

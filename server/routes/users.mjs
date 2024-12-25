@@ -8,7 +8,6 @@ import path from 'node:path'
 const root = path.resolve()
 const destination = path.join(root, '/public/')
 
-
 // Initializing multer diskStorage
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -24,30 +23,26 @@ const upload = multer({ storage })
 
 const router = Router()
 
-
-
-router.put("/:id", upload.single("picture"), async (req, res) => {
+router.put('/:id', upload.single('picture'), async (req, res) => {
   //console.log('inside put');
-    const { id } = req.params
-    const {fullName, email} = req.body
-    // Get the user to be updated
-    const toBeUpdated = await Users.findById(id)
-    if (!toBeUpdated) return res.send({ error: "No user found!" })
-    
-    if(Boolean(toBeUpdated.picture))  fs.unlinkSync(destination + toBeUpdated.picture)
-    
-    try {
-        const newUser = { fullName, email, picture: req.file.filename }
-        await Users.findByIdAndUpdate(id, newUser)
+  const { id } = req.params
+  const { fullName, email } = req.body
+  // Get the user to be updated
+  const toBeUpdated = await Users.findById(id)
+  if (!toBeUpdated) return res.send({ error: 'No user found!' })
 
-        return res.send({msg: 'User updated with success!'})
-    } catch (error) {
-        return res.send({error: error.message})
-    }
-    
+  if (Boolean(toBeUpdated.picture))
+    fs.unlinkSync(destination + toBeUpdated.picture)
 
+  try {
+    const newUser = { fullName, email, picture: req.file.filename }
+    await Users.findByIdAndUpdate(id, newUser)
+
+    return res.send({ msg: 'User updated with success!' })
+  } catch (error) {
+    return res.send({ error: error.message })
+  }
 })
-
 
 router.use(express.json())
 
@@ -66,56 +61,53 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.get("/:id", async(req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params
-  
+
   try {
     const singleUser = await Users.findById(id)
     if (!singleUser) return res.send({ error: 'User not found' })
-    
+
     return res.send(singleUser)
-    
   } catch (error) {
-    return res.send({error: error.message})
+    return res.send({ error: error.message })
   }
 })
-router.patch("/notifUrl/:id", async(req,res)=> {
+router.patch('/notifUrl/:id', async (req, res) => {
   const { id } = req.params
   //console.log(req.body)
   const { notifUrl } = req.body
-    // Get the user to be updated
-     const toBeUpdated = await Users.findById(id)
+  // Get the user to be updated
+  const toBeUpdated = await Users.findById(id)
   if (!toBeUpdated) return res.send({ error: 'No user found!' })
-   try {
-     const newUser = {
-       fullName: toBeUpdated.fullName,
-       email: toBeUpdated.email,
-       picture: toBeUpdated.picture,
-       notifUrl,
-     }
-     //console.log(newUser)
-     await Users.findByIdAndUpdate(id, newUser)
-     return res.send({ msg: 'User updated with success!' })
-   } catch (error) {
-     return res.send({ error: error.message })
-   }
-    
-})
-router.patch("/:id", async (req, res) => {
-     const { id } = req.params
-     const { fullName, email } = req.body
-     // Get the user to be updated
-     const toBeUpdated = await Users.findById(id)
-    if (!toBeUpdated) return res.send({ error: 'No user found!' })
-    
-    try {
-      const newUser = { fullName, email, picture: toBeUpdated.picture}
-      await Users.findByIdAndUpdate(id, newUser)
-
-      return res.send({ msg: 'User updated with success!' })
-    } catch (error) {
-      return res.send({ error: error.message })
+  try {
+    const newUser = {
+      fullName: toBeUpdated.fullName,
+      email: toBeUpdated.email,
+      picture: toBeUpdated.picture,
+      notifUrl,
     }
-    
+    //console.log(newUser)
+    await Users.findByIdAndUpdate(id, newUser)
+    return res.send({ msg: 'User updated with success!' })
+  } catch (error) {
+    return res.send({ error: error.message })
+  }
+})
+router.patch('/:id', async (req, res) => {
+  const { id } = req.params
+  const { fullName, email } = req.body
+  // Get the user to be updated
+  const toBeUpdated = await Users.findById(id)
+  if (!toBeUpdated) return res.send({ error: 'No user found!' })
+
+  try {
+    const newUser = { fullName, email, picture: toBeUpdated.picture }
+    await Users.findByIdAndUpdate(id, newUser)
+
+    return res.send({ msg: 'User updated with success!' })
+  } catch (error) {
+    return res.send({ error: error.message })
+  }
 })
 export default router

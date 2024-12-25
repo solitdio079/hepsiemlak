@@ -5,12 +5,11 @@ export async function loader({ request }) {
     const type = urL.searchParams.get("type")
 
     try {
-        const req = await fetch(url + `/listings/?type=${type}`, {
+        const req = await fetch(url + `/listings/?type=${type}?cursor=`, {
             method: "GET", mode: 'cors', credentials: 'include', headers: {
             'Content-Type': 'application/json'
             }
         })
-        
         const response = await req.json()
         return response 
     } catch (error) {
