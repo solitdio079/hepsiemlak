@@ -160,19 +160,23 @@ export default function Navbar({ user }) {
                     <NavLink to="/login">Se Connecter</NavLink>
                   )}
                 </li>
+
                 <li>
-                  <NavLink to="/tweets">Tweets</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/listings/list/Residence">Residence</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/listings/single/676ac70db01669e51b538f6a">
-                    Test
-                  </NavLink>
-                </li>
-                <li>
-                  <a>Item 3</a>
+                  <details className="z-50">
+                    <summary>Listings</summary>
+                    <ul className="bg-base-100 rounded-t-none p-2">
+                      <li>
+                        <NavLink to="/listings/list/Residence">
+                          Residence
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/listings/list/Commercial">
+                          Commercial
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </details>
                 </li>
               </ul>
             </div>
@@ -192,16 +196,21 @@ export default function Navbar({ user }) {
                   <NavLink to="/login">Login</NavLink>
                 )}
               </li>
+
               <li>
-                <NavLink to="/tweets">Tweets</NavLink>
-              </li>
-              <li>
-                <NavLink to="/listings/list/Residence">Residence</NavLink>
-              </li>
-              <li>
-                <NavLink to="/listings/single/676ac70db01669e51b538f6a">
-                  Test
-                </NavLink>
+                <details className="z-50">
+                  <summary>Listings</summary>
+                  <ul className="bg-base-100 rounded-t-none p-2">
+                    <li>
+                      <NavLink to="/listings/list/Residence">Residence</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/listings/list/Commercial">
+                        Commercial
+                      </NavLink>
+                    </li>
+                  </ul>
+                </details>
               </li>
             </ul>
           </div>

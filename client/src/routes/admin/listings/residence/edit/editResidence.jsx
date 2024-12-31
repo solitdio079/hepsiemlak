@@ -9,7 +9,7 @@ export async function loader({ params }) {
     const { id } = params
     
     try {
-        const req = await fetch(url + `/listings/residence/${id}`, {
+        const req = await fetch(url + `/listings/special/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

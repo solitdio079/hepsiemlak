@@ -4,9 +4,10 @@ import { FaClock, FaLocationDot, FaMapLocation, FaMapPin } from 'react-icons/fa6
 import {url} from '../../utils/serverUrl'
 import { Link, Form, useFetcher } from 'react-router-dom'
 export default function ListingCard({ listing, user }) {
-    const fetcher = useFetcher() 
+  const fetcher = useFetcher() 
+  //console.log(listing);
     return (
-      <div className="card lg:card-side bg-base-100 shadow-xl m-5">
+      <div className="card w-96 bg-base-100 shadow-xl m-5">
         <figure>
           {' '}
           <Link to={`/listings/single/${listing._id}`}>
@@ -23,43 +24,45 @@ export default function ListingCard({ listing, user }) {
 
         <div className="card-body">
           <div className="flex flex-row justify-between w-full">
-            <h2 className="card-title text-xl">
-              {listing.price} Franc CFA <FaClock className="text-primary" />{' '}
-            </h2>
-            <p className="m-2">{listing.updatedAt.split('T')[0]}</p>
+            <h2 className="card-title text-xl">{listing.price} Franc CFA</h2>
           </div>
-
-          <p>{listing.title}</p>
-          <p>
-            {listing.adType} | {listing.area.gross} m² | {listing.age} years old
-          </p>
-          <p className="flex flex-row">
-            <FaLocationDot className="h-4 m-1" />
-            {listing.location.country}, {listing.location.city},
-            {listing.location.district},{listing.location.street},
-            {listing.location.door}
-          </p>
-
-          <div className="flex flex-col justify-end">
-            <div className="avatar">
-              <div className="w-24 rounded-full">
-                <img
-                  src={
-                    url + '/' + listing.owner.picture ||
-                    'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                  }
-                />
-              </div>
+          <p className="text-sm m-0">
+            <div className="badge badge-outline m-1"> {listing.adType}</div>
+            <div className="badge badge-outline m-1">
+              {' '}
+              {listing.area.gross} m²
             </div>
-            {listing.owner.name}
-          </div>
+            <div className="badge badge-outline m-1">
+              {' '}
+              {listing.age} years old
+            </div>
+            
+            <span className="flex my-2 flex-row">
+              <FaLocationDot className="h-4 m-1" />
+              {listing.location.country}, {listing.location.city},
+              {listing.location.district},{listing.location.street},
+              {listing.location.door}
+            </span>
+            
+            {listing.updatedAt.split('T')[0]}
+          </p>
 
-          <div className="card-actions justify-end">
+          <div className="card-actions my-3 justify-end">
             {user && user.isAdmin ? (
               <>
                 {' '}
-                <fetcher.Form method="post" action={`/listings/delete/${listing._id}`}>
-                  <button className="btn bg-red-500"> {fetcher.state === 'idle' ?'Delete' :<span className="loading loading-spinner loading-md"></span>} </button>
+                <fetcher.Form
+                  method="post"
+                  action={`/listings/delete/${listing._id}`}
+                >
+                  <button className="btn bg-red-500">
+                    {' '}
+                    {fetcher.state === 'idle' ? (
+                      'Delete'
+                    ) : (
+                      <span className="loading loading-spinner loading-md"></span>
+                    )}{' '}
+                  </button>
                 </fetcher.Form>
                 <Link
                   className="btn btn-warning"

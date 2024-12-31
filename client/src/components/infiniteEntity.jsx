@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useFetcher } from 'react-router-dom'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { userContext } from '../utils/contexts'
 //import { FaPlus } from 'react-icons/fa6'
 //import { url } from '../../../utils/serverUrl'
 //import PostCardAdmin from '../../../components/admin/postCardAdmin'
@@ -13,6 +14,7 @@ export default function InfiniteEntity({
   fetchMoreURL,
   UnitEntity,
 }) {
+  const user = useContext(userContext)
   const fetcher = useFetcher()
   const [items, setItems] = useState([])
   const [cursor, setCursor] = useState(null)
@@ -49,6 +51,7 @@ export default function InfiniteEntity({
     <div className="w-full">
       {items.length > 0 ? (
         <InfiniteScroll
+          className="w-full"
           dataLength={items.length || 0}
           next={() => setCursor(items[items.length - 1]._id)}
           hasMore={hasMore}
@@ -59,14 +62,14 @@ export default function InfiniteEntity({
             </p>
           }
         >
-          <div className="flex flex-col flex-wrap text-white w-full">
+          <div className="flex flex-col  lg:flex-row items-center lg:items-start w-full justify-center lg:justify-start lg:w-3/4">
             {items.map((item) => (
-              <UnitEntity item={item} key={item._id} />
+              <UnitEntity listing={item} user={user} key={item._id} />
             ))}
           </div>
         </InfiniteScroll>
       ) : (
-        <span className="loading loading-infinity text-white"></span>
+        <span className="loading loading-spinner loading-lg text-white"></span>
       )}
     </div>
   )

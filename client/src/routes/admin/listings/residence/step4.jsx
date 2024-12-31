@@ -2,19 +2,24 @@ import { useContext, useEffect } from 'react'
 //import { useForm } from 'react-hook-form'
 import { stepContext } from '../../../../utils/contexts'
 //import { useNavigate } from 'react-router-dom'
-import { useFetcher, Link } from 'react-router-dom'
+import { useFetcher, Link, useOutletContext } from 'react-router-dom'
 
 import toast, { Toaster } from 'react-hot-toast'
 import { url } from '../../../../utils/serverUrl'
 
 
 export async function action({ request }) {
-    const formData = await request.formData()
+  const formData = await request.formData()
+  let fetchUrl = url + "/listings/residence/"
     const step1 = JSON.parse(sessionStorage.getItem('step-1')) || null
     const step2 = JSON.parse(sessionStorage.getItem('step-2')) || null
     const step3 = JSON.parse(sessionStorage.getItem('step-3')) || null
     if(!step1 || !step2 || !step3) return
-    const totalStep = { ...step1, ...step2, ...step3 }
+  const totalStep = { ...step1, ...step2, ...step3 }
+  const listingType = formData.get("type")
+  if (listingType === "Commercial") {
+    fetchUrl = url + '/listings/commercial/'
+  }
     
     for (const key in totalStep) {
         if (totalStep[key]) {
@@ -23,7 +28,7 @@ export async function action({ request }) {
     }
 
     try {
-        const req = await fetch(url + "/listings/residence/", {
+        const req = await fetch(fetchUrl, {
             method: "POST",
             mode: 'cors',
             credentials: 'include',
@@ -43,7 +48,7 @@ export async function action({ request }) {
 
 export default function ResidenceStep4() {
     const fetcher = useFetcher()
-    
+    const child = useOutletContext()[0]
 
   const { step, setStep } = useContext(stepContext)
   console.log(step)
@@ -99,6 +104,7 @@ export default function ResidenceStep4() {
           multiple
         />
       </div>
+      <input type="hidden" name="type" value={child} />
 
       <div className="form-control mt-6 flex  flex-row justify-between">
         <Link to={'/admin/listing/residence/3'} className="btn btn-primary">

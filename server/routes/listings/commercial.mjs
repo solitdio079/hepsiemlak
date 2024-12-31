@@ -112,10 +112,7 @@ router.put(
     next()
   },
   upload.array('images', 20),
-  (req, res, next) => {
-    console.log('after', req.body)
-    next()
-  },
+  
   async (req, res) => {
     const { id } = req.params
 
@@ -174,7 +171,8 @@ router.get('/:id', async (req, res) => {
   const heating = Object.values(commercial.details.heating).join('/')
   const numOfRooms = Object.values(commercial.details.numberOfRooms).join('+')
   const steps = {}
-  steps['step1'] = {
+    steps['step1'] = {
+      type: commercial.type,
     age: commercial.age,
     location,
     title: commercial.title,

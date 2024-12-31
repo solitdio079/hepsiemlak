@@ -9,7 +9,8 @@ import { url } from '../../../../../utils/serverUrl'
 
 export async function action({ request, params }) {
     const formData = await request.formData()
-    const {id} = params
+  const { id } = params
+  let fetchUrl = url + `/listings/residence/${id}`
   const step1 = JSON.parse(sessionStorage.getItem('step-1')) || null
   const step2 = JSON.parse(sessionStorage.getItem('step-2')) || null
   const step3 = JSON.parse(sessionStorage.getItem('step-3')) || null
@@ -20,6 +21,10 @@ export async function action({ request, params }) {
         formData.set(key, totalStep[key])
       }
     }
+   
+   if (step1.type === 'Commercial') {
+     fetchUrl = url + `/listings/commercial/${id}`
+   }
    
     let fetchMethod = "PUT"
     let fetchHeaders = {}
@@ -35,7 +40,7 @@ export async function action({ request, params }) {
 
   try {
     //console.log('Fetch Body', Object.fromEntries(fetchBody))
-     const req = await fetch(url + `/listings/residence/${id}`, {
+     const req = await fetch(fetchUrl, {
        method: fetchMethod,
          mode: 'cors',
       headers: fetchHeaders,
@@ -71,7 +76,8 @@ export default function ResidenceEditStep4() {
     if (step !== 4) setStep(4)
   }, [fetcher.data])
     
-      const step4 = JSON.parse(sessionStorage.getItem('step-4')) || false
+  const step4 = JSON.parse(sessionStorage.getItem('step-4')) || false
+  //const step1 = JSON.parse(sessionStorage.getItem('step-1')) || false
 
   return (
     <fetcher.Form
@@ -101,8 +107,8 @@ export default function ResidenceEditStep4() {
         <select
           defaultValue={step4 ? step4.state : ''}
           className="select select-bordered w-full max-w-xs"
-                  required
-                  name="state"
+          required
+          name="state"
         >
           <option value="old">old</option>
           <option value="second Hand">Second Hand</option>
@@ -115,13 +121,13 @@ export default function ResidenceEditStep4() {
           <span className="label-text">Images*</span>
         </label>
         <input
-          
           type="file"
           className="file-input file-input-bordered"
           name="images"
           multiple
         />
       </div>
+     
 
       <div className="form-control mt-6 flex  flex-row justify-between">
         <Link to={`/admin/listing/edit/${id}/3`} className="btn btn-primary">

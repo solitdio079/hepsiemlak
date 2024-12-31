@@ -1,10 +1,12 @@
 import { useEffect,useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { stepContext } from '../../../../utils/contexts'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useOutletContext } from 'react-router-dom'
 
 export default function ResidenceStep2() {
- const navigate = useNavigate()
+  const navigate = useNavigate()
+  
+  const child = useOutletContext()[0]
   const {
     register,
     handleSubmit,
@@ -83,7 +85,18 @@ export default function ResidenceStep2() {
           defaultValue={step2 ? step2.category : ''}
           {...register('category', { required: true })}
         >
-          <option value="residence">Residence</option>
+          {' '}
+          {child === 'Residence' ? (
+            <>
+              <option value="Maison">Maison</option>
+              <option value="Appartement">Appartement</option>
+            </>
+          ) : (
+            <>
+              <option value="Bureau">Bureau</option>
+              <option value="Magasin">Magasin</option>
+            </>
+          )}
         </select>
 
         {/* errors will return when field validation fails  */}

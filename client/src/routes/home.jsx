@@ -1,3 +1,4 @@
+import { Form } from "react-router-dom"
 export default function Home() {
     return (
       <div
@@ -13,35 +14,38 @@ export default function Home() {
             <h1 className="mb-5 text-5xl font-bold">
               Find your ideal office with ease on Sahel Immo
             </h1>
-            <div className="join join-vertical lg:join-horizontal">
-              <div>
+            <Form action={'/listings/list/homeSearch'}>
+              <div className="join join-vertical lg:join-horizontal">
                 <div>
-                  <input
-                    className="input input-lg input-bordered join-item"
-                    placeholder="Search"
-                  />
+                  <div>
+                    <input
+                      name="q"
+                      className="input input-lg input-bordered join-item"
+                      placeholder="Search"
+                    />
+                  </div>
+                </div>
+                <select name="type" className="select select-lg select-bordered join-item">
+                  <option disabled selected>
+                    Type
+                  </option>
+                  <option value="Residence">Residence</option>
+                  <option value="Commercial">Bureau</option>
+                </select>
+                <select name="adType" className="select select-lg select-bordered join-item">
+                  <option disabled selected>
+                    Category
+                  </option>
+                  <option value="For Sale">A vendre</option>
+                  <option value="For Rent">A Louer</option>
+                </select>
+                <div className="indicator">
+                  <button className="btn btn-lg btn-primary join-item">
+                    Search
+                  </button>
                 </div>
               </div>
-              <select className="select select-lg select-bordered join-item">
-                <option disabled selected>
-                  Type
-                </option>
-                <option value="Residence">Residence</option>
-                <option value="Commercial">Bureau</option>
-              </select>
-              <select className="select select-lg select-bordered join-item">
-                <option disabled selected>
-                  Category
-                </option>
-                <option value="for sale">A vendre</option>
-                <option value="for rent">A Louer</option>
-              </select>
-              <div className="indicator">
-                <button className="btn btn-lg btn-primary join-item">
-                  Search
-                </button>
-              </div>
-            </div>
+            </Form>
           </div>
         </div>
       </div>

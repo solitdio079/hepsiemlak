@@ -164,7 +164,13 @@ router.get("/:id", async (req, res) => {
   const heating = Object.values(residence.details.heating).join("/")
   const numOfRooms = Object.values(residence.details.numberOfRooms).join('+')
   const steps = {}
-  steps["step1"] = { age: residence.age, location, title: residence.title, usage: residence.usage }
+  steps['step1'] = {
+    type: residence.type,
+    age: residence.age,
+    location,
+    title: residence.title,
+    usage: residence.usage,
+  }
   steps["step2"] = { adType: residence.adType, area, category: residence.category, price: residence.price }
   steps['step3'] = {
     floor,

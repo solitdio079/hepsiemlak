@@ -25,6 +25,7 @@ export default function ResidenceEditStep2() {
     setStep(2)
   })
   const step2 = JSON.parse(sessionStorage.getItem('step-2')) || false
+  const step1 = JSON.parse(sessionStorage.getItem('step-1')) || false
 
   console.log(step2)
   console.log(watch('area')) // watch input value by passing the name of it
@@ -84,7 +85,17 @@ export default function ResidenceEditStep2() {
           defaultValue={step2 ? step2.category : ''}
           {...register('category', { required: true })}
         >
-          <option value="residence">Residence</option>
+          {step1.type === 'Residence' ? (
+            <>
+              <option value="Maison">Maison</option>
+              <option value="Appartement">Appartement</option>
+            </>
+          ) : (
+            <>
+              <option value="Bureau">Bureau</option>
+              <option value="Magasin">Magasin</option>
+            </>
+          )}
         </select>
 
         {/* errors will return when field validation fails  */}
