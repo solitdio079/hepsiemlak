@@ -2,8 +2,9 @@
 /* eslint-disable no-unused-vars */
 import { FaClock, FaLocationDot, FaMapLocation, FaMapPin } from 'react-icons/fa6'
 import {url} from '../../utils/serverUrl'
-import { Link } from 'react-router-dom'
-export default function ListingCard({listing}) {
+import { Link, Form, useFetcher } from 'react-router-dom'
+export default function ListingCard({ listing, user }) {
+    const fetcher = useFetcher() 
     return (
       <div className="card lg:card-side bg-base-100 shadow-xl m-5">
         <figure>
@@ -54,6 +55,23 @@ export default function ListingCard({listing}) {
           </div>
 
           <div className="card-actions justify-end">
+            {user && user.isAdmin ? (
+              <>
+                {' '}
+                <fetcher.Form method="post" action={`/listings/delete/${listing._id}`}>
+                  <button className="btn bg-red-500"> {fetcher.state === 'idle' ?'Delete' :<span className="loading loading-spinner loading-md"></span>} </button>
+                </fetcher.Form>
+                <Link
+                  className="btn btn-warning"
+                  to={`/admin/listing/edit/${listing._id}`}
+                >
+                  Edit
+                </Link>
+              </>
+            ) : (
+              ''
+            )}
+
             <button className="btn btn-primary">Message</button>
           </div>
         </div>

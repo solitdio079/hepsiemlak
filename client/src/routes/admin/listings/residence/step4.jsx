@@ -80,12 +80,10 @@ export default function ResidenceStep4() {
         <label className="label">
           <span className="label-text">State*</span>
         </label>
-        <select className="select select-bordered w-full max-w-xs" required>
-          <option>
-            old
-          </option>
-          <option>Second Hand</option>
-          <option>New</option>
+        <select name="state" className="select select-bordered w-full max-w-xs" required>
+          <option value="old">old</option>
+          <option value="second Hand">Second Hand</option>
+          <option value="New">New</option>
         </select>
       </div>
 
@@ -93,12 +91,12 @@ export default function ResidenceStep4() {
         <label className="label">
           <span className="label-text">Images*</span>
         </label>
-              <input
-                  required
+        <input
+          required
           type="file"
           className="file-input file-input-bordered"
-                  name="images"
-                  multiple
+          name="images"
+          multiple
         />
       </div>
 
@@ -107,9 +105,13 @@ export default function ResidenceStep4() {
           Back
         </Link>
         <button type="submit" className="btn btn-primary">
-          {fetcher.state === "idle" ? 'Submit': <span className='loading loading-spinner'></span>}
-              </button>
-              <Toaster/>
+          {fetcher.state === 'idle' ? (
+            'Submit'
+          ) : (
+            <span className="loading loading-spinner"></span>
+          )}
+        </button>
+        <Toaster />
       </div>
     </fetcher.Form>
   )

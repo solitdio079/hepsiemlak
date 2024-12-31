@@ -19,6 +19,15 @@ import { loader as singleListingLoader } from './loaders/singleListingLoader'
 import {loader as allListingsLoader} from './loaders/allListingLoader'
 import SingleListing from './routes/listings/singleListing'
 import ListingList from './routes/listings/listingList'
+import EditResidence, {loader as editResidenceLoader} from './routes/admin/listings/residence/edit/editResidence'
+import ResidenceEditStep1 from './routes/admin/listings/residence/edit/step1'
+import ResidenceEditStep2 from './routes/admin/listings/residence/edit/step2'
+import ResidenceEditStep3 from './routes/admin/listings/residence/edit/step3'
+import {action as deleteListingAction} from './routes/admin/listings/delete'
+import ResidenceEditStep4, {
+  action as editResidenceAction,
+} from './routes/admin/listings/residence/edit/step4'
+import Home from './routes/home'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -27,12 +36,21 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        index: true,
+        element: <Home />,
+        errorElement:<ErrorPage/>
+    },
+      {
         path: '/listings',
         children: [
           {
             path: '/listings/single/:id',
             element: <SingleListing />,
             errorElement: <ErrorPage />,
+          },
+          {
+            path: '/listings/delete/:id',
+            action: deleteListingAction
           },
           {
             path: '/listings/list/:type',
@@ -82,6 +100,35 @@ const router = createBrowserRouter([
             errorElement: <ErrorPage />,
             action: edituserAction,
             loader: editUserLoader,
+          },
+          {
+            path: '/admin/listing/edit/:id',
+            element: <EditResidence />,
+            loader: editResidenceLoader,
+            errorElement: <ErrorPage />,
+            children: [
+              {
+                index: true,
+                element: <ResidenceEditStep1 />,
+                errorElement: <ErrorPage />,
+              },
+              {
+                path: '/admin/listing/edit/:id/2',
+                element: <ResidenceEditStep2 />,
+                errorElement: <ErrorPage />,
+              },
+              {
+                path: '/admin/listing/edit/:id/3',
+                element: <ResidenceEditStep3 />,
+                errorElement: <ErrorPage />,
+              },
+              {
+                path: '/admin/listing/edit/:id/4',
+                element: <ResidenceEditStep4 />,
+                errorElement: <ErrorPage />,
+                action: editResidenceAction,
+              },
+            ],
           },
           {
             path: '/admin/listing/residence',

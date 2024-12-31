@@ -151,10 +151,13 @@ export default function Navbar({ user }) {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
+                  <NavLink to="/">Accueil</NavLink>
+                </li>
+                <li>
                   {user ? (
                     <NavLink to="/admin">Admin</NavLink>
                   ) : (
-                    <NavLink to="/login">Login</NavLink>
+                    <NavLink to="/login">Se Connecter</NavLink>
                   )}
                 </li>
                 <li>
@@ -173,10 +176,15 @@ export default function Navbar({ user }) {
                 </li>
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">daisyUI</a>
+            <Link to={'/'} className="btn btn-ghost text-xl">
+              daisyUI
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
+              <li>
+                <NavLink to="/">Accueil</NavLink>
+              </li>
               <li>
                 {user ? (
                   <NavLink to="/admin">Admin</NavLink>

@@ -2,12 +2,12 @@ import express, { Router } from 'express'
 import multer from 'multer'
 import fs from 'node:fs'
 import path from 'node:path'
-import Residence from '../../models/listings/residence.mjs'
+import Commercial from '../../models/listings/commercial.mjs'
 
 // Setting the destination path for product photos
 const root = path.resolve()
 const destination = path.join(root, '/public/')
-// ReArranging the Residence 
+// ReArranging the Commercial
 const reArrangeListing = (req) => {
   //console.log(typeof req.body.adType)
   console.log(req.body)
@@ -59,22 +59,20 @@ const reArrangeListing = (req) => {
     name: req.user.fullName,
     email: req.user.email,
     picture: req.user.picture,
-    phone: req.user.phone
+    phone: req.user.phone,
   }
-    data.area = area
-    data.location = location
-    console.log(req.body.price)
+  data.area = area
+  data.location = location
+  console.log(req.body.price)
   //const numberOfRooms = req.body.numberOfRooms.split("+")
   if (req.files) {
     data.images = req.files.map((item) => item.filename)
-
   }
 
   return data
-
 }
 
-const checkUser = (req,res,next) => {
+const checkUser = (req, res, next) => {
   if (!req.user) return res.send({ error: 'Not logged in!' })
   next()
 }
@@ -94,90 +92,114 @@ const upload = multer({ storage })
 
 const router = Router()
 
-router.post('/', upload.array('images', 20), checkUser,async (req, res) => {
- 
+router.post('/', upload.array('images', 20), checkUser, async (req, res) => {
   const data = reArrangeListing(req)
 
   try {
-    const newResidence = new Residence(data)
-    await newResidence.save()
-    return res.send({ msg: 'Residence Created!' })
+    const newCommercial = new Commercial(data)
+    await newCommercial.save()
+    return res.send({ msg: 'Commercial Created!' })
   } catch (error) {
     return res.send({ error: error.message })
   }
 })
 
+router.put(
+  '/:id',
+  checkUser,
+  (req, res, next) => {
+    console.log('before', req.body)
+    next()
+  },
+  upload.array('images', 20),
+  (req, res, next) => {
+    console.log('after', req.body)
+    next()
+  },
+  async (req, res) => {
+    const { id } = req.params
 
+    const data = reArrangeListing(req)
 
-router.put('/:id', checkUser, (req, res, next) => {
-  console.log("before", req.body)
-  next()
-},upload.array('images', 20),(req, res, next) => {
-  console.log("after",req.body)
-  next()
-}, async (req, res) => {
-  const { id } = req.params
+    const commercial = await Commercial.findById(id)
+    if (!commercial) return res.send({ error: `Commercial not found!` })
 
-  const data = reArrangeListing(req)
-
-  const residence = await Residence.findById(id)
-  if (!residence) return res.send({ error: `Residence not found!` })
-
-  try {
-    await Residence.findByIdAndUpdate(id, data)
-    residence.images.forEach((item) => {
-      fs.unlinkSync(destination + item)
-    })
-    return res.send({ msg: 'Residence updated!' })
-  } catch (error) {
-    return res.send({ error: error.message })
+    try {
+      await Commercial.findByIdAndUpdate(id, data)
+      commercial.images.forEach((item) => {
+        fs.unlinkSync(destination + item)
+      })
+      return res.send({ msg: 'Commercial updated!' })
+    } catch (error) {
+      return res.send({ error: error.message })
+    }
   }
-})
-
+)
 
 router.use(express.json())
 
-router.patch("/:id", checkUser, async (req, res) => {
-  console.log('Inside patch residence')
+router.patch('/:id', checkUser, async (req, res) => {
+  console.log('Inside patch Commercial')
   const { id } = req.params
- 
+
   const data = reArrangeListing(req)
 
-  const residence = await Residence.findById(id)
-  if (!residence) return res.send({ error: `Residence not found!` })
+  const commercial = await Commercial.findById(id)
+  if (!commercial) return res.send({ error: `Commercial not found!` })
   try {
-    data.images = residence.images
-    await Residence.findByIdAndUpdate(id, data)
-    return res.send({ msg: 'Residence updated!' })
+    data.images = commercial.images
+    await Commercial.findByIdAndUpdate(id, data)
+    return res.send({ msg: 'Commercial updated!' })
   } catch (error) {
     return res.send({ error: error.message })
   }
 })
 
-router.get("/:id", async (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params
-   const residence = await Residence.findById(id)
-  if (!residence) return res.send({ error: `Residence not found!` })
-  const location = residence.location.country + ',' + residence.location.city +","+ residence.location.district + "," +residence.location.street +","+residence.location.door
-  const area = Object.values(residence.area).join("/")
-  const floor = Object.values(residence.details.floor).join("/")
-  const heating = Object.values(residence.details.heating).join("/")
-  const numOfRooms = Object.values(residence.details.numberOfRooms).join('+')
+  const commercial = await Commercial.findById(id)
+  if (!commercial) return res.send({ error: `Commercial not found!` })
+  const location =
+    commercial.location.country +
+    ',' +
+    commercial.location.city +
+    ',' +
+    commercial.location.district +
+    ',' +
+    commercial.location.street +
+    ',' +
+    commercial.location.door
+  const area = Object.values(commercial.area).join('/')
+  const floor = Object.values(commercial.details.floor).join('/')
+  const heating = Object.values(commercial.details.heating).join('/')
+  const numOfRooms = Object.values(commercial.details.numberOfRooms).join('+')
   const steps = {}
-  steps["step1"] = { age: residence.age, location, title: residence.title, usage: residence.usage }
-  steps["step2"] = { adType: residence.adType, area, category: residence.category, price: residence.price }
+  steps['step1'] = {
+    age: commercial.age,
+    location,
+    title: commercial.title,
+    usage: commercial.usage,
+  }
+  steps['step2'] = {
+    adType: commercial.adType,
+    area,
+    category: commercial.category,
+    price: commercial.price,
+  }
   steps['step3'] = {
     floor,
-    furnishing: residence.details.furnishing,
+    furnishing: commercial.details.furnishing,
     heating,
     numOfRooms,
-    numOfToilets: residence.details.numberOfToilets,
+    numOfToilets: commercial.details.numberOfToilets,
   }
-  steps["step4"] = { description: residence.description, images: residence.images, state: residence.details.state }
-  
+  steps['step4'] = {
+    description: commercial.description,
+    images: commercial.images,
+    state: commercial.details.state,
+  }
+
   return res.send(steps)
 })
-
-
 
 export default router

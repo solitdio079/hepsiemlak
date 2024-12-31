@@ -3,6 +3,10 @@ import Listing from './listing.mjs'
 
 const commercialSchema = new Schema({
   details: {
+    numberOfRooms: {
+      rooms: Number,
+      hall: Number,
+    },
     numberOfToilets: Number,
     heating: {
       heatingType: String,
@@ -11,13 +15,12 @@ const commercialSchema = new Schema({
     state: {
       type: String,
     },
-   
     floor: {
       total: Number,
       specific: Number,
     },
     furnishing: {
-      type: Boolean,
+      type: String,
     },
   },
 })

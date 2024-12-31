@@ -16,6 +16,10 @@ const userSchema = new Schema({
     },
     notifUrl: {
         type: Object
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
     }
 })
 
