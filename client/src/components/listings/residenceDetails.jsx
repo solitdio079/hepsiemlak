@@ -44,7 +44,7 @@ export default function ResidenceDetails({listing}) {
                    Description
                   </div>
                   <div className="collapse-content">
-                    <p> {listing.description} </p>
+                    <p className="text-neutral"> {listing.description} </p>
                   </div>
                 </div>
                
