@@ -31,7 +31,7 @@ export default function Home() {
                     Type
                   </option>
                   <option value="Residence">Residence</option>
-                  <option value="Commercial">Bureau</option>
+                  <option value="Commercial">Commercial</option>
                 </select>
                 <select
                   name="adType"

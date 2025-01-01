@@ -39,7 +39,7 @@ export default function ResidenceStep2() {
       {/* include validation with required or other standard HTML validation rules */}
       <div className="form-control m-1">
         <label className="label">
-          <span className="label-text">Superficie(m²)*</span>
+          <span className="label-text">Superficie(Total/Net)(m²)*</span>
         </label>
         <input
           type="text"

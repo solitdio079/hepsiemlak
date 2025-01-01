@@ -86,8 +86,7 @@ export default function ResidenceStep4() {
           <span className="label-text">Etat du Batiment*</span>
         </label>
         <select name="state" className="select select-bordered w-full max-w-xs" required>
-          <option value="old">Vieu</option>
-          <option value="second Hand">Seconde Main</option>
+          <option value="old">Ancien</option>
           <option value="New">Nouveau</option>
         </select>
       </div>
