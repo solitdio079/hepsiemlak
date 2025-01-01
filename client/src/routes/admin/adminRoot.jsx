@@ -16,7 +16,7 @@ export default function AdminRoot() {
           </li>
          
           <li>
-            <NavLink to="/admin/listing/residence"><FaPlus/> Anonce</NavLink>
+            <NavLink to="/admin/listing/residence"><FaPlus/> Annonce</NavLink>
           </li>
         </ul>
         <Outlet />
