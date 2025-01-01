@@ -7,7 +7,7 @@ export default function ListingCard({ listing, user }) {
   const fetcher = useFetcher() 
   //console.log(listing);
     return (
-      <div className="card w-96 bg-base-100 shadow-xl m-5">
+      <div className="card max-w-96 bg-base-100 shadow-xl m-5">
         <figure>
           {' '}
           <Link to={`/listings/single/${listing._id}`}>
