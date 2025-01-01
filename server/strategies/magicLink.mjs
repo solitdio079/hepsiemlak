@@ -18,7 +18,7 @@ passport.use(
     },
     function send(user, token) {
       var link =
-        'http://localhost:5500/auth/login/email/verify?token=' + token
+        'https://api.sahelimmo.info/auth/login/email/verify?token=' + token
       var msg = {
         to: user.email,
         from: process.env.EMAIL,
