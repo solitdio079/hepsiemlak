@@ -77,13 +77,13 @@ export default function ListingCard({ listing, user }) {
             {listing.owner.phone ? (
               <>
                 <a
-                  href={`https://wa.me/${listing.owner.phone || 22370707070}`}
+                  href={`https://wa.me/${listing.owner.phone || 22300000000}`}
                   className="btn bg-green-600"
                 >
                   <FaWhatsapp /> Message
                 </a>
                 <a
-                  href={`tel:${listing.owner.phone || 22370707070}`}
+                  href={`tel:${listing.owner.phone || 22300000000}`}
                   className="btn btn-primary"
                 >
                   <FaPhone className="h-5 w-5" /> Appeler
