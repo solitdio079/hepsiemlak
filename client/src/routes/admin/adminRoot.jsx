@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom"
 import { userContext } from "../../utils/contexts"
 import { useContext, useEffect } from "react"
+import { FaPlus } from "react-icons/fa6"
 export default function AdminRoot() {
     const user = useContext(userContext)
     const navigate = useNavigate()
@@ -13,14 +14,9 @@ export default function AdminRoot() {
           <li>
             <NavLink to={`/admin/profile/${user._id}`}>Profile</NavLink>
           </li>
+         
           <li>
-            <NavLink to="/admin/tweets">Tweets</NavLink>
-          </li>
-          <li>
-            <NavLink to="/admin/notifications">Notifications</NavLink>
-          </li>
-          <li>
-            <NavLink to="/admin/listing/residence">Residences</NavLink>
+            <NavLink to="/admin/listing/residence"><FaPlus/> Anonce</NavLink>
           </li>
         </ul>
         <Outlet />

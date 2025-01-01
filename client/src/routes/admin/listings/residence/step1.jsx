@@ -40,7 +40,7 @@ export default function ResidenceStep1() {
         <input
           type="text"
           className="input input-bordered"
-          defaultValue={step1 ? step1.title : 'Title'}
+          defaultValue={step1 ? step1.title : 'Appart'}
           {...register('title', { required: true })}
         />
         {errors.title && (
