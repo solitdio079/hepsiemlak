@@ -96,7 +96,7 @@ export default function ResidenceStep1() {
           {...register('location', {
             required: true,
             pattern:
-              /^(?:Mali|Niger|Burkina Faso),[A-Za-z]+,[A-Za-z]+,[A-Za-z]+,[1-9]+$/i,
+              /^(?:Mali|Niger|Burkina Faso),{0,1}[A-Za-z]+,{0,1}[A-Za-z]+,{0,1}[A-Za-z]*,{0,1}[1-9]*$/i,
           })}
         />
         {/* errors will return when field validation fails  */}

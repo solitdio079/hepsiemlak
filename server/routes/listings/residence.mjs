@@ -36,8 +36,8 @@ const reArrangeListing = (req) => {
   location.country = req.body.location.split(',')[0]
   location.city = req.body.location.split(',')[1]
   location.district = req.body.location.split(',')[2]
-  location.street = req.body.location.split(',')[3]
-  location.door = req.body.location.split(',')[4]
+  location.street = req.body.location.split(',')[3] || ''
+  location.door = req.body.location.split(',')[4] || ''
 
   const details = {
     numberOfRooms,
