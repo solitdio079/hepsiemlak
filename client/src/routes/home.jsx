@@ -40,7 +40,7 @@ export default function Home() {
                   <option value="For Rent">A Louer</option>
                 </select>
                 <div className="indicator">
-                  <button className="btn btn-lg btn-primary join-item">
+                  <button className="btn btn-lg btn-primary  join-item">
                     Search
                   </button>
                 </div>

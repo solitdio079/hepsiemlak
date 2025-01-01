@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext} from 'react'
 import { useFetcher } from 'react-router-dom'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { userContext } from '../utils/contexts'
@@ -15,18 +15,24 @@ export default function InfiniteEntity({
   UnitEntity,
 }) {
   const user = useContext(userContext)
+  const prevLoader = sessionStorage.getItem("prevLoader")
   const fetcher = useFetcher()
   const [items, setItems] = useState([])
   const [cursor, setCursor] = useState(null)
   const [hasMore, setHasMore] = useState(true)
 
   useEffect(() => {
-    if (!fetcher.data && fetcher.state === 'idle') {
+    if ((!fetcher.data && fetcher.state === 'idle')) {
       fetcher.load(loaderRoute)
     }
+    if (loaderRoute !== prevLoader) {
+      fetcher.load(loaderRoute)
+      sessionStorage.setItem("prevLoader", loaderRoute)
+    }
+    
     if (fetcher.data) setItems(fetcher.data)
     cursor ? fetchMoreData() : ''
-  }, [cursor, fetcher.data])
+  }, [cursor, fetcher.data, loaderRoute])
 
   const fetchMoreData = async () => {
     try {

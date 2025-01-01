@@ -94,6 +94,7 @@ router.get('/filter', async (req, res) => {
 //
 router.get("/homeSearch", async (req, res) => {
   const { q, adType, type, cursor } = req.query
+  const query = {}
    if (type) {
      query.type = type
    }
@@ -102,7 +103,7 @@ router.get("/homeSearch", async (req, res) => {
      query._id = { $gt: cursor }
    }
   if (q) {
-    query.title =  {$regex: `/${q}/i`}
+    query.title =  {$regex: q, $options: 'i'}
   }
    if (adType) {
      query.adType = adType

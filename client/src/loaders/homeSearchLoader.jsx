@@ -20,7 +20,8 @@ export async function loader({ request }) {
       }
     )
     const response = await req.json()
-    if (response.error) console.log('loader error', response.error)
+      if (response.error) console.log('loader error', response.error)
+      console.log(response)
     return response
   } catch (error) {
     return { error: error.message }
