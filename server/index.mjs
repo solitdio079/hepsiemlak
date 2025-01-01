@@ -38,7 +38,10 @@ const app = express()
 // Socket.io connection
 const server = createServer(app)
 const io = new Server(server, {
-  cors: { origin: 'http://sahelimmo.info', methods: ['GET', 'POST'] },
+  cors: {
+    origin: ['https://sahelimmo.info', 'https://www.sahelimmo.info'],
+    methods: ['GET', 'POST'],
+  },
 })
 const connections = []
 io.on("connection", (socket) => {
