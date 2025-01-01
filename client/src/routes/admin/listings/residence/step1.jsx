@@ -44,9 +44,7 @@ export default function ResidenceStep1() {
           {...register('title', { required: true })}
         />
         {errors.title && (
-          <span className="text-red-600">
-            This field is required and should only be letters.
-          </span>
+          <span className="text-red-600">Veuillez remplir ce champ</span>
         )}
       </div>
 
@@ -63,9 +61,7 @@ export default function ResidenceStep1() {
         />
         {/* errors will return when field validation fails  */}
         {errors.age && (
-          <span className="text-red-600">
-            This field is need to be between 1 and 30
-          </span>
+          <span className="text-red-600">Veuillez remplir ce champ</span>
         )}
       </div>
       <div className="form-control m-1">
@@ -84,7 +80,7 @@ export default function ResidenceStep1() {
 
         {/* errors will return when field validation fails  */}
         {errors.usage && (
-          <span className="text-red-600">This field is required</span>
+          <span className="text-red-600"> Veuillez remplir ce champ</span>
         )}
       </div>
       <div className="form-control m-1">
@@ -99,12 +95,16 @@ export default function ResidenceStep1() {
           }
           {...register('location', {
             required: true,
-            pattern: /^[A-Za-z]+,[A-Za-z]+,[A-Za-z]+,[A-Za-z]+,[1-9]+$/i,
+            pattern:
+              /^(?:Mali|Niger|Burkina Faso),[A-Za-z]+,[A-Za-z]+,[A-Za-z]+,[1-9]+$/i,
           })}
         />
         {/* errors will return when field validation fails  */}
         {errors.location && (
-          <span className="text-red-600">This field is required</span>
+          <span className="text-red-600">
+            {' '}
+            Veuillez remplir ce champ,(Pays,ville,district,rue,porte)
+          </span>
         )}
       </div>
 

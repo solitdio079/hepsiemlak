@@ -14,7 +14,7 @@ export default function ListingList() {
               htmlFor="my-drawer-2"
               className="btn btn-primary drawer-button lg:hidden"
             >
-              Open drawer
+              Filtrer
             </label>
           </div>
           <div className="drawer-side">
@@ -40,8 +40,8 @@ export default function ListingList() {
                     name="adType"
                     className="select m-2 select-bordered w-full max-w-xs"
                   >
-                    <option value="For Sale">For Sale</option>
-                    <option value="For Rent">For Rent</option>
+                    <option value="For Sale">A Vendre</option>
+                    <option value="For Rent">A Louer</option>
                   </select>
                 </li>
                 <li>
@@ -50,7 +50,6 @@ export default function ListingList() {
                     className="select m-2 select-bordered w-full max-w-xs"
                   >
                     <option value="Mali">Mali</option>
-                    <option value="Turkey">Turkey</option>
                     <option value="Burkina Faso">Burkina Faso</option>
                     <option value="Niger">Niger</option>
                   </select>
