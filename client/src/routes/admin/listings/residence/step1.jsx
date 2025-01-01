@@ -35,7 +35,7 @@ export default function ResidenceStep1() {
       {/* register your input into the hook by invoking the "register" function */}
       <div className="form-control m-3">
         <label className="label">
-          <span className="label-text">Title*</span>
+          <span className="label-text">Titre*</span>
         </label>
         <input
           type="text"
@@ -89,7 +89,7 @@ export default function ResidenceStep1() {
       </div>
       <div className="form-control m-1">
         <label className="label">
-          <span className="label-text">Location*</span>
+          <span className="label-text">Adresse*</span>
         </label>
         <input
           type="text"

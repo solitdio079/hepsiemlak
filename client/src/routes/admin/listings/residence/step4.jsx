@@ -83,12 +83,12 @@ export default function ResidenceStep4() {
 
       <div className="form-control m-1">
         <label className="label">
-          <span className="label-text">State*</span>
+          <span className="label-text">Etat du Batiment*</span>
         </label>
         <select name="state" className="select select-bordered w-full max-w-xs" required>
-          <option value="old">old</option>
-          <option value="second Hand">Second Hand</option>
-          <option value="New">New</option>
+          <option value="old">Vieu</option>
+          <option value="second Hand">Seconde Main</option>
+          <option value="New">Nouveau</option>
         </select>
       </div>
 
@@ -112,7 +112,7 @@ export default function ResidenceStep4() {
         </Link>
         <button type="submit" className="btn btn-primary">
           {fetcher.state === 'idle' ? (
-            'Submit'
+            'Creer'
           ) : (
             <span className="loading loading-spinner"></span>
           )}

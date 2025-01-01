@@ -20,9 +20,7 @@ export default function CreateResidence() {
               <li className={step >= 4 ? 'step step-primary' : 'step'}></li>
             </ul>
             <select onChange={(e) => setChild(e.target.value)} className="select my-5 select-bordered w-full max-w-xs">
-              <option disabled selected>
-               Residence
-              </option>
+             
               <option value="Residence">Residence</option>
               <option value="Commercial">Commercial</option>
             </select>

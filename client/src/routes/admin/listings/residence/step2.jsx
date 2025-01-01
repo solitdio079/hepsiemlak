@@ -39,7 +39,7 @@ export default function ResidenceStep2() {
       {/* include validation with required or other standard HTML validation rules */}
       <div className="form-control m-1">
         <label className="label">
-          <span className="label-text">Area(m²)*</span>
+          <span className="label-text">Superficie(m²)*</span>
         </label>
         <input
           type="text"
@@ -53,7 +53,7 @@ export default function ResidenceStep2() {
         {/* errors will return when field validation fails  */}
         {errors.area && (
           <span className="text-red-600">
-            This field is need to be between 30 and Infinity
+            Ce champ doit etre entre 30 et Infinite
           </span>
         )}
       </div>
@@ -67,13 +67,13 @@ export default function ResidenceStep2() {
           {...register('adType', { required: true })}
         >
           <option value="">Chosissez...</option>
-          <option value="For Rent">For Rent</option>
-          <option value="For Sale">For Sale</option>
+          <option value="For Rent">A Louer</option>
+          <option value="For Sale">A Vendre</option>
         </select>
 
         {/* errors will return when field validation fails  */}
         {errors.adType && (
-          <span className="text-red-600">This field is required</span>
+          <span className="text-red-600">Veuillez remplir ce Champ</span>
         )}
       </div>
       <div className="form-control m-1">
@@ -101,12 +101,12 @@ export default function ResidenceStep2() {
 
         {/* errors will return when field validation fails  */}
         {errors.category && (
-          <span className="text-red-600">This field is required</span>
+          <span className="text-red-600">Veuillez remplir ce Champ</span>
         )}
       </div>
       <div className="form-control m-1">
         <label className="label">
-          <span className="label-text">Price*</span>
+          <span className="label-text">Prix*</span>
         </label>
         <input
           type="number"
@@ -117,7 +117,7 @@ export default function ResidenceStep2() {
         {/* errors will return when field validation fails  */}
         {errors.price && (
           <span className="text-red-600">
-            This field is need to be between 2000 and Infinity
+            Ce champ doit etre entre 20,000 and Infinity
           </span>
         )}
       </div>

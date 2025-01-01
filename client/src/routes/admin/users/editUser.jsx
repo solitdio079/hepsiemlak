@@ -96,7 +96,7 @@ export default function EditUser() {
               </label>
               <input
                 type="email"
-                placeholder="email"
+                placeholder="maigasory000@gmail.com"
                 className="input input-bordered"
                 name="email"
                 defaultValue={user.email || ''}
@@ -107,7 +107,7 @@ export default function EditUser() {
               <label className="label">Full Name</label>
               <input
                 type="text"
-                placeholder="Djoko Keita"
+                placeholder="Sory Maiga"
                 className="input input-bordered"
                 name="fullName"
                 defaultValue={user.fullName || ''}

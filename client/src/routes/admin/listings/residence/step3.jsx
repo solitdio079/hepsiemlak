@@ -37,7 +37,7 @@ export default function ResidenceStep3() {
       {/* include validation with required or other standard HTML validation rules */}
       <div className="form-control m-1">
         <label className="label">
-          <span className="label-text">Number of Rooms + hall*</span>
+          <span className="label-text">Nombre de chambres + Salon*</span>
         </label>
         <input
           type="text"
@@ -51,13 +51,13 @@ export default function ResidenceStep3() {
         {/* errors will return when field validation fails  */}
         {errors.numOfRooms && (
           <span className="text-red-600">
-            This field is required should conform to 2+1 pattern
+            Ce champ doit etre sous forme 2+1
           </span>
         )}
       </div>
       <div className="form-control m-1">
         <label className="label">
-          <span className="label-text">Number of Toilets*</span>
+          <span className="label-text">Nombre de Toilettes*</span>
         </label>
         <input
           type="number"
@@ -67,16 +67,16 @@ export default function ResidenceStep3() {
         />
         {/* errors will return when field validation fails  */}
         {errors.numOfToilets && (
-          <span className="text-red-600">This field is required</span>
+          <span className="text-red-600">Veuillez remplir ce champ</span>
         )}
       </div>
       <div className="form-control m-1">
         <label className="label">
-          <span className="label-text">Heating*</span>
+          <span className="label-text">Controle Temperature*</span>
         </label>
         <input
           className="input input-bordered"
-          defaultValue={step3 ? step3.heating : ''}
+          defaultValue={step3 ? step3.heating : 'Climatisateur/Electricite'}
           {...register('heating', {
             required: true,
             pattern: /^[A-Za-z]+\/[A-Za-z]+$/i,
@@ -85,13 +85,14 @@ export default function ResidenceStep3() {
 
         {/* errors will return when field validation fails  */}
         {errors.heating && (
-          <span className="text-red-600">This field is required</span>
+          <span className="text-red-600">Veuillez remplir ce champ</span>
         )}
       </div>
       <div className="form-control m-1">
         <div className="form-control">
+          <label className="label-text">Fourniture</label>
           <label className="label cursor-pointer">
-            <span className="label-text">No</span>
+            <span className="label-text">Non</span>
             <input
               type="radio"
               name="furnishing"
@@ -104,7 +105,7 @@ export default function ResidenceStep3() {
         </div>
         <div className="form-control">
           <label className="label cursor-pointer">
-            <span className="label-text">Yes</span>
+            <span className="label-text">Oui</span>
             <input
               type="radio"
               {...register('furnishing')}
@@ -118,17 +119,17 @@ export default function ResidenceStep3() {
 
         {/* errors will return when field validation fails  */}
         {errors.furnishing && (
-          <span className="text-red-600">This field is required</span>
+          <span className="text-red-600">Veuillez remplir ce champ</span>
         )}
       </div>
       <div className="form-control m-1">
         <label className="label">
-          <span className="label-text">Floor*</span>
+          <span className="label-text">Etages*</span>
         </label>
         <input
           type="text"
           className="input input-bordered"
-          defaultValue={step3 ? step3.floor : ''}
+          defaultValue={step3 ? step3.floor : 'total/specifique'}
           {...register('floor', {
             required: true,
             pattern: /^[0-9]+\/[0-9]+$/i,
@@ -137,7 +138,7 @@ export default function ResidenceStep3() {
         {/* errors will return when field validation fails  */}
         {errors.floor && (
           <span className="text-red-600">
-            This field is need to be between 1 and Infinity
+          Veuillez remplir ce champ
           </span>
         )}
       </div>
