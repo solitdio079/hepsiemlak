@@ -30,7 +30,7 @@ export default function ResidenceStep3() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col mx-auto w-80"
+      className="flex flex-col mx-auto w-full"
     >
       {/* register your input into the hook by invoking the "register" function */}
 

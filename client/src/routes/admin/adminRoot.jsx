@@ -12,13 +12,36 @@ export default function AdminRoot() {
       <div className="flex flex-col items-center lg:items-start lg:flex-row p-10">
         <ul className="menu menu-horizontal lg:w-1/4 lg:menu-vertical bg-base-200 rounded-box m-5">
           <li>
-            <NavLink to={`/admin/profile/${user._id}`}>Profile</NavLink>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive
+                  ? ' bg-primary text-base-100'
+                  : isPending
+                  ? ' bg-secondary'
+                  : ''
+              }
+              to={`/admin/profile/${user._id}`}
+            >
+              Profil
+            </NavLink>
           </li>
-         
+
           <li>
-            <NavLink to="/admin/listing/residence"><FaPlus/> Annonce</NavLink>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive
+                  ? ' bg-primary text-base-100'
+                  : isPending
+                  ? ' bg-secondary'
+                  : ''
+              }
+              to="/admin/listing/residence"
+            >
+              <FaPlus /> Annonce
+            </NavLink>
           </li>
         </ul>
+
         <Outlet />
       </div>
     )

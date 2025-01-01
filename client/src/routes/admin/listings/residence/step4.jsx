@@ -65,7 +65,7 @@ export default function ResidenceStep4() {
     <fetcher.Form
       method="post"
       encType="multipart/form-data"
-      className="flex flex-col mx-auto w-80"
+      className="flex flex-col mx-auto w-full"
     >
       {/* register your input into the hook by invoking the "register" function */}
 

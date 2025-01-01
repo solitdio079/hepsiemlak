@@ -131,20 +131,53 @@ export default function Navbar({ user }) {
                 role="button"
                 className="btn btn-ghost lg:hidden"
               >
-                <FaBars className="w-5 h-5"/>
+                <FaBars className="w-5 h-5" />
               </div>
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <NavLink to="/">Accueil</NavLink>
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      isActive
+                        ? ' bg-primary text-base-100'
+                        : isPending
+                        ? ' bg-secondary'
+                        : ''
+                    }
+                    to="/"
+                  >
+                    Accueil
+                  </NavLink>
                 </li>
                 <li>
                   {user ? (
-                    <NavLink to="/admin">Admin</NavLink>
+                    <NavLink
+                      className={({ isActive, isPending }) =>
+                        isActive
+                          ? ' bg-primary text-base-100'
+                          : isPending
+                          ? ' bg-secondary'
+                          : ''
+                      }
+                      to="/admin"
+                    >
+                      Admin
+                    </NavLink>
                   ) : (
-                    <NavLink to="/login">Se Connecter</NavLink>
+                    <NavLink
+                      className={({ isActive, isPending }) =>
+                        isActive
+                          ? ' bg-primary text-base-100'
+                          : isPending
+                          ? ' bg-secondary'
+                          : ''
+                      }
+                      to="/login"
+                    >
+                      Se Connecter
+                    </NavLink>
                   )}
                 </li>
 
@@ -153,12 +186,30 @@ export default function Navbar({ user }) {
                     <summary>Listings</summary>
                     <ul className="bg-base-100 rounded-t-none p-2">
                       <li>
-                        <NavLink to="/listings/list/Residence">
+                        <NavLink
+                          className={({ isActive, isPending }) =>
+                            isActive
+                              ? ' bg-primary text-base-100'
+                              : isPending
+                              ? ' bg-secondary'
+                              : ''
+                          }
+                          to="/listings/list/Residence"
+                        >
                           Residence
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to="/listings/list/Commercial">
+                        <NavLink
+                          className={({ isActive, isPending }) =>
+                            isActive
+                              ? ' bg-primary text-base-100'
+                              : isPending
+                              ? ' bg-secondary'
+                              : ''
+                          }
+                          to="/listings/list/Commercial"
+                        >
                           Commercial
                         </NavLink>
                       </li>
@@ -167,20 +218,57 @@ export default function Navbar({ user }) {
                 </li>
               </ul>
             </div>
-            <NavLink to={'/'} className="btn btn-ghost text-xl">
+            <NavLink
+             
+              to={'/'}
+              className="btn btn-ghost text-xl"
+            >
               <img src="/logo.png" alt="Logo" width={120} />
             </NavLink>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <NavLink to="/">Accueil</NavLink>
+                <NavLink
+                  className={({ isActive, isPending }) =>
+                    isActive
+                      ? ' bg-primary text-base-100'
+                      : isPending
+                      ? ' bg-secondary'
+                      : ''
+                  }
+                  to="/"
+                >
+                  Accueil
+                </NavLink>
               </li>
               <li>
                 {user ? (
-                  <NavLink to="/admin">Admin</NavLink>
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      isActive
+                        ? ' bg-primary text-base-100'
+                        : isPending
+                        ? ' bg-secondary'
+                        : ''
+                    }
+                    to="/admin"
+                  >
+                    Admin
+                  </NavLink>
                 ) : (
-                  <NavLink to="/login">Login</NavLink>
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      isActive
+                        ? ' bg-primary text-base-100'
+                        : isPending
+                        ? ' bg-secondary'
+                        : ''
+                    }
+                    to="/login"
+                  >
+                    Login
+                  </NavLink>
                 )}
               </li>
 
@@ -189,10 +277,30 @@ export default function Navbar({ user }) {
                   <summary>Listings</summary>
                   <ul className="bg-base-100 rounded-t-none p-2">
                     <li>
-                      <NavLink to="/listings/list/Residence">Residence</NavLink>
+                      <NavLink
+                        className={({ isActive, isPending }) =>
+                          isActive
+                            ? ' bg-primary text-base-100'
+                            : isPending
+                            ? ' bg-secondary'
+                            : ''
+                        }
+                        to="/listings/list/Residence"
+                      >
+                        Residence
+                      </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/listings/list/Commercial">
+                      <NavLink
+                        className={({ isActive, isPending }) =>
+                          isActive
+                            ? ' bg-primary text-base-100'
+                            : isPending
+                            ? ' bg-secondary'
+                            : ''
+                        }
+                        to="/listings/list/Commercial"
+                      >
                         Commercial
                       </NavLink>
                     </li>
@@ -228,9 +336,15 @@ export default function Navbar({ user }) {
                     <li>
                       <NavLink
                         to={`/admin/profile/${user._id}`}
-                        className="justify-between"
+                        className={({ isActive, isPending }) =>
+                          isActive
+                            ? ' bg-primary text-base-100'
+                            : isPending
+                            ? ' bg-secondary'
+                            : ''
+                        }
                       >
-                        Profile
+                        Profil
                       </NavLink>
                     </li>
 
