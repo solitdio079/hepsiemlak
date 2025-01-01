@@ -125,7 +125,7 @@ export default function Navbar({ user }) {
       <>
         <div className="navbar bg-base-100">
           <div className="navbar-start">
-            <div className="dropdown">
+            <div className="dropdown z-50">
               <div
                 tabIndex={0}
                 role="button"
