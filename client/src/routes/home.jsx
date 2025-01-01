@@ -5,15 +5,13 @@ export default function Home() {
         className="hero min-h-96"
         style={{
           backgroundImage:
-            'url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)',
+            'url(https://media.istockphoto.com/id/1409298953/photo/real-estate-agents-shake-hands-after-the-signing-of-the-contract-agreement-is-complete.jpg?s=612x612&w=0&k=20&c=SFybbpGMB0wIoI0tJotFqptzAYK_mICVITNdQIXqnyc=)',
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-full">
-            <h1 className="mb-5 text-5xl font-bold">
-              Find your ideal office with ease on Sahel Immo
-            </h1>
+            <h1 className="mb-5 text-5xl font-bold">Sahel Immo</h1>
             <Form action={'/listings/list/homeSearch'}>
               <div className="join join-vertical lg:join-horizontal">
                 <div>
@@ -25,14 +23,20 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <select name="type" className="select select-lg select-bordered join-item">
+                <select
+                  name="type"
+                  className="select select-lg select-bordered join-item"
+                >
                   <option disabled selected>
                     Type
                   </option>
                   <option value="Residence">Residence</option>
                   <option value="Commercial">Bureau</option>
                 </select>
-                <select name="adType" className="select select-lg select-bordered join-item">
+                <select
+                  name="adType"
+                  className="select select-lg select-bordered join-item"
+                >
                   <option disabled selected>
                     Category
                   </option>
