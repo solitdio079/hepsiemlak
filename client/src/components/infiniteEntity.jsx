@@ -61,10 +61,10 @@ export default function InfiniteEntity({
           dataLength={items.length || 0}
           next={() => setCursor(items[items.length - 1]._id)}
           hasMore={hasMore}
-          loader={<span className="loading loading-infinity loading-lg"></span>}
+          loader={<span className="loading loading-spinner loading-lg"></span>}
           endMessage={
             <p style={{ textAlign: 'center' }}>
-              <b className="text-white">Yay! You have seen it all</b>
+              <b className="text-white">Yay! Vous avez tous vu!</b>
             </p>
           }
         >
