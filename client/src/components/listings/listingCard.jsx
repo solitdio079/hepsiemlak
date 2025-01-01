@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { FaClock, FaLocationDot, FaMapLocation, FaMapPin } from 'react-icons/fa6'
+import { FaClock, FaLocationDot, FaMapLocation, FaMapPin, FaPhone, FaWhatsapp } from 'react-icons/fa6'
 import {url} from '../../utils/serverUrl'
 import { Link, Form, useFetcher } from 'react-router-dom'
 export default function ListingCard({ listing, user }) {
@@ -36,14 +36,14 @@ export default function ListingCard({ listing, user }) {
               {' '}
               {listing.age} years old
             </div>
-            
+
             <span className="flex my-2 flex-row">
               <FaLocationDot className="h-4 m-1" />
               {listing.location.country}, {listing.location.city},
               {listing.location.district},{listing.location.street},
               {listing.location.door}
             </span>
-            
+
             {listing.updatedAt.split('T')[0]}
           </p>
 
@@ -74,8 +74,29 @@ export default function ListingCard({ listing, user }) {
             ) : (
               ''
             )}
-
-            <button className="btn btn-primary">Message</button>
+            {listing.owner.phone ? (
+              <>
+                <a
+                  href={`https://wa.me/${listing.owner.phone || 22370707070}`}
+                  className="btn bg-green-600"
+                >
+                  <FaWhatsapp /> Message
+                </a>
+                <a
+                  href={`tel:${listing.owner.phone || 22370707070}`}
+                  className="btn btn-primary"
+                >
+                  <FaPhone className="h-5 w-5" /> Appeler
+                </a>
+              </>
+            ) : (
+              <a
+                href={`https://wa.me/22370707070`}
+                className="btn bg-green-600"
+              >
+                <FaWhatsapp /> Message
+              </a>
+            )}
           </div>
         </div>
       </div>

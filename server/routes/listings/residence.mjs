@@ -169,7 +169,7 @@ router.get("/:id", async (req, res) => {
     age: residence.age,
     location,
     title: residence.title,
-    usage: residence.usage,
+    
   }
   steps["step2"] = { adType: residence.adType, area, category: residence.category, price: residence.price }
   steps['step3'] = {

@@ -68,25 +68,7 @@ export default function ResidenceEditStep1() {
           </span>
         )}
       </div>
-      <div className="form-control m-1">
-        <label className="label">
-          <span className="label-text">Usage*</span>
-        </label>
-        <select
-          className="select select-bordered w-full max-w-xs"
-          defaultValue={step1 ? step1.usage : ''}
-          {...register('usage', { required: true })}
-        >
-          <option value="">Chosissez...</option>
-          <option value="vide">Vide</option>
-          <option value="occupe">Occupe</option>
-        </select>
-
-        {/* errors will return when field validation fails  */}
-        {errors.usage && (
-          <span className="text-red-600">This field is required</span>
-        )}
-      </div>
+      
       <div className="form-control m-1">
         <label className="label">
           <span className="label-text">Location*</span>
@@ -99,7 +81,7 @@ export default function ResidenceEditStep1() {
           }
           {...register('location', {
             required: true,
-            pattern: /^[A-Za-z]+,[A-Za-z]+,[A-Za-z]+,[A-Za-z]+,[1-9]+$/i,
+            pattern: /^(?:Mali|Niger|Burkina Faso),{0,1}[A-Za-z]+,{0,1}[A-Za-z]+,{0,1}[A-Za-z]*,{0,1}[1-9]*$/i,
           })}
         />
         {/* errors will return when field validation fails  */}

@@ -64,25 +64,7 @@ export default function ResidenceStep1() {
           <span className="text-red-600">Veuillez remplir ce champ</span>
         )}
       </div>
-      <div className="form-control m-1">
-        <label className="label">
-          <span className="label-text">Usage*</span>
-        </label>
-        <select
-          className="select select-bordered w-full max-w-xs"
-          defaultValue={step1 ? step1.usage : ''}
-          {...register('usage', { required: true })}
-        >
-          <option value="">Chosissez...</option>
-          <option value="vide">Vide</option>
-          <option value="occupe">Occupe</option>
-        </select>
-
-        {/* errors will return when field validation fails  */}
-        {errors.usage && (
-          <span className="text-red-600"> Veuillez remplir ce champ</span>
-        )}
-      </div>
+      
       <div className="form-control m-1">
         <label className="label">
           <span className="label-text">Adresse*</span>

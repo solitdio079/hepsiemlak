@@ -12,7 +12,6 @@ const listingSchema = new Schema(
       required: true,
     },
     age: Number,
-    usage: String,
     location: {
       country: String,
       district: String,
@@ -42,7 +41,8 @@ const listingSchema = new Schema(
     owner: {
       name: String,
       picture: String,
-      email: String,
+        email: String,
+      phone:String
     },
   },
   options
