@@ -17,7 +17,11 @@ import usersRouter from './routes/users.mjs'
 import listingRouter from './routes/listings/listing.mjs'
 
 const corsOptions = {
-  origin: ['http://localhost:5173'],
+  origin: [
+    'http://localhost:5173',
+    'https://www.sahelimmo.info',
+    'https://sahelimmo.info',
+  ],
 
   //credentials: true,
   optionsSuccessStatus: 200,
