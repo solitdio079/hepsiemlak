@@ -91,7 +91,7 @@ export default function ListingCard({ listing, user }) {
               </>
             ) : (
               <a
-                href={`https://wa.me/22370707070`}
+                href={`https://wa.me/22300000000`}
                 className="btn bg-green-600"
               >
                 <FaWhatsapp /> Message

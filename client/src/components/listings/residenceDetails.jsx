@@ -2,6 +2,11 @@
 //import Gallery from "../gallery";
 import { url } from "../../utils/serverUrl"
 import Gallery from "../gallery"
+import {
+
+  FaPhone,
+  FaWhatsapp,
+} from 'react-icons/fa6'
 
 export default function ResidenceDetails({listing}) {
 
@@ -64,7 +69,7 @@ function OwnerCard({ owner }) {
             <div className="w-24 rounded-full">
               <img
                 src={
-                  url +"/"+owner.picture ||
+                  url + '/' + owner.picture ||
                   'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
                 }
               />
@@ -73,9 +78,31 @@ function OwnerCard({ owner }) {
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title"> {owner.name || 'John Doe'} </h2>
-        
+
           <div className="card-actions">
-            <button className="btn btn-primary">Contactez</button>
+            {owner.phone ? (
+              <>
+                <a
+                  href={`https://wa.me/${owner.phone || 22300000000}`}
+                  className="btn bg-green-600"
+                >
+                  <FaWhatsapp /> Message
+                </a>
+                <a
+                  href={`tel:${owner.phone || 22300000000}`}
+                  className="btn btn-primary"
+                >
+                  <FaPhone className="h-5 w-5" /> Appeler
+                </a>
+              </>
+            ) : (
+              <a
+                href={`https://wa.me/22300000000`}
+                className="btn bg-green-600"
+              >
+                <FaWhatsapp /> Message
+              </a>
+            )}
           </div>
         </div>
       </div>
