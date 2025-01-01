@@ -35,7 +35,22 @@ export default function ResidenceDetails({listing}) {
         <h1 className="text-2xl font-extrabold m-5"> {listing.title} </h1>
         <div className="flex flex-col lg:flex-row items-center lg:items-start">
           <div className="flex flex-col lg:flex-row p-5">
-            <Gallery images={images} />
+            <div>
+              <Gallery images={images} />
+              <div className="join join-vertical w-full my-5">
+                <div className="collapse collapse-arrow join-item border-base-300 border">
+                  <input type="radio" name="my-accordion-4" defaultChecked />
+                  <div className="collapse-title text-xl font-medium">
+                   Description
+                  </div>
+                  <div className="collapse-content">
+                    <p> {listing.description} </p>
+                  </div>
+                </div>
+               
+                
+              </div>
+            </div>
 
             <ul className="flex flex-col p-3 lg:w-1/3 ">
               <li className="text-primary text-xl font-bold">
