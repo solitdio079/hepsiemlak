@@ -31,8 +31,8 @@ router.put('/:id', upload.single('picture'), async (req, res) => {
   const toBeUpdated = await Users.findById(id)
   if (!toBeUpdated) return res.send({ error: 'No user found!' })
 
-  if (Boolean(toBeUpdated.picture))
-    fs.unlinkSync(destination + toBeUpdated.picture)
+ // if (Boolean(toBeUpdated.picture))
+    //fs.unlinkSync(destination + toBeUpdated.picture)
 
   try {
     const newUser = { fullName, email, phone, picture: req.file.filename }
