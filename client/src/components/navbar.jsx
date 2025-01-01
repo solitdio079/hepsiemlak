@@ -183,7 +183,7 @@ export default function Navbar({ user }) {
 
                 <li>
                   <details className="z-50">
-                    <summary>Listings</summary>
+                    <summary>Postes</summary>
                     <ul className="bg-base-100 rounded-t-none p-2">
                       <li>
                         <NavLink
@@ -223,7 +223,7 @@ export default function Navbar({ user }) {
               to={'/'}
               className="btn btn-ghost text-xl"
             >
-              <img src="/logo.png" alt="Logo" width={120} />
+              <img src="/logo.png" alt="Logo" width={150} />
             </NavLink>
           </div>
           <div className="navbar-center hidden lg:flex">
