@@ -33,6 +33,7 @@ import Home from './routes/home'
 import ListingIndex from './routes/listings/listingIndex'
 import ListingFilter from './routes/listings/listingFilter'
 import HomeSearchListing from './routes/listings/homeSearchListing'
+import CreateLand, {action as createLandAction} from './routes/admin/land/createLand'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -121,6 +122,12 @@ const router = createBrowserRouter([
         element: <AdminRoot />,
         errorElement: <ErrorPage />,
         children: [
+          {
+            path: "/admin/land/create",
+            element: <CreateLand />,
+            errorElement: <ErrorPage />,
+            action: createLandAction
+        },
           {
             path: '/admin/profile/:id',
             element: <EditUser />,
