@@ -183,7 +183,7 @@ export default function Navbar({ user }) {
 
                 <li>
                   <details className="z-50">
-                    <summary>Postes</summary>
+                    <summary>Posts</summary>
                     <ul className="bg-base-100 rounded-t-none p-2">
                       <li>
                         <NavLink

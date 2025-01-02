@@ -32,7 +32,7 @@ const checkUser = (req, res, next) => {
 router.post('/', checkUser,upload.array('images', 20), async (req, res) => {
     const location = req.body.location.split(',')
   const data = req.body
-  delete data.location
+  data.location = {}
     data.location.country = location[0]
     data.location.city = location[1]
     data.location.district = location[2]
@@ -61,7 +61,7 @@ router.put("/:id", checkUser, upload.array('images', 20), async (req, res) => {
     //Setting the new Land
    const location = req.body.location.split(',')
   const data = req.body
-   delete data.location
+  data.location = {}
    data.location.country = location[0]
    data.location.city = location[1]
    data.location.district = location[2]
@@ -102,8 +102,8 @@ router.patch("/:id", checkUser, async (req, res) => {
   const { id } = req.params
     //Setting the new Land
     const location = req.body.location.split(",") 
-  const data = req.body
-   delete data.location
+  const data = re0q.body
+   data.location = {}
     data.location.country = location[0]
     data.location.city = location[1]
     data.location.district = location[2]

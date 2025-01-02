@@ -37,7 +37,7 @@ export default function AdminRoot() {
               }
               to="/admin/listing/residence"
             >
-              <FaPlus className="w-5 h-5" /> Poste
+              <FaPlus className="w-5 h-5" /> Espace R&C
             </NavLink>
           </li>
           <li>
