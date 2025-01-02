@@ -47,22 +47,7 @@ export default function CreateProject() {
           name="name"
         />
       </div>
-      <div className="form-control m-1">
-        <label className="label">
-          <span className="label-text">Type de document*</span>
-        </label>
-        <select
-          className="select select-bordered w-full max-w-xs"
-          name="document"
-          required
-        >
-          <option value="Titre Foncier">Titre Foncier</option>
-          <option value="Permit d'occupe">Permit d&apos;occupe</option>
-          <option value="Lettre d'Attribution">
-            Lettre d&apos;Attribution
-          </option>
-        </select>
-      </div>
+      
       <div className="form-control m-1">
         <label className="label">
           <span className="label-text">Adresse*</span>
