@@ -31,9 +31,9 @@ export default function CreateLand() {
         method="post"
         encType="multipart/form-data"
         className="flex flex-col mx-auto w-full"
-        >
-            <h1 className="text-lg">Creer Terrain</h1>
-            <Toaster/>
+      >
+        <h1 className="text-lg">Creer Terrain</h1>
+        <Toaster />
         <div className="form-control m-1">
           <label className="label">
             <span className="label-text">Nom*</span>
@@ -68,8 +68,8 @@ export default function CreateLand() {
           <input
             type="text"
             className="input input-bordered"
-                    required
-                    name="location"
+            required
+            name="location"
             pattern={
               /^(?:Mali|Niger|Burkina Faso),{0,1}[A-Za-z]+,{0,1}[A-Za-z]+,{0,1}[A-Za-z]*,{0,1}[1-9]*$/i
             }
@@ -80,13 +80,23 @@ export default function CreateLand() {
           <label className="label">
             <span className="label-text">Superficie(m²)*</span>
           </label>
-          <input type="number" name="area" className="input input-bordered" required />
+          <input
+            type="number"
+            name="area"
+            className="input input-bordered"
+            required
+          />
         </div>
         <div className="form-control m-1">
           <label className="label">
             <span className="label-text">Prix(Franc CFA)*</span>
           </label>
-          <input type="number" name="price" className="input input-bordered" required />
+          <input
+            type="number"
+            name="price"
+            className="input input-bordered"
+            required
+          />
         </div>
         <div className="form-control m-1">
           <label className="label">
@@ -99,6 +109,16 @@ export default function CreateLand() {
             name="images"
             multiple
           />
+        </div>
+        <div className="form-control mt-6 flex  flex-row justify-between">
+        
+          <button type="submit" className="btn btn-primary">
+            {fetcher.state === 'idle' ? (
+              'Creer'
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
+          </button>
         </div>
       </fetcher.Form>
     )
