@@ -56,7 +56,7 @@ export default function CreateProject() {
           type="text"
           className="input input-bordered"
           name="location"
-          pattern="Mali|Niger|Burkina Faso,{0,1}[A-Za-z]+,{0,1}[A-Za-z]+,{0,1}[A-Za-z]*,{0,1}[1-9]*"
+          pattern="(Mali|Niger|Burkina Faso),{0,1}[A-Za-z]+,{0,1}[A-Za-z]+,{0,1}[A-Za-z]*,{0,1}[1-9]*"
           required
         />
         {/* errors will return when field validation fails  */}
