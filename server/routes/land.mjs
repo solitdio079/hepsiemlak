@@ -196,5 +196,15 @@ router.get("/index", async (req, res) => {
     return res.send({ error: error.message })
   }
 })
+router.get("/:id", async (req, res) => {
+  const { id } = req.query 
+  try {
+    const singleLand = await Land.findById(id)
+    if (!singleLand) return res.send({ error: "Terrain n'existe pas!" })
+    return res.send(singleLand)
+  } catch (error) {
+    return {error: error.message}
+  }
+})
 
 export default router
