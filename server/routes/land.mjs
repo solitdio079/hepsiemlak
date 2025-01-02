@@ -95,7 +95,6 @@ router.put("/:id", checkUser, upload.array('images', 20), async (req, res) => {
 })
 
 router.use(express.json())
-
 // update land without the images
 
 router.patch("/:id", checkUser, async (req, res) => {
@@ -152,10 +151,11 @@ router.delete("/:id", async (req, res) => {
 })
 
 
+
 // the get routes
 router.get("/", async (req, res) => {
     const { cursor, country, city, q, document } = req.query
-    const query = {}
+    let query = {}
 
     if (cursor) {
         query._id = {$lt: cursor}
@@ -172,7 +172,13 @@ router.get("/", async (req, res) => {
     if (q) {
         query.name = {$regex: q, $options: 'i'}
     }
-    try {
+  
+    
+  try {
+    if (Object.values(query).length === 0) {
+      query = null
+        
+      }
         const allLand = await Land.find(query, null, {sort: {_id:-1}, limit: 5})
         return res.send(allLand)
     } catch (error) {
