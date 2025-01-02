@@ -34,6 +34,7 @@ import ListingIndex from './routes/listings/listingIndex'
 import ListingFilter from './routes/listings/listingFilter'
 import HomeSearchListing from './routes/listings/homeSearchListing'
 import CreateLand, {action as createLandAction} from './routes/admin/land/createLand'
+import CreateProject, {action as createProjectsAction} from './routes/admin/projects/createProject'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -127,6 +128,12 @@ const router = createBrowserRouter([
             element: <CreateLand />,
             errorElement: <ErrorPage />,
             action: createLandAction
+        },
+          {
+            path: "/admin/projects/create",
+            element: <CreateProject/>,
+            errorElement: <ErrorPage />,
+            action: createProjectsAction
         },
           {
             path: '/admin/profile/:id',

@@ -54,6 +54,20 @@ export default function AdminRoot() {
               <FaPlus className="w-5 h-5" /> Terrain
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive
+                  ? ' bg-primary text-base-100'
+                  : isPending
+                  ? ' bg-secondary'
+                  : ''
+              }
+              to="/admin/projects/create"
+            >
+              <FaPlus className="w-5 h-5" /> Projects
+            </NavLink>
+          </li>
         </ul>
 
         <Outlet />
