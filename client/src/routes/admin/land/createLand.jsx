@@ -33,7 +33,7 @@ export default function CreateLand() {
         encType="multipart/form-data"
         className="flex flex-col mx-auto w-full"
       >
-        <h1 className="text-lg">Creer Terrain</h1>
+       
         <Toaster />
         <div className="form-control m-1">
           <label className="label">
@@ -51,8 +51,8 @@ export default function CreateLand() {
             <span className="label-text">Type de document*</span>
           </label>
           <select
-            name="state"
-            className="select select-bordered w-full max-w-xs"
+                    className="select select-bordered w-full max-w-xs"
+                    name="document"
             required
           >
             <option value="Titre Foncier">Titre Foncier</option>
