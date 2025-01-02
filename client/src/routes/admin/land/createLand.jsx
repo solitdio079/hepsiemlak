@@ -5,6 +5,7 @@ import {url} from "../../../utils/serverUrl"
 export async function action({request}) {
     const formData = await request.formData()
 
+   
     try {
         const req = await fetch(url + "/land/", {
             method: "POST",
@@ -20,7 +21,7 @@ export async function action({request}) {
 }
 export default function CreateLand() {
     const fetcher = useFetcher()
-    
+   
     useEffect(() => {
         const toastOptions = { duration: 5000 }
         fetcher.data ? fetcher.data.msg ? toast.success(fetcher.data.msg, toastOptions) : toast.error(fetcher.data.error, toastOptions) : ''
@@ -55,10 +56,10 @@ export default function CreateLand() {
             required
           >
             <option value="Titre Foncier">Titre Foncier</option>
+            <option value="Permit d'occupe">Permit d&apos;occupe</option>
             <option value="Lettre d'Attribution">
               Lettre d&apos;Attribution
             </option>
-            <option value="Permit d'occupe">Permit d&apos;occupe</option>
           </select>
         </div>
         <div className="form-control m-1">
@@ -67,12 +68,12 @@ export default function CreateLand() {
           </label>
           <input
             type="text"
-            className="input input-bordered"
-            required
-            name="location"
-            pattern="/^(?:Mali|Niger|Burkina Faso),{0,1}[A-Za-z]+,{0,1}[A-Za-z]+,{0,1}[A-Za-z]*,{0,1}[1-9]*$/i"
+                    className="input input-bordered"
+                name="location"
+          required
           />
           {/* errors will return when field validation fails  */}
+          
         </div>
         <div className="form-control m-1">
           <label className="label">
@@ -109,7 +110,6 @@ export default function CreateLand() {
           />
         </div>
         <div className="form-control mt-6 flex  flex-row justify-between">
-        
           <button type="submit" className="btn btn-primary">
             {fetcher.state === 'idle' ? (
               'Creer'
