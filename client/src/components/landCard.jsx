@@ -10,8 +10,9 @@ import {
 } from 'react-icons/fa6'
 import { url } from '../utils/serverUrl'
 import { Link, Form, useFetcher } from 'react-router-dom'
-export default function LandCard({ land, user }) {
-  const fetcher = useFetcher()
+export default function LandCard({ listing, user }) {
+    const fetcher = useFetcher()
+    const land =listing
   //console.log(listing);
   return (
     <div className="card max-w-96 bg-base-100 shadow-xl m-5">
