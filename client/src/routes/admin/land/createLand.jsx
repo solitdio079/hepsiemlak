@@ -33,7 +33,6 @@ export default function CreateLand() {
         encType="multipart/form-data"
         className="flex flex-col mx-auto w-full"
       >
-       
         <Toaster />
         <div className="form-control m-1">
           <label className="label">
@@ -51,8 +50,8 @@ export default function CreateLand() {
             <span className="label-text">Type de document*</span>
           </label>
           <select
-                    className="select select-bordered w-full max-w-xs"
-                    name="document"
+            className="select select-bordered w-full max-w-xs"
+            name="document"
             required
           >
             <option value="Titre Foncier">Titre Foncier</option>
@@ -68,12 +67,12 @@ export default function CreateLand() {
           </label>
           <input
             type="text"
-                    className="input input-bordered"
-                name="location"
-          required
+            className="input input-bordered"
+            name="location"
+            pattern=" (?:Mali|Niger|Burkina Faso),{0,1}[A-Za-z]+,{0,1}[A-Za-z]+,{0,1}[A-Za-z]*,{0,1}[1-9]*"
+            required
           />
           {/* errors will return when field validation fails  */}
-          
         </div>
         <div className="form-control m-1">
           <label className="label">
