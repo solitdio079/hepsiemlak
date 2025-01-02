@@ -175,10 +175,6 @@ router.get("/", async (req, res) => {
   
     
   try {
-    if (Object.values(query).length === 0) {
-      query = null
-        
-      }
         const allLand = await Land.find(query, null, {sort: {_id:-1}, limit: 5})
         return res.send(allLand)
     } catch (error) {
@@ -186,6 +182,19 @@ router.get("/", async (req, res) => {
     }
 
 
+})
+router.get("/index", async (req, res) => {
+  const {cursor} = req.query
+  const query = {}
+  if (cursor) {
+    query._id = {$gt: cursor}
+  }
+  try {
+    const allLand = await Land.find(query, null, {limit: 5})
+    return res.send(allLand)
+  } catch (error) {
+    return res.send({ error: error.message })
+  }
 })
 
 export default router
