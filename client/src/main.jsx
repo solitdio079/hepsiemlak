@@ -18,6 +18,7 @@ import { action as logoutAction } from './routes/logout'
 import { loader as singleListingLoader } from './loaders/singleListingLoader'
 import { loader as listingFilterLoader } from './loaders/listingFilterLoader'
 import { loader as homeSearchLoader } from './loaders/homeSearchLoader'
+import { loader as allLandLoader } from './loaders/allLandLoader'
 import {loader as allListingsLoader} from './loaders/allListingLoader'
 import SingleListing from './routes/listings/singleListing'
 import ListingList from './routes/listings/listingList'
@@ -35,6 +36,8 @@ import ListingFilter from './routes/listings/listingFilter'
 import HomeSearchListing from './routes/listings/homeSearchListing'
 import CreateLand, {action as createLandAction} from './routes/admin/land/createLand'
 import CreateProject, {action as createProjectsAction} from './routes/admin/projects/createProject'
+import LandRoot from './routes/land/landRoot'
+import LandIndex from './routes/land/landIndex'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -46,9 +49,21 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
         errorElement:<ErrorPage/>
+      },
+      {
+        path: "/land",
+        element: <LandRoot />,
+        errorElement: <ErrorPage />,
+        children: [{
+          index: true,
+          element: <LandIndex />,
+          errorElement: <ErrorPage/>
+        }]
+      
     },
       {
         path: '/listings',
+        errorElement: <ErrorPage/>,
         children: [
           {
             path: '/listings/single/:id',
@@ -84,6 +99,10 @@ const router = createBrowserRouter([
         path: '/loaders',
         errorElement: <ErrorPage />,
         children: [
+          {
+            path: "/loaders/allLandLoader",
+            loader: allLandLoader
+        },
           {
             path: '/loaders/initialtweets',
             loader: initialTweetLoader,

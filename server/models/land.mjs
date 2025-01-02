@@ -32,6 +32,6 @@ const landSchema = new Schema({
     email: String,
     phone: String,
   },
-})
+},{timestamps: true})
 
 export default mongoose.model('Land', landSchema)

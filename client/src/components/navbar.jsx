@@ -152,6 +152,20 @@ export default function Navbar({ user }) {
                   </NavLink>
                 </li>
                 <li>
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      isActive
+                        ? ' bg-primary text-base-100'
+                        : isPending
+                        ? ' bg-secondary'
+                        : ''
+                    }
+                    to="/land"
+                  >
+                    Terrain
+                  </NavLink>
+                </li>
+                <li>
                   {user ? (
                     <NavLink
                       className={({ isActive, isPending }) =>
@@ -183,7 +197,7 @@ export default function Navbar({ user }) {
 
                 <li>
                   <details className="z-50">
-                    <summary>Posts</summary>
+                    <summary>Espace R&C</summary>
                     <ul className="bg-base-100 rounded-t-none p-2">
                       <li>
                         <NavLink
@@ -218,11 +232,7 @@ export default function Navbar({ user }) {
                 </li>
               </ul>
             </div>
-            <NavLink
-             
-              to={'/'}
-              className="btn btn-ghost text-xl"
-            >
+            <NavLink to={'/'} className="btn btn-ghost text-xl">
               <img src="/logo.png" alt="Logo" width={150} />
             </NavLink>
           </div>
@@ -240,6 +250,20 @@ export default function Navbar({ user }) {
                   to="/"
                 >
                   Accueil
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive, isPending }) =>
+                    isActive
+                      ? ' bg-primary text-base-100'
+                      : isPending
+                      ? ' bg-secondary'
+                      : ''
+                  }
+                  to="/land"
+                >
+                  Terrain
                 </NavLink>
               </li>
               <li>
