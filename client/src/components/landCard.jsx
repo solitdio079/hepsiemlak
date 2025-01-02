@@ -8,7 +8,7 @@ import {
   FaPhone,
   FaWhatsapp,
 } from 'react-icons/fa6'
-import { url } from '../../utils/serverUrl'
+import { url } from '../utils/serverUrl'
 import { Link, Form, useFetcher } from 'react-router-dom'
 export default function LandCard({ land, user }) {
   const fetcher = useFetcher()
