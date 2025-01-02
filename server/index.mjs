@@ -15,6 +15,8 @@ import authRouter from './routes/auth.mjs'
 import tweetsRouter from './routes/tweets.mjs'
 import usersRouter from './routes/users.mjs'
 import listingRouter from './routes/listings/listing.mjs'
+import landRouter from './routes/land.mjs'
+import projectsRouter from './routes/projects.mjs'
 
 const corsOptions = {
   origin: [
@@ -79,6 +81,8 @@ app.use(passport.session())
 const port = process.env.PORT
 app.use('/users', usersRouter)
 app.use('/listings', listingRouter)
+app.use('/projects', projectsRouter)
+app.use('/land', landRouter)
 app.use('/auth', authRouter)
 app.use('/tweets', tweetsRouter)
 app.get('/', (req, res) => {
