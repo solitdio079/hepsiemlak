@@ -49,7 +49,7 @@ export default function LandCard({ listing, user }) {
             {land.location.door}
           </span>
 
-          {land.updatedAt.split('T')[0]}
+          {land.updatedAt.split('T')[0] || "2024-01-02"}
         </p>
 
         <div className="card-actions my-3 justify-end">
