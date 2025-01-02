@@ -30,7 +30,15 @@ const checkUser = (req, res, next) => {
 
 // create a land here
 router.post('/', checkUser,upload.array('images', 20), async (req, res) => {
+    const location = req.body.location.split(',')
   const data = req.body
+  delete data.location
+    data.location.country = location[0]
+    data.location.city = location[1]
+    data.location.district = location[2]
+    data.location.street = location[3] || ''
+    data.location.door = location[4] || ''
+
   data.images = req.files.map((item) => item.filename)
   data.owner = {
     name: req.user.fullName,
@@ -52,7 +60,8 @@ router.put("/:id", checkUser, upload.array('images', 20), async (req, res) => {
     const { id } = req.params
     //Setting the new Land
    const location = req.body.location.split(',')
-   const data = req.body
+  const data = req.body
+   delete data.location
    data.location.country = location[0]
    data.location.city = location[1]
    data.location.district = location[2]
@@ -93,7 +102,8 @@ router.patch("/:id", checkUser, async (req, res) => {
   const { id } = req.params
     //Setting the new Land
     const location = req.body.location.split(",") 
-    const data = req.body
+  const data = req.body
+   delete data.location
     data.location.country = location[0]
     data.location.city = location[1]
     data.location.district = location[2]
