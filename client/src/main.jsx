@@ -38,6 +38,7 @@ import CreateLand, {action as createLandAction} from './routes/admin/land/create
 import CreateProject, {action as createProjectsAction} from './routes/admin/projects/createProject'
 import LandRoot from './routes/land/landRoot'
 import LandIndex from './routes/land/landIndex'
+import EditLand, {action as editLandAction, loader as editLandLoader} from './routes/admin/land/editLand'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -147,6 +148,13 @@ const router = createBrowserRouter([
             element: <CreateLand />,
             errorElement: <ErrorPage />,
             action: createLandAction
+          }, {
+            path: "/admin/land/edit/:id",
+            element: <EditLand />,
+            action: editLandAction,
+            loader: editLandLoader,
+            errorElement:<ErrorPage/>
+          
         },
           {
             path: "/admin/projects/create",

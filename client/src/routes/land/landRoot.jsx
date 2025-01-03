@@ -23,12 +23,12 @@ export default function LandRoot() {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu bg-secondary text-base-content min-h-full w-80 p-4">
+          <ul className="menu bg-accent text-base-content min-h-full w-80 p-4">
             {/* Sidebar content here */}
             <Form action="/land/filter">
               <li>
                 <select
-                  className="select select-bordered w-full max-w-xs"
+                  className="select m-2 select-bordered w-full max-w-xs"
                   name="document"
                   required
                 >
