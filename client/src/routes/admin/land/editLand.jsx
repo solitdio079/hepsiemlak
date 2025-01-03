@@ -2,6 +2,7 @@ import { useFetcher, useLoaderData } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
 import { useEffect } from 'react'
 import { url } from '../../../utils/serverUrl'
+import Gallery from '../../../components/gallery'
 export async function action({ params, request }) {
     const formData = await request.formData()
     const { id } = params
@@ -60,7 +61,9 @@ export default function EditLand() {
         : toast.error(fetcher.data.error, toastOptions)
       : ''
   })
-  return (
+    return (
+        <> 
+            <Gallery images={land.images} />
     <fetcher.Form
       method="post"
       encType="multipart/form-data"
@@ -161,6 +164,7 @@ export default function EditLand() {
           )}
         </button>
       </div>
-    </fetcher.Form>
+            </fetcher.Form>
+        </>
   )
 }
