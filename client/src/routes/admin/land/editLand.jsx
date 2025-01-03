@@ -40,6 +40,7 @@ export async function loader({ params }) {
             }
         })
         const response = await req.json()
+        console.log(response)
         return response
     } catch (error) {
         return console.error(error.message)
