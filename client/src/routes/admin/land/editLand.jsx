@@ -63,7 +63,7 @@ export default function EditLand() {
   })
     return (
         <> 
-            <Gallery images={land.images} />
+            <Gallery images={land.images.map(item => url + "/" + item)} />
     <fetcher.Form
       method="post"
       encType="multipart/form-data"
