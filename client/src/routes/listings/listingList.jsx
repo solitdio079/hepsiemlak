@@ -23,7 +23,7 @@ export default function ListingList() {
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu bg-primary text-base-content min-h-full w-80 p-4">
+            <ul className="menu bg-secondary text-base-content min-h-full w-80 p-4">
               {/* Sidebar content here */}
               <Form action='/listings/list/filter'>
                 <li>
