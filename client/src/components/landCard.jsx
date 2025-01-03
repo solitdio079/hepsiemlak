@@ -58,7 +58,7 @@ export default function LandCard({ listing, user }) {
               {' '}
               <fetcher.Form
                 method="post"
-                action={`/land/delete/${land._id}`}
+                action={`/admin/land/delete/${land._id}`}
               >
                 <button className="btn bg-red-500">
                   {' '}
