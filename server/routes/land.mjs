@@ -137,7 +137,7 @@ router.delete("/:id", async (req, res) => {
     
   
     try {
-        await Land.findByIdAndDelete()
+        await Land.findByIdAndDelete(id)
         if (toBeDeleted.images) {
           toBeDeleted.images.forEach((item) =>
             fs.unlinkSync(destination + item)
