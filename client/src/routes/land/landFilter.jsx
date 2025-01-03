@@ -1,7 +1,7 @@
 //import { useEffect } from "react"
 import { useSearchParams } from 'react-router-dom'
 import { url } from '../../utils/serverUrl'
-import LandCard from '../../components/landCar'
+import LandCard from '../../components/landCard'
 //import { userContext } from '../../utils/contexts'
 import InfiniteEntity from '../../components/infiniteEntity'
 //import toast, {Toaster} from 'react-hot-toast'
