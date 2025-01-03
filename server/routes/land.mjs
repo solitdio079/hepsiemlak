@@ -101,7 +101,7 @@ router.patch("/:id", checkUser, async (req, res) => {
   const { id } = req.params
     //Setting the new Land
     const location = req.body.location.split(",") 
-  const data = re0q.body
+  const data = req.body
    data.location = {}
     data.location.country = location[0]
     data.location.city = location[1]
