@@ -197,7 +197,7 @@ router.get("/index", async (req, res) => {
   }
 })
 router.get("/:id", async (req, res) => {
-  const { id } = req.query 
+  const { id } = req.params 
   try {
     const singleLand = await Land.findById(id)
     if (!singleLand) return res.send({ error: "Terrain n'existe pas!" })
