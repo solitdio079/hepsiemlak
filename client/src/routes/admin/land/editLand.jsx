@@ -148,7 +148,7 @@ export default function EditLand() {
           <span className="label-text">Images*</span>
         </label>
         <input
-          required
+          
           type="file"
           className="file-input file-input-bordered"
           name="images"
