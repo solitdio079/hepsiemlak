@@ -50,23 +50,12 @@ export default function LandRoot() {
                   <option value="Niger">Niger</option>
                 </select>
               </li>
-              <li>
-                <select
-                  name="price"
-                  className="select m-2 select-bordered w-full max-w-xs"
-                >
-                  <option disabled selected>
-                    Price
-                  </option>
-                  <option value="1">Asc</option>
-                  <option value="-1">Desc</option>
-                </select>
-              </li>
+             
               <li>
                 <button className="btn m-2 w-full btn-primary">
                   {' '}
                   {navigation.state === 'idle' ? (
-                    'Filter'
+                    'Filtrer'
                   ) : (
                     <span className="loading loading-spinner"></span>
                   )}{' '}

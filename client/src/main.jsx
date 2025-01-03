@@ -19,6 +19,7 @@ import { loader as singleListingLoader } from './loaders/singleListingLoader'
 import { loader as listingFilterLoader } from './loaders/listingFilterLoader'
 import { loader as homeSearchLoader } from './loaders/homeSearchLoader'
 import { loader as allLandLoader } from './loaders/allLandLoader'
+import { loader as landFilterLoader } from './loaders/landFilterLoader'
 import {loader as allListingsLoader} from './loaders/allListingLoader'
 import SingleListing from './routes/listings/singleListing'
 import ListingList from './routes/listings/listingList'
@@ -40,6 +41,7 @@ import LandRoot from './routes/land/landRoot'
 import LandIndex from './routes/land/landIndex'
 import EditLand, { action as editLandAction, loader as editLandLoader } from './routes/admin/land/editLand'
 import {action as deleteLandAction} from './routes/admin/land/deleteLand'
+import LandFilter from './routes/land/landFilter'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -50,22 +52,29 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        errorElement:<ErrorPage/>
+        errorElement: <ErrorPage />,
       },
       {
-        path: "/land",
+        path: '/land',
         element: <LandRoot />,
         errorElement: <ErrorPage />,
-        children: [{
-          index: true,
-          element: <LandIndex />,
-          errorElement: <ErrorPage/>
-        }]
-      
-    },
+        children: [
+          {
+            index: true,
+            element: <LandIndex />,
+            errorElement: <ErrorPage />,
+          },
+          {
+            path: "/land/filter",
+            element: <LandFilter />,
+            errorElement: <ErrorPage />,
+            
+          }
+        ],
+      },
       {
         path: '/listings',
-        errorElement: <ErrorPage/>,
+        errorElement: <ErrorPage />,
         children: [
           {
             path: '/listings/single/:id',
@@ -74,26 +83,29 @@ const router = createBrowserRouter([
           },
           {
             path: '/listings/delete/:id',
-            action: deleteListingAction
+            action: deleteListingAction,
           },
           {
             path: '/listings/list',
             element: <ListingList />,
             errorElement: <ErrorPage />,
-            children: [{
-              path: "/listings/list/:type",
-              element: <ListingIndex />,
-              errorElement:<ErrorPage/>
-            },
+            children: [
               {
-                path: "/listings/list/filter",
+                path: '/listings/list/:type',
+                element: <ListingIndex />,
+                errorElement: <ErrorPage />,
+              },
+              {
+                path: '/listings/list/filter',
                 element: <ListingFilter />,
-                errorElement: <ErrorPage/>
-              }, {
-                path: "/listings/list/homeSearch",
+                errorElement: <ErrorPage />,
+              },
+              {
+                path: '/listings/list/homeSearch',
                 element: <HomeSearchListing />,
-                errorElement: <ErrorPage/>
-            }]
+                errorElement: <ErrorPage />,
+              },
+            ],
           },
         ],
       },
@@ -102,20 +114,24 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
           {
-            path: "/loaders/allLandLoader",
-            loader: allLandLoader
-        },
+            path: '/loaders/allLandLoader',
+            loader: allLandLoader,
+          },
+          {
+            path: '/loaders/landFilterLoader',
+            loader: landFilterLoader
+          },
           {
             path: '/loaders/initialtweets',
             loader: initialTweetLoader,
           },
           {
-            path: "/loaders/listingFilterLoader",
-            loader: listingFilterLoader
+            path: '/loaders/listingFilterLoader',
+            loader: listingFilterLoader,
           },
           {
-            path: "/loaders/homeSearchLoader",
-            loader: homeSearchLoader
+            path: '/loaders/homeSearchLoader',
+            loader: homeSearchLoader,
           },
           {
             path: '/loaders/allListingLoader',
@@ -145,30 +161,29 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
           {
-            path: "/admin/land/create",
+            path: '/admin/land/create',
             element: <CreateLand />,
             errorElement: <ErrorPage />,
-            action: createLandAction
-          }, {
-            path: "/admin/land/edit/:id",
+            action: createLandAction,
+          },
+          {
+            path: '/admin/land/edit/:id',
             element: <EditLand />,
             action: editLandAction,
             loader: editLandLoader,
-            errorElement:<ErrorPage/>
-          
-          },
-         {
-            path: "/admin/land/delete/:id",
-            action: deleteLandAction,
-            errorElement:<ErrorPage/>
-          
-        },
-          {
-            path: "/admin/projects/create",
-            element: <CreateProject/>,
             errorElement: <ErrorPage />,
-            action: createProjectsAction
-        },
+          },
+          {
+            path: '/admin/land/delete/:id',
+            action: deleteLandAction,
+            errorElement: <ErrorPage />,
+          },
+          {
+            path: '/admin/projects/create',
+            element: <CreateProject />,
+            errorElement: <ErrorPage />,
+            action: createProjectsAction,
+          },
           {
             path: '/admin/profile/:id',
             element: <EditUser />,
