@@ -98,6 +98,16 @@ export default function CreateLand() {
         </div>
         <div className="form-control m-1">
           <label className="label">
+            <span className="label-text">Description</span>
+          </label>
+          <textarea
+            className="textarea textarea-bordered"
+            placeholder="description"
+            name="description"
+          ></textarea>
+        </div>
+        <div className="form-control m-1">
+          <label className="label">
             <span className="label-text">Images*</span>
           </label>
           <input
