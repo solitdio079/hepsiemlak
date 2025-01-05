@@ -11,7 +11,7 @@ export default function ProjectIndex() {
       <InfiniteEntity
         loaderRoute={`/loaders/allProjectLoader`}
         UnitEntity={ProjectCard}
-        fetchMoreURL={url + `/project/`}
+        fetchMoreURL={url + `/projects/`}
       />
     </div>
   )
