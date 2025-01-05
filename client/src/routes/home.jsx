@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Form, Link } from "react-router-dom"
 // import Swiper core and required modules
-import {Autoplay, Pagination } from 'swiper/modules';
+import { Navigation,Autoplay } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -118,7 +118,7 @@ export default function Home() {
         <div className="min-w-full mx-auto p-5 text-white bg-primary">
           <Swiper
             // install Swiper modules
-            modules={[Autoplay, Pagination]}
+            modules={[Navigation, Autoplay]}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,
@@ -144,7 +144,8 @@ export default function Home() {
                 slidesPerView: 5,
               },
             }}
-            pagination={{ clickable: true }}
+            navigation
+           
             className="w-full text-center"
           >
             <SwiperSlide>
