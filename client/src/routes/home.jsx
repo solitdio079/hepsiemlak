@@ -76,7 +76,7 @@ export default function Home() {
               </ul>
               <Form
                 className="my-5"
-                action={`/listings/list/homeSearch?country=${country}`}
+                action={`/listings/list/homeSearch`}
               >
                 <div className="join join-vertical rounded-none  lg:join-horizontal">
                   <div>
@@ -86,6 +86,7 @@ export default function Home() {
                         className="input input-lg bg-transparent text-white input-bordered join-item"
                         placeholder="recherche..."
                       />
+                      <input type="hidden" value={country} name="country" />
                     </div>
                   </div>
                   <select
