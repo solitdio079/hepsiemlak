@@ -13,15 +13,15 @@ export default function HomeSearchListing() {
   const type = searchParams.get('type')
   const adType = searchParams.get('adType')
   const country = searchParams.get('country')
-    const q      = searchParams.get('q')
-  console.log(type)
+  const q      = searchParams.get('q')
+  //console.log(type)
    const [loaderRoute, setLoaderRoute] = useState(
     `/loaders/homeSearchLoader?type=${type}&adType=${adType}&q=${q}&country=${country}`
    )
    useEffect(() => {
      type
        ? setLoaderRoute(
-           `/loaders/homeSearchLoader?type=${type}&adType=${adType}&q=${q}`
+           `/loaders/homeSearchLoader?type=${type}&adType=${adType}&q=${q}&country=${country}`
          )
        : ''
    }, [type])
@@ -31,7 +31,7 @@ export default function HomeSearchListing() {
         loaderRoute={loaderRoute}
         UnitEntity={ListingCard}
         fetchMoreURL={
-          url + `/listings/homeSearch?type=${type}&adType=${adType}&q=${q}`
+          url + `/listings/homeSearch?type=${type}&adType=${adType}&q=${q}&country=${country}`
         }
       />
     </div>

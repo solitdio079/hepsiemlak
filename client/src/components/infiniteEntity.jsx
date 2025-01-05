@@ -74,6 +74,8 @@ export default function InfiniteEntity({
             ))}
           </div>
         </InfiniteScroll>
+      ) : items.length === 0 ? (
+        <span className="text-lg">Pas de donnees!</span>
       ) : (
         <span className="loading loading-spinner loading-lg"></span>
       )}
