@@ -26,6 +26,10 @@ const landSchema = new Schema({
     type: Number,
     required: true
   },
+  description: {
+    type: String,
+    
+  },
   owner: {
     name: String,
     picture: String,

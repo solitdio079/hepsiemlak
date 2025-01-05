@@ -27,7 +27,7 @@ export default function LandDetails({ land }) {
   const detailsTitles = Object.keys(finalForm)
   return (
     <div className="p-10">
-      <h1 className="text-2xl font-extrabold m-5"> {land.title} </h1>
+      <h1 className="text-2xl font-extrabold m-5"> {land.name} </h1>
       <div className="flex flex-col lg:flex-row items-center lg:items-start">
         <div className="flex flex-col lg:flex-row p-5">
           <div>

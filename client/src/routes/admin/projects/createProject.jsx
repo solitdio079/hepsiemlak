@@ -47,7 +47,7 @@ export default function CreateProject() {
           name="name"
         />
       </div>
-      
+
       <div className="form-control m-1">
         <label className="label">
           <span className="label-text">Adresse*</span>
@@ -74,14 +74,13 @@ export default function CreateProject() {
       </div>
       <div className="form-control m-1">
         <label className="label">
-          <span className="label-text">Nombre d&apos;unite*</span>
+          <span className="label-text">Description</span>
         </label>
-        <input
-          type="number"
-          name="numOfUnits"
-          className="input input-bordered"
-          required
-        />
+        <textarea
+          className="textarea textarea-bordered"
+          placeholder="description"
+          name="description"
+        ></textarea>
       </div>
       <div className="form-control m-1">
         <label className="label">

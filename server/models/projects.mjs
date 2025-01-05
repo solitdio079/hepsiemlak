@@ -18,10 +18,10 @@ const projectSchema = new Schema(
       door: String,
       city: String,
     },
-    numOfUnits: {
-      type: Number,
-      required: true,
-    },
+    description: {
+    type: String,
+    
+  },
     owner: {
       name: String,
       picture: String,
