@@ -17,10 +17,13 @@ import ResidenceStep4, {action as createResidenceAction} from './routes/admin/li
 import { action as logoutAction } from './routes/logout'
 import { loader as singleListingLoader } from './loaders/singleListingLoader'
 import { loader as singleLandLoader } from './loaders/singleLandLoader'
+import { loader as singleProjectLoader } from './loaders/singleProjectLoader'
 import { loader as listingFilterLoader } from './loaders/listingFilterLoader'
 import { loader as homeSearchLoader } from './loaders/homeSearchLoader'
 import { loader as allLandLoader } from './loaders/allLandLoader'
+import { loader as allProjectLoader } from './loaders/allProjectLoader'
 import { loader as landFilterLoader } from './loaders/landFilterLoader'
+import { loader as projectFilterLoader } from './loaders/projectFilterLoader'
 import {loader as allListingsLoader} from './loaders/allListingLoader'
 import SingleListing from './routes/listings/singleListing'
 import ListingList from './routes/listings/listingList'
@@ -42,8 +45,17 @@ import LandRoot from './routes/land/landRoot'
 import LandIndex from './routes/land/landIndex'
 import EditLand, { action as editLandAction, loader as editLandLoader } from './routes/admin/land/editLand'
 import {action as deleteLandAction} from './routes/admin/land/deleteLand'
+import {action as deleteProjectAction} from './routes/admin/projects/deleteProject'
 import LandFilter from './routes/land/landFilter'
 import SingleLand from './routes/land/singleLand'
+import ProjectRoot from './routes/project/projectRoot'
+import ProjectIndex from './routes/project/projectIndex'
+import EditProject, {
+  action as editProjectAction,
+  loader as editProjectLoader,
+} from './routes/admin/projects/editProject'
+import ProjectFilter from './routes/project/projectFilter'
+import SingleProject from './routes/project/singleProject'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -67,18 +79,39 @@ const router = createBrowserRouter([
             errorElement: <ErrorPage />,
           },
           {
-            path: "/land/filter",
+            path: '/land/filter',
             element: <LandFilter />,
             errorElement: <ErrorPage />,
-            
           },
         ],
       },
-       {
-            path: "/land/single/:id",
-            element: <SingleLand />,
-            errorElement: <ErrorPage/>
+      {
+        path: '/land/single/:id',
+        element: <SingleLand />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/project/single/:id",
+        element: <SingleProject />,
+        errorElement: <ErrorPage/>
+      },
+      {
+        path: '/project',
+        element: <ProjectRoot />,
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            index: true,
+            element: <ProjectIndex />,
+            errorElement: <ErrorPage />,
           },
+          {
+            path: "/project/filter",
+            element: <ProjectFilter />,
+            errorElement: <ErrorPage/>
+          }
+        ],
+      },
       {
         path: '/listings',
         errorElement: <ErrorPage />,
@@ -125,12 +158,24 @@ const router = createBrowserRouter([
             loader: allLandLoader,
           },
           {
-            path: '/loaders/landFilterLoader',
-            loader: landFilterLoader
+            path: '/loaders/allProjectLoader',
+            loader: allProjectLoader,
           },
           {
-            path: "/loaders/singleLandLoader/:id",
-            loader: singleLandLoader
+            path: '/loaders/landFilterLoader',
+            loader: landFilterLoader,
+          },
+          {
+            path: '/loaders/projectFilterLoader',
+            loader: projectFilterLoader,
+          },
+          {
+            path: '/loaders/singleLandLoader/:id',
+            loader: singleLandLoader,
+          },
+          {
+            path: '/loaders/singleProjectLoader/:id',
+            loader: singleProjectLoader,
           },
           {
             path: '/loaders/initialtweets',
@@ -194,6 +239,18 @@ const router = createBrowserRouter([
             element: <CreateProject />,
             errorElement: <ErrorPage />,
             action: createProjectsAction,
+          },
+          {
+            path: '/admin/projects/edit/:id',
+            element: <EditProject />,
+            action: editProjectAction,
+            loader: editProjectLoader,
+            errorElement: <ErrorPage />,
+          },
+          {
+            path: "/admin/projects/delete/:id",
+            action: deleteProjectAction,
+            errorElement: <ErrorPage/>
           },
           {
             path: '/admin/profile/:id',

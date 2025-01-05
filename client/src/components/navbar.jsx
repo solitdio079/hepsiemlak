@@ -166,6 +166,20 @@ export default function Navbar({ user }) {
                   </NavLink>
                 </li>
                 <li>
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      isActive
+                        ? ' bg-primary text-base-100'
+                        : isPending
+                        ? ' bg-secondary'
+                        : ''
+                    }
+                    to="/project"
+                  >
+                    Projet
+                  </NavLink>
+                </li>
+                <li>
                   {user ? (
                     <NavLink
                       className={({ isActive, isPending }) =>
@@ -264,6 +278,20 @@ export default function Navbar({ user }) {
                   to="/land"
                 >
                   Terrain
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive, isPending }) =>
+                    isActive
+                      ? ' bg-primary text-base-100'
+                      : isPending
+                      ? ' bg-secondary'
+                      : ''
+                  }
+                  to="/project"
+                >
+                  Projet
                 </NavLink>
               </li>
               <li>

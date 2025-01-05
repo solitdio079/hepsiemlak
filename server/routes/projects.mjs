@@ -169,5 +169,28 @@ router.get('/', async (req, res) => {
     return res.send({ error: error.message })
   }
 })
+router.get('/index', async (req, res) => {
+  const { cursor } = req.query
+  const query = {}
+  if (cursor) {
+    query._id = { $gt: cursor }
+  }
+  try {
+    const allProject = await Projects.find(query, null, { limit: 5 })
+    return res.send(allProject)
+  } catch (error) {
+    return res.send({ error: error.message })
+  }
+})
+router.get('/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const singleProject = await Projects.findById(id)
+    if (!singleProject) return res.send({ error: "Project n'existe pas!" })
+    return res.send(singleProject)
+  } catch (error) {
+    return { error: error.message }
+  }
+})
 
 export default router

@@ -4,29 +4,28 @@ import { url } from '../utils/serverUrl'
 import Gallery from './gallery'
 import { FaPhone, FaWhatsapp } from 'react-icons/fa6'
 
-export default function LandDetails({ land }) {
+export default function ProjectDetails({ project }) {
   const adresse =
-    land.location.country +
+    project.location.country +
     '/' +
-    land.location.city +
+    project.location.city +
     '/' +
-    land.location.district +
+    project.location.district +
     '/' +
-    land.location.street +
+    project.location.street +
     '/' +
-    land.location.door
-  const images = land.images.map((item) => url + '/' + item)
+    project.location.door
+  const images = project.images.map((item) => url + '/' + item)
 
   const finalForm = {
-    ID: land._id,
-    'Mis a jour le': land.updatedAt.split('T')[0],
-    'Surface(Total)': land.area + ' m²',
-    Document: land.document,
+    ID: project._id,
+    'Mis a jour le': project.updatedAt.split('T')[0],
+    'Surface(Total)': project.area + ' m²',
   }
   const detailsTitles = Object.keys(finalForm)
   return (
     <div className="p-10">
-      <h1 className="text-2xl font-extrabold m-5"> {land.name} </h1>
+      <h1 className="text-2xl font-extrabold m-5"> {project.name} </h1>
       <div className="flex flex-col lg:flex-row items-center lg:items-start">
         <div className="flex flex-col lg:flex-row p-5">
           <div>
@@ -38,17 +37,17 @@ export default function LandDetails({ land }) {
                   Description
                 </div>
                 <div className="collapse-content">
-                  <p className="text-neutral"> {land.description || 'Description is here!'} </p>
+                  <p className="text-neutral">
+                    {' '}
+                    {project.description || 'Description is here!'}{' '}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
           <ul className="flex flex-col p-3 lg:w-1/3 ">
-            <li className="text-primary text-xl font-bold">
-              {' '}
-              {land.price} Franc CFA
-            </li>
+          
             <li className="text-sm my-3">{adresse}</li>
             {detailsTitles.map((item) => (
               <li
@@ -62,7 +61,7 @@ export default function LandDetails({ land }) {
             ))}
           </ul>
         </div>
-        <OwnerCard owner={land.owner} />
+        <OwnerCard owner={project.owner} />
       </div>
     </div>
   )
