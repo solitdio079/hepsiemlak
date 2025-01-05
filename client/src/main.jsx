@@ -16,6 +16,7 @@ import ResidenceStep3 from './routes/admin/listings/residence/step3'
 import ResidenceStep4, {action as createResidenceAction} from './routes/admin/listings/residence/step4'
 import { action as logoutAction } from './routes/logout'
 import { loader as singleListingLoader } from './loaders/singleListingLoader'
+import { loader as singleLandLoader } from './loaders/singleLandLoader'
 import { loader as listingFilterLoader } from './loaders/listingFilterLoader'
 import { loader as homeSearchLoader } from './loaders/homeSearchLoader'
 import { loader as allLandLoader } from './loaders/allLandLoader'
@@ -42,6 +43,7 @@ import LandIndex from './routes/land/landIndex'
 import EditLand, { action as editLandAction, loader as editLandLoader } from './routes/admin/land/editLand'
 import {action as deleteLandAction} from './routes/admin/land/deleteLand'
 import LandFilter from './routes/land/landFilter'
+import SingleLand from './routes/land/singleLand'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -69,6 +71,10 @@ const router = createBrowserRouter([
             element: <LandFilter />,
             errorElement: <ErrorPage />,
             
+          }, {
+            path: "/land/single/:id",
+            element: <SingleLand />,
+            errorElement: <ErrorPage/>
           }
         ],
       },
@@ -120,6 +126,10 @@ const router = createBrowserRouter([
           {
             path: '/loaders/landFilterLoader',
             loader: landFilterLoader
+          },
+          {
+            path: "/loaders/singleLandLoader/:id",
+            loader: singleLandLoader
           },
           {
             path: '/loaders/initialtweets',
