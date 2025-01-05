@@ -32,15 +32,14 @@ export default function ProjectCard({ listing, user }) {
 
       <div className="card-body">
         <div className="flex flex-row justify-between w-full">
-          <h2 className="card-title text-xl">{project.price} Franc CFA</h2>
+          <h2 className="card-title text-xl">{project.area} m²</h2>
         </div>
         <p className="text-sm m-0">
-          <div className="badge badge-outline m-1"> {project.area} m²</div>
-
           <span className="flex my-2 flex-row">
             <FaLocationDot className="h-4 m-1" />
             {project.location.country}, {project.location.city},
-            {project.location.district},{project.location.street},{project.location.door}
+            {project.location.district},{project.location.street},
+            {project.location.door}
           </span>
 
           {project.updatedAt ? project.updatedAt.split('T')[0] : '2024-01-02'}
