@@ -124,7 +124,7 @@ export default function Home() {
             spaceBetween={25}
             breakpoints={{
               0: {
-                slidesPerView: 1,
+                slidesPerView: 2,
               },
               400: {
                 slidesPerView: 2,
