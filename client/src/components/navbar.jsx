@@ -326,7 +326,7 @@ export default function Navbar({ user }) {
 
               <li>
                 <details className="z-50">
-                  <summary>Listings</summary>
+                  <summary>Espace R&C</summary>
                   <ul className="bg-base-100 rounded-t-none p-2">
                     <li>
                       <NavLink
