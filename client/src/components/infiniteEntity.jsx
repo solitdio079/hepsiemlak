@@ -32,7 +32,7 @@ export default function InfiniteEntity({
     
     if (fetcher.data) setItems(fetcher.data)
     cursor ? fetchMoreData() : ''
-  }, [cursor, fetcher.data, loaderRoute])
+  }, [cursor, fetcher.data, loaderRoute,items])
 
   const fetchMoreData = async () => {
     try {
@@ -75,7 +75,7 @@ export default function InfiniteEntity({
           </div>
         </InfiniteScroll>
       ) : (
-        <span className="mx-auto text-lg">Pas de resultats</span>
+        <span className="loading loading-spinner loading-lg"></span>
       )}
     </div>
   )
