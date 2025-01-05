@@ -16,7 +16,7 @@ export async function action({ params, request }) {
   }
 
   try {
-    const req = await fetch(url + `/project/${id}`, {
+    const req = await fetch(url + `/projects/${id}`, {
       method: fetchMethod,
       mode: 'cors',
       credentials: 'include',
@@ -32,7 +32,7 @@ export async function action({ params, request }) {
 export async function loader({ params }) {
   const { id } = params
   try {
-    const req = await fetch(url + `/project/${id}`, {
+    const req = await fetch(url + `/projects/${id}`, {
       method: 'GET',
       mode: 'cors',
       credentials: 'include',
