@@ -24,10 +24,10 @@ export default function ProjectDetails({ project }) {
   }
   const detailsTitles = Object.keys(finalForm)
   return (
-    <div className="p-10">
+    <div className="p-5 lg:p-10">
       <h1 className="text-2xl font-extrabold m-5"> {project.name} </h1>
       <div className="flex flex-col lg:flex-row items-center lg:items-start">
-        <div className="flex flex-col lg:flex-row p-5">
+        <div className="flex flex-col lg:flex-row lg:p-5">
           <div>
             <Gallery images={images} />
             <div className="join join-vertical w-full my-5">

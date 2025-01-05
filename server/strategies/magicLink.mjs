@@ -22,12 +22,12 @@ passport.use(
       var msg = {
         to: user.email,
         from: process.env.EMAIL,
-        subject: 'Sign in to bySolitdio',
+        subject: 'Connectez-vous sur Sahel Immo',
         text:
-          'Hello! Click the link below to finish signing in to bySolitdio.\r\n\r\n' +
+          'Salut! Cliquez le lien ci-dessous pour vous connecter sur Sahel Immo.\r\n\r\n' +
           link,
         html:
-          '<h3>Hello!</h3><p>Click the link below to finish signing in to bySolitdio.</p><p><a href="' +
+          '<h3>Salut!</h3><p> Cliquez le lien ci-dessous pour vous connecter sur Sahel Immo.</p><p><a href="' +
           link +
           '">Sign in</a></p>',
       }
@@ -63,7 +63,8 @@ passport.serializeUser(function (user, cb) {
          fullName: user.fullName,
           notifUrl: user.notifUrl.endpoint,
           phone: user.phone || null,
-         isAdmin: user.isAdmin || false
+         isAdmin: user.isAdmin || false,
+         isVerified: user.isVerified || false,
         })
       return 
     }
