@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn {
+.card, .btn{
     @apply rounded-none;
 }
-.card {
+NavLink, Link, input, select,textarea,li {
     @apply rounded-none;
 }

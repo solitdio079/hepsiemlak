@@ -32,7 +32,7 @@ export default function InfiniteEntity({
     
     if (fetcher.data) setItems(fetcher.data)
     cursor ? fetchMoreData() : ''
-  }, [cursor, fetcher.data, loaderRoute,items])
+  }, [cursor, fetcher.data, loaderRoute])
 
   const fetchMoreData = async () => {
     try {
@@ -68,15 +68,13 @@ export default function InfiniteEntity({
             </p>
           }
         >
-          <div className="flex flex-col lg:flex-wrap  lg:flex-row items-center lg:items-start w-full justify-center lg:justify-start lg:w-3/4">
+          <div className="flex flex-col  lg:flex-row items-center w-full justify-center lg:justify-start lg:max-w-3/4">
             {items.map((item) => (
               <UnitEntity listing={item} user={user} key={item._id} />
             ))}
           </div>
         </InfiniteScroll>
-      ) : items.length === 0 ? (
-        <span className="text-lg">Pas de donnees!</span>
-      ) : (
+      ): (
         <span className="loading loading-spinner loading-lg"></span>
       )}
     </div>
