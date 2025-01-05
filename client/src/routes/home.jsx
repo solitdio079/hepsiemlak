@@ -11,26 +11,23 @@ export default function Home() {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-full">
-            <h1 className="mb-5 text-5xl font-bold">Sahel Immo</h1>
-            <ul className="menu menu-horizontal border-b-2 border-white">
+            <ul className="menu menu-horizontal border-b-2 border-white my-5">
               <li>
-                <a className="flex flex-col">
-                  <img width={250} src="./mali.png" />
+                <a className="flex flex-col hover:border-b-2 hover:border-white rounded-none">
+                  <img width={80} src="./mali.png" />
                   Mali
                 </a>
               </li>
               <li>
-                <a className="flex flex-col">
-                  <img width={250} src="./niger.png" />
+                <a className="flex flex-col hover:border-b-2 hover:border-white rounded-none">
+                  <img width={100} src="./niger.png" />
                   Niger
-                  <span className="badge badge-sm badge-warning">NEW</span>
                 </a>
               </li>
               <li>
-                <a className="flex flex-col">
-                  <img width={250} src="./burkina.png" />
+                <a className="flex flex-col hover:border-b-2 hover:border-white rounded-none">
+                  <img width={100} src="./burkina.png" />
                   Burkina Faso
-                  <span className="badge badge-xs badge-info"></span>
                 </a>
               </li>
             </ul>
