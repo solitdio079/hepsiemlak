@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Form, Link } from "react-router-dom"
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -106,29 +106,74 @@ export default function Home() {
             </Form>
             <Swiper
               // install Swiper modules
-              modules={[Navigation, Pagination, Scrollbar, A11y]}
+              modules={[Navigation]}
               spaceBetween={50}
-              slidesPerView={3}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                },
+                400: {
+                  slidesPerView: 2,
+                },
+                639: {
+                  slidesPerView: 3,
+                },
+                865: {
+                  slidesPerView: 4,
+                },
+                1000: {
+                  slidesPerView: 5,
+                },
+                1500: {
+                  slidesPerView: 6,
+                },
+                1700: {
+                  slidesPerView: 6,
+                },
+              }}
               navigation
               pagination={{ clickable: true }}
               scrollbar={{ draggable: true }}
               onSwiper={(swiper) => console.log(swiper)}
               onSlideChange={() => console.log('slide change')}
-              className="w-full"
+              className="w-full mt-10"
             >
               <SwiperSlide>
-                <Link className="badge badge-outline">Appart à louer</Link>
+                <Link className="badge badge-outline badge-lg hover:bg-primary">
+                  Appart à louer
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
                 {' '}
-                <Link className="badge badge-outline">Appart à vendre</Link>
+                <Link className="badge badge-outline badge-lg hover:bg-primary">
+                  Appart à vendre
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
                 {' '}
-                <Link className="badge badge-outline">Bureau à louer</Link>
+                <Link className="badge badge-outline badge-lg hover:bg-primary">
+                  Bureau à louer
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <Link className="badge badge-outline">Appart à vendre</Link>
+                <Link className="badge badge-outline badge-lg hover:bg-primary">
+                  Appart à vendre
+                </Link>
+              </SwiperSlide>
+              <SwiperSlide>
+                <Link className="badge badge-outline badge-lg hover:bg-primary">
+                  Titre Foncier
+                </Link>
+              </SwiperSlide>
+              <SwiperSlide>
+                <Link className="badge badge-outline badge-lg hover:bg-primary">
+                  Projects du Mali
+                </Link>
+              </SwiperSlide>
+              <SwiperSlide>
+                <Link className="badge badge-outline badge-lg hover:bg-primary">
+                  Projects du Niger 
+                </Link>
               </SwiperSlide>
             </Swiper>
           </div>
