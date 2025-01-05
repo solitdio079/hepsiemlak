@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { Form, Link } from "react-router-dom"
 // import Swiper core and required modules
-import { Navigation,Autoplay } from 'swiper/modules';
+import {Autoplay, Pagination } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 
 // Import Swiper styles
 import 'swiper/css';
@@ -83,7 +84,11 @@ export default function Home() {
                         className="input input-lg bg-transparent text-white input-bordered join-item"
                         placeholder="recherche..."
                       />
-                      <input className="hidden" value={country} name="country" />
+                      <input
+                        className="hidden"
+                        value={country}
+                        name="country"
+                      />
                     </div>
                   </div>
                   <select
@@ -110,10 +115,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="min-w-full mx-auto p-10 text-white bg-primary">
+        <div className="min-w-full mx-auto p-5 text-white bg-primary">
           <Swiper
             // install Swiper modules
-            modules={[Navigation, Autoplay]}
+            modules={[Autoplay, Pagination]}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,
@@ -139,52 +144,32 @@ export default function Home() {
                 slidesPerView: 5,
               },
             }}
-            navigation
-            className="w-full"
+            pagination={{ clickable: true }}
+            className="w-full text-center"
           >
             <SwiperSlide>
               <Link
-                to={
-                  '/listings/list/filter?type=Residence&adType=For+Rent&country=Mali&price=1'
-                }
+                to={'/notaire/'}
                 className="badge badge-outline badge-lg hover:bg-primary"
               >
-                Appart à louer
+                Notaire
               </Link>
             </SwiperSlide>
+
             <SwiperSlide>
-              {' '}
               <Link
-                to={'/listings/list/filter?type=Residence&adType=For+Sale&country=Mali&price=1'}
+                to={'/land/'}
                 className="badge badge-outline badge-lg hover:bg-primary"
               >
-                Appart à vendre
+                Terrain nu
               </Link>
             </SwiperSlide>
             <SwiperSlide>
-              {' '}
-              <Link className="badge badge-outline badge-lg hover:bg-primary">
-                Bureau à louer
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link className="badge badge-outline badge-lg hover:bg-primary">
-                Appart à vendre
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link className="badge badge-outline badge-lg hover:bg-primary">
-                Titre Foncier
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link className="badge badge-outline badge-lg hover:bg-primary">
-                Projects du Mali
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link className="badge badge-outline badge-lg hover:bg-primary">
-                Projects du Niger
+              <Link
+                to={'/project/'}
+                className="badge badge-outline badge-lg hover:bg-primary"
+              >
+                Projects
               </Link>
             </SwiperSlide>
           </Swiper>
