@@ -93,7 +93,7 @@ router.get('/filter', async (req, res) => {
 
 //
 router.get("/homeSearch", async (req, res) => {
-  const { q, adType, type, cursor } = req.query
+  const { q, adType, type, cursor, country } = req.query
   const query = {}
    if (type) {
      query.type = type
@@ -107,6 +107,9 @@ router.get("/homeSearch", async (req, res) => {
   }
    if (adType) {
      query.adType = adType
+   }
+   if (country) {
+     query['location.country'] = country
    }
    try {
      const filteredListing = await Listing.find(query, null, {

@@ -4,13 +4,14 @@ export async function loader({ request }) {
 
   const type = urL.searchParams.get('type')
   const adType = urL.searchParams.get('adType')
+  const country = urL.searchParams.get('country')
   const q = urL.searchParams.get('q')
   console.log(type)
 
   try {
     const req = await fetch(
       url +
-        `/listings/homeSearch?cursor=&type=${type}&adType=${adType}&q=${q}`,
+        `/listings/homeSearch?cursor=&type=${type}&adType=${adType}&q=${q}&country=${country}`,
       {
         method: 'GET',
         mode: 'cors',

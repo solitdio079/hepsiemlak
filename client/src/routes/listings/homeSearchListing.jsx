@@ -12,10 +12,11 @@ export default function HomeSearchListing() {
   const [searchParams] = useSearchParams()
   const type = searchParams.get('type')
   const adType = searchParams.get('adType')
+  const country = searchParams.get('country')
     const q      = searchParams.get('q')
   console.log(type)
    const [loaderRoute, setLoaderRoute] = useState(
-    `/loaders/homeSearchLoader?type=${type}&adType=${adType}&q=${q}`
+    `/loaders/homeSearchLoader?type=${type}&adType=${adType}&q=${q}&country=${country}`
    )
    useEffect(() => {
      type
