@@ -74,10 +74,7 @@ export default function Home() {
                   </a>
                 </li>
               </ul>
-              <Form
-                className="my-5"
-                action={`/listings/list/homeSearch`}
-              >
+              <Form className="my-5" action={`/listings/list/homeSearch`}>
                 <div className="join join-vertical rounded-none  lg:join-horizontal">
                   <div>
                     <div>
@@ -124,7 +121,7 @@ export default function Home() {
             spaceBetween={25}
             breakpoints={{
               0: {
-                slidesPerView: 2,
+                slidesPerView: 1,
               },
               400: {
                 slidesPerView: 2,
@@ -143,17 +140,24 @@ export default function Home() {
               },
             }}
             navigation
-            pagination={{ clickable: true }}
             className="w-full"
           >
             <SwiperSlide>
-              <Link className="badge badge-outline badge-lg hover:bg-primary">
+              <Link
+                to={
+                  '/listings/list/filter?type=Residence&adType=For+Rent&country=Mali&price=1'
+                }
+                className="badge badge-outline badge-lg hover:bg-primary"
+              >
                 Appart à louer
               </Link>
             </SwiperSlide>
             <SwiperSlide>
               {' '}
-              <Link className="badge badge-outline badge-lg hover:bg-primary">
+              <Link
+                to={'/listings/list/filter?type=Residence&adType=For+Sale&country=Mali&price=1'}
+                className="badge badge-outline badge-lg hover:bg-primary"
+              >
                 Appart à vendre
               </Link>
             </SwiperSlide>

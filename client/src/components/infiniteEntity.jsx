@@ -75,7 +75,7 @@ export default function InfiniteEntity({
           </div>
         </InfiniteScroll>
       ) : (
-        <span className="loading loading-spinner loading-lg text-white"></span>
+        'No data'
       )}
     </div>
   )
