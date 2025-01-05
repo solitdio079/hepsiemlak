@@ -120,7 +120,7 @@ export default function Home() {
               delay: 5000,
               disableOnInteraction: false,
             }}
-            spaceBetween={50}
+            spaceBetween={25}
             breakpoints={{
               0: {
                 slidesPerView: 1,
