@@ -85,7 +85,7 @@ export default function EditProject() {
             <span className="label-text">Description</span>
           </label>
                   <textarea className="textarea textarea-bordered"
-                      placeholder={project.description}
+                      defaultValue={project.description}
             name="description"
           ></textarea>
         </div>
