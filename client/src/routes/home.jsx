@@ -14,19 +14,19 @@ export default function Home() {
             <ul className="menu menu-horizontal border-b-2 border-white my-5">
               <li>
                 <a className="flex flex-col hover:border-b-2 hover:border-white rounded-none">
-                  <img width={80} src="./mali.png" />
+                  <img className="w-20" src="./mali.png" />
                   Mali
                 </a>
               </li>
               <li>
                 <a className="flex flex-col hover:border-b-2 hover:border-white rounded-none">
-                  <img width={100} src="./niger.png" />
+                  <img className="w-24" src="./niger.png" />
                   Niger
                 </a>
               </li>
               <li>
                 <a className="flex flex-col hover:border-b-2 hover:border-white rounded-none">
-                  <img width={100} src="./burkina.png" />
+                  <img className="w-24" src="./burkina.png" />
                   Burkina Faso
                 </a>
               </li>
