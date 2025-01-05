@@ -83,7 +83,7 @@ export default function Home() {
                         className="input input-lg bg-transparent text-white input-bordered join-item"
                         placeholder="recherche..."
                       />
-                      <input type="hidden" value={country} name="country" />
+                      <input className="hidden" value={country} name="country" />
                     </div>
                   </div>
                   <select

@@ -75,7 +75,7 @@ export default function InfiniteEntity({
           </div>
         </InfiniteScroll>
       ) : (
-        'No data'
+        <span className="mx-auto text-lg">Pas de resultats</span>
       )}
     </div>
   )
