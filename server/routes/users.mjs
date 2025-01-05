@@ -1,5 +1,5 @@
 import Users from '../models/users.mjs'
-import express, { Router } from 'express'
+import express, { query, Router } from 'express'
 import multer from 'multer'
 import fs from 'node:fs'
 import path from 'node:path'
@@ -102,7 +102,20 @@ router.get('/', async (req, res) => {
     return res.send({ error: error.message })
   }
 })
-
+router.get("/unverified", async (req, res) => {
+  const { cursor } = req.query
+  
+  if (cursor) {
+    query._id = {$gt: cursor}
+  }
+  try {
+    const unverifiedUsers = await Users.find({ isVerified: false, documents: { $exists: true, $ne: null } }, null, { limit: 5 })
+    return res.send(unverifiedUsers)
+    
+  } catch (error) {
+    return res.send({error: error.message})
+  }
+})
 router.get('/:id', async (req, res) => {
   const { id } = req.params
 
