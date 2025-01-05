@@ -71,13 +71,14 @@ const router = createBrowserRouter([
             element: <LandFilter />,
             errorElement: <ErrorPage />,
             
-          }, {
+          },
+        ],
+      },
+       {
             path: "/land/single/:id",
             element: <SingleLand />,
             errorElement: <ErrorPage/>
-          }
-        ],
-      },
+          },
       {
         path: '/listings',
         errorElement: <ErrorPage />,
