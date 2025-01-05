@@ -54,8 +54,8 @@ const reArrangeListing = (req) => {
     }
   }
   const data = req.body
-  console.log(req.body.description)
-  console.log(data.description)
+  //console.log(req.body.description)
+  //console.log(data.description)
   data.details = details
   data.owner = {
     name: req.user.fullName,

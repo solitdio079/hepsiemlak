@@ -68,11 +68,17 @@ export default function ResidenceEditStep1() {
           </span>
         )}
       </div>
-      
+
       <div className="form-control m-1">
         <label className="label">
           <span className="label-text">Location*</span>
         </label>
+        <input
+          type="hidden"
+          name="type"
+          value={step1.type}
+          {...register('type')}
+        />
         <input
           type="text"
           className="input input-bordered"
@@ -81,7 +87,8 @@ export default function ResidenceEditStep1() {
           }
           {...register('location', {
             required: true,
-            pattern: /^(?:Mali|Niger|Burkina Faso),{0,1}[A-Za-z]+,{0,1}[A-Za-z]+,{0,1}[A-Za-z]*,{0,1}[1-9]*$/i,
+            pattern:
+              /^(?:Mali|Niger|Burkina Faso),{0,1}[A-Za-z]+,{0,1}[A-Za-z]+,{0,1}[A-Za-z]*,{0,1}[1-9]*$/i,
           })}
         />
         {/* errors will return when field validation fails  */}
