@@ -129,7 +129,7 @@ router.delete('/:id', async (req, res) => {
   if (!toBeDeleted) return res.send({ error: "Projet n'existe pas!" })
 
   try {
-    await Projects.findByIdAndDelete()
+    await Projects.findByIdAndDelete(id)
     if (toBeDeleted.images) {
       toBeDeleted.images.forEach((item) => fs.unlinkSync(destination + item))
     }
