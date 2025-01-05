@@ -24,6 +24,7 @@ export default function InfiniteEntity({
   useEffect(() => {
     if ((!fetcher.data && fetcher.state === 'idle')) {
       fetcher.load(loaderRoute)
+      sessionStorage.setItem('prevLoader', loaderRoute)
     }
     if (loaderRoute !== prevLoader) {
       fetcher.load(loaderRoute)
