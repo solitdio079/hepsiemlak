@@ -236,13 +236,13 @@ const router = createBrowserRouter([
           },
           {
             path: '/admin/projects/create',
-            element: <CreateProject />,
+            element: <CreateProject/>,
             errorElement: <ErrorPage />,
             action: createProjectsAction,
           },
           {
             path: '/admin/projects/edit/:id',
-            element: <EditProject />,
+            element: <EditProject/>,
             action: editProjectAction,
             loader: editProjectLoader,
             errorElement: <ErrorPage />,
