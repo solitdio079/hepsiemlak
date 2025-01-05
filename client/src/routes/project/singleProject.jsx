@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useFetcher, useParams } from 'react-router-dom'
-import LandDetails from '../../components/projectDetails'
+import ProjectDetails from '../../components/projectDetails'
 
 export default function SingleProject() {
   const fetcher = useFetcher()
@@ -12,7 +12,7 @@ export default function SingleProject() {
   return (
     <>
       {fetcher.data ? (
-        <LandDetails land={fetcher.data} />
+        <ProjectDetails project={fetcher.data} />
       ) : (
         <span className="loading loading-spinner mx-auto loading-lg"></span>
       )}
