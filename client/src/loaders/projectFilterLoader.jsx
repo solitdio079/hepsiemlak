@@ -8,7 +8,7 @@ export async function loader({ request }) {
 
   try {
     const req = await fetch(
-      url + `/projects/?cursor=country=${country}`,
+      url + `/projects/?cursor=&country=${country}`,
       {
         method: 'GET',
         mode: 'cors',
