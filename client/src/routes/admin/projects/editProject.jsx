@@ -85,8 +85,9 @@ export default function EditProject() {
             <span className="label-text">Description</span>
           </label>
                   <textarea className="textarea textarea-bordered"
+                      placeholder={project.description || ''}
             name="description"
-          > {project.description} </textarea>
+          > </textarea>
         </div>
         <div className="form-control m-1">
           <label className="label">
