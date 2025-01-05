@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+    @apply rounded-none;
+}
+.card {
+    @apply rounded-none;
+}
