@@ -3,6 +3,7 @@ import { useFetcher, useLoaderData } from "react-router-dom"
 import { useEffect } from "react"
 import { url } from "../../../utils/serverUrl"
 import toast, { Toaster } from 'react-hot-toast' 
+import { FaRegCircleCheck } from "react-icons/fa6"
 
 
 export async function loader({ params }) {
@@ -90,6 +91,7 @@ export default function EditUser() {
             encType="multipart/form-data"
             className="card-body"
           >
+            {user.isVerified ? <FaRegCircleCheck className="text-blue-700"/>: ''}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>

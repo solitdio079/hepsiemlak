@@ -162,14 +162,11 @@ export default function Home() {
                 to={'/land/'}
                 className="badge badge-outline badge-lg hover:bg-primary"
               >
-                Terrain nu
+                Terrain
               </Link>
             </SwiperSlide>
             <SwiperSlide>
-              <Link
-                to={'/project/'}
-                className="badge badge-outline badge-lg hover:bg-primary"
-              >
+              <Link to={'/project/'} className="badge badge-outline badge-lg hover:bg-primary">
                 Projects
               </Link>
             </SwiperSlide>
