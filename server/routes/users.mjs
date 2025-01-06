@@ -104,7 +104,7 @@ router.get('/', async (req, res) => {
 })
 router.get("/unverified", async (req, res) => {
   const { cursor } = req.query
-  
+  const query = {}
   if (cursor) {
     query._id = {$gt: cursor}
   }
