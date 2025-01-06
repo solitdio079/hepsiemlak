@@ -65,11 +65,15 @@ router.patch("/verifySubmit/:id", checkIfConnected,upload.array("documents", 5),
   const toBeUpdated = await Users.findById(id)
   if (!toBeUpdated) return res.send({ error: 'No user found!' })
   
-
+ try {
+   if (toBeUpdated.documents && toBeUpdated.documents.length > 0)
+     //delete prev documents
+     toBeUpdated.documents.forEach((item) => fs.unlinkSync(destination + item))
+ } catch (error) {
+  
+ }
   try {
-    if (toBeUpdated.documents && toBeUpdated.documents.length > 0)
-      //delete prev documents
-      toBeUpdated.documents.forEach((item) => fs.unlinkSync(destination + item))
+   
     // repopulate th document array
     toBeUpdated.documents = []
     req.files.forEach((item) => {
