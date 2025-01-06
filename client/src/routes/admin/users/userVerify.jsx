@@ -42,7 +42,7 @@ export default function UserVerify() {
         </label>
         <select
           className="select select-bordered w-full max-w-xs"
-          name="documents"
+          name="userType"
           required
         >
           <option value="Banque">Banque</option>
