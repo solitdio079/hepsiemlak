@@ -1,9 +1,19 @@
 /* eslint-disable react/prop-types */
 import { useFetcher } from "react-router-dom"
 import { url } from "../utils/serverUrl"
+import toast, { Toaster } from 'react-hot-toast'
+import { useEffect } from 'react'
 import { FaCheck, FaLink, FaX } from "react-icons/fa6"
 export default function UserCardVerify({ listing }) {
     const fetcher = useFetcher()
+    useEffect(() => {
+      const toastOptions = { duration: 5000 }
+      fetcher.data
+        ? fetcher.data.msg
+          ? toast.success(fetcher.data.msg, toastOptions)
+          : toast.error(fetcher.data.error, toastOptions)
+        : ''
+    })
     const user = listing
     return (
       <>
@@ -24,7 +34,8 @@ export default function UserCardVerify({ listing }) {
             encType="multipart/form-data"
                     className="card-body"
                     action={`/admin/verifySubmit/${user._id}`}
-          >
+                >
+                    <Toaster/>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
