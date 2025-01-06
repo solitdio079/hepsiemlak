@@ -1,5 +1,5 @@
 //import { useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 //import ListingCard from '../../components/listings/listingCard'
 //import { userContext } from '../../utils/contexts'
 import InfiniteEntity from '../../../components/infiniteEntity'
@@ -7,7 +7,8 @@ import { url } from '../../../utils/serverUrl'
 import { useEffect, useState } from 'react'
 import NotaryCard from '../../../components/notaryCard'
 export default function NotaryIndex() {
-  const { userType } = useParams()
+ const [searchParams] = useSearchParams()
+ const userType = searchParams.get('userType')
   const [loaderRoute, setLoaderRoute] = useState(
     `/loaders/notaryUsersLoader?userType=${userType}`
   )
