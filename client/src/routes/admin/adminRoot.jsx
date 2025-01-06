@@ -25,6 +25,20 @@ export default function AdminRoot() {
               Profil
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive
+                  ? ' bg-primary text-base-100'
+                  : isPending
+                  ? ' bg-secondary'
+                  : ''
+              }
+              to={`/admin/verify/${user._id}`}
+            >
+              Se faire Verifier
+            </NavLink>
+          </li>
 
           <li>
             <NavLink

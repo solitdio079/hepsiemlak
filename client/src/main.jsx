@@ -56,6 +56,7 @@ import EditProject, {
 } from './routes/admin/projects/editProject'
 import ProjectFilter from './routes/project/projectFilter'
 import SingleProject from './routes/project/singleProject'
+import UserVerify, {action as verifyUserAction} from './routes/admin/users/userVerify'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -216,6 +217,12 @@ const router = createBrowserRouter([
         element: <AdminRoot />,
         errorElement: <ErrorPage />,
         children: [
+          {
+            path: "/admin/verify/:id",
+            element: <UserVerify />,
+            errorElement: <ErrorPage />,
+            action: verifyUserAction
+        },
           {
             path: '/admin/land/create',
             element: <CreateLand />,
