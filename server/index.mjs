@@ -17,6 +17,12 @@ import usersRouter from './routes/users.mjs'
 import listingRouter from './routes/listings/listing.mjs'
 import landRouter from './routes/land.mjs'
 import projectsRouter from './routes/projects.mjs'
+import path from 'node:path'
+
+// Setting the destination path for product photos
+const root = path.resolve()
+
+
 
 const corsOptions = {
   origin: [
@@ -53,7 +59,7 @@ io.on("connection", (socket) => {
     console.log("user disconnected")
   })
 })
-app.use(express.static('./public'))
+app.use(express.static(path.join(root, '/public')))
 app.use((req, res, next) => {
   req.io = io
   next()
