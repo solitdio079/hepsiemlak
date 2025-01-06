@@ -40,7 +40,7 @@ const router = Router()
 router.put('/:id', upload.single('picture'), async (req, res) => {
   //console.log('inside put');
   const { id } = req.params
-  const { fullName, email, phone } = req.body
+  const { fullName, email, phone,description } = req.body
   // Get the user to be updated
   const toBeUpdated = await Users.findById(id)
   if (!toBeUpdated) return res.send({ error: 'No user found!' })
@@ -49,7 +49,7 @@ router.put('/:id', upload.single('picture'), async (req, res) => {
     //fs.unlinkSync(destination + toBeUpdated.picture)
 
   try {
-    const newUser = { fullName, email, phone, picture: req.file.filename }
+    const newUser = { fullName, email, phone, picture: req.file.filename, description }
     await Users.findByIdAndUpdate(id, newUser)
 
     return res.send({ msg: 'User updated with success!' })
@@ -203,13 +203,13 @@ router.patch('/notifUrl/:id', async (req, res) => {
 })
 router.patch('/:id', async (req, res) => {
   const { id } = req.params
-  const { fullName, email, phone } = req.body
+  const { fullName, email, phone, description } = req.body
   // Get the user to be updated
   const toBeUpdated = await Users.findById(id)
   if (!toBeUpdated) return res.send({ error: 'No user found!' })
 
   try {
-    const newUser = { fullName, email,phone, picture: toBeUpdated.picture }
+    const newUser = { fullName, email,phone, picture: toBeUpdated.picture, description }
     await Users.findByIdAndUpdate(id, newUser)
 
     return res.send({ msg: 'User updated with success!' })

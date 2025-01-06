@@ -126,6 +126,15 @@ export default function EditUser() {
               />
             </div>
             <div className="form-control">
+              <label className="label">Description</label>
+              <textarea
+                className="textarea textarea-bordered"
+                placeholder="Mes services"
+                defaultValue={user.description || ''}
+                name="description"
+              ></textarea>
+            </div>
+            <div className="form-control">
               <label className="label">
                 <span className="label-text">Picture</span>
               </label>

@@ -31,6 +31,9 @@ const userSchema = new Schema({
     isVerified: {
         type:Boolean,
         default:false
+    },
+    description: {
+        type: String
     }
 }, {timestamps: true})
 
