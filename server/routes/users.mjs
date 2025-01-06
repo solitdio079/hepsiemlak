@@ -123,6 +123,20 @@ router.get("/unverified", async (req, res) => {
     return res.send({error: error.message})
   }
 })
+router.get("/notary", async (req, res) => {
+  const { cursor, userType } = req.query 
+  const query = {userType}
+  if (cursor) {
+    query._id = {$gt: cursor}
+  }
+
+  try {
+    const allNotaries = await Users.find(query, null, { limit: 5 })
+    return res.send(allNotaries)
+  } catch (error) {
+    return res.send({error: error.message})
+  }
+})
 router.get('/:id', async (req, res) => {
   const { id } = req.params
 

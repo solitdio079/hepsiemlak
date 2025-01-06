@@ -22,6 +22,7 @@ import { loader as listingFilterLoader } from './loaders/listingFilterLoader'
 import { loader as homeSearchLoader } from './loaders/homeSearchLoader'
 import { loader as allLandLoader } from './loaders/allLandLoader'
 import { loader as unverifiedUsersLoader } from './loaders/unverifiedUsersLoader'
+import { loader as notaryUsersLoader } from './loaders/notaryUsersLoader'
 import { loader as allProjectLoader } from './loaders/allProjectLoader'
 import { loader as landFilterLoader } from './loaders/landFilterLoader'
 import { loader as projectFilterLoader } from './loaders/projectFilterLoader'
@@ -61,6 +62,7 @@ import UserVerify, {action as verifyUserAction} from './routes/admin/users/userV
 import UnverifiedRoot from './routes/admin/users/unverifiedRoot'
 import UnverifiedUsers from './routes/admin/users/unverifiedUsers'
 import {action as verifyUserSubmitAction} from "./routes/admin/users/verifyUserResult"
+import NotaryIndex from './routes/admin/users/notaryUsers'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -163,6 +165,10 @@ const router = createBrowserRouter([
             loader: allLandLoader,
           },
           {
+            path: "/loaders/notaryUsersLoader",
+            loader: notaryUsersLoader
+          },
+          {
             path: '/loaders/unverifiedUsersLoader',
             loader: unverifiedUsersLoader,
           },
@@ -218,6 +224,11 @@ const router = createBrowserRouter([
       {
         path: '/logout',
         action: logoutAction,
+      },
+      {
+        path: "/notaire",
+        element: <NotaryIndex />,
+        errorElement:<ErrorPage/>
       },
 
       {
