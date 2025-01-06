@@ -5,7 +5,7 @@ export async function action({ params, request }) {
     const { id } = params 
     
     try {
-        const req = await fetch(url + `/users/verifySubmit/${id}`, {
+        const req = await fetch(url + `/users/verifyResult/${id}`, {
             method: "PATCH",
             mode: "cors",
             credentials: 'include',

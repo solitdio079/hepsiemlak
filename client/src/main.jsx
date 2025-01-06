@@ -60,7 +60,7 @@ import SingleProject from './routes/project/singleProject'
 import UserVerify, {action as verifyUserAction} from './routes/admin/users/userVerify'
 import UnverifiedRoot from './routes/admin/users/unverifiedRoot'
 import UnverifiedUsers from './routes/admin/users/unverifiedUsers'
-import {action as verifyUserSubmitAction} from "./routes/admin/users/verifyUserSubmit"
+import {action as verifyUserSubmitAction} from "./routes/admin/users/verifyUserResult"
 const router = createBrowserRouter([
   {
     path: '/',
