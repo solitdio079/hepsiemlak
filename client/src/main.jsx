@@ -21,6 +21,7 @@ import { loader as singleProjectLoader } from './loaders/singleProjectLoader'
 import { loader as listingFilterLoader } from './loaders/listingFilterLoader'
 import { loader as homeSearchLoader } from './loaders/homeSearchLoader'
 import { loader as allLandLoader } from './loaders/allLandLoader'
+import { loader as unverifiedUsersLoader } from './loaders/unverifiedUsersLoader'
 import { loader as allProjectLoader } from './loaders/allProjectLoader'
 import { loader as landFilterLoader } from './loaders/landFilterLoader'
 import { loader as projectFilterLoader } from './loaders/projectFilterLoader'
@@ -57,6 +58,9 @@ import EditProject, {
 import ProjectFilter from './routes/project/projectFilter'
 import SingleProject from './routes/project/singleProject'
 import UserVerify, {action as verifyUserAction} from './routes/admin/users/userVerify'
+import UnverifiedRoot from './routes/admin/users/unverifiedRoot'
+import UnverifiedUsers from './routes/admin/users/unverifiedUsers'
+import {action as verifyUserSubmitAction} from "./routes/admin/users/verifyUserSubmit"
 const router = createBrowserRouter([
   {
     path: '/',
@@ -92,9 +96,9 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: "/project/single/:id",
+        path: '/project/single/:id',
         element: <SingleProject />,
-        errorElement: <ErrorPage/>
+        errorElement: <ErrorPage />,
       },
       {
         path: '/project',
@@ -107,10 +111,10 @@ const router = createBrowserRouter([
             errorElement: <ErrorPage />,
           },
           {
-            path: "/project/filter",
+            path: '/project/filter',
             element: <ProjectFilter />,
-            errorElement: <ErrorPage/>
-          }
+            errorElement: <ErrorPage />,
+          },
         ],
       },
       {
@@ -157,6 +161,10 @@ const router = createBrowserRouter([
           {
             path: '/loaders/allLandLoader',
             loader: allLandLoader,
+          },
+          {
+            path: '/loaders/unverifiedUsersLoader',
+            loader: unverifiedUsersLoader,
           },
           {
             path: '/loaders/allProjectLoader',
@@ -218,11 +226,27 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
           {
-            path: "/admin/verify/:id",
+            path: '/admin/verify/:id',
             element: <UserVerify />,
             errorElement: <ErrorPage />,
-            action: verifyUserAction
-        },
+            action: verifyUserAction,
+          },
+          {
+            path: '/admin/unverified',
+            element: <UnverifiedRoot />,
+            errorElement: <ErrorPage />,
+            children: [
+              {
+                index: true,
+                element: <UnverifiedUsers />,
+                errorElement: <ErrorPage />,
+              },
+            ],
+          },
+          {
+            path: '/admin/verifySubmit/:id',
+            action: verifyUserSubmitAction
+          },
           {
             path: '/admin/land/create',
             element: <CreateLand />,
@@ -243,21 +267,21 @@ const router = createBrowserRouter([
           },
           {
             path: '/admin/projects/create',
-            element: <CreateProject/>,
+            element: <CreateProject />,
             errorElement: <ErrorPage />,
             action: createProjectsAction,
           },
           {
             path: '/admin/projects/edit/:id',
-            element: <EditProject/>,
+            element: <EditProject />,
             action: editProjectAction,
             loader: editProjectLoader,
             errorElement: <ErrorPage />,
           },
           {
-            path: "/admin/projects/delete/:id",
+            path: '/admin/projects/delete/:id',
             action: deleteProjectAction,
-            errorElement: <ErrorPage/>
+            errorElement: <ErrorPage />,
           },
           {
             path: '/admin/profile/:id',

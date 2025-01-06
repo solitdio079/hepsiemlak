@@ -40,6 +40,25 @@ export default function AdminRoot() {
             </NavLink>
           </li>
 
+          {user.isAdmin ? (
+            <li>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isActive
+                    ? ' bg-primary text-base-100'
+                    : isPending
+                    ? ' bg-secondary'
+                    : ''
+                }
+                to={`/admin/unverified`}
+              >
+                Demandes de Verifications
+              </NavLink>
+            </li>
+          ) : (
+            ''
+          )}
+
           <li>
             <NavLink
               className={({ isActive, isPending }) =>

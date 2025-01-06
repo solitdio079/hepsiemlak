@@ -304,7 +304,7 @@ export default function Navbar({ user }) {
                         ? ' bg-secondary'
                         : ''
                     }
-                    to="/admin"
+                    to={`/admin/profile/${user._id}`}
                   >
                     Admin
                   </NavLink>

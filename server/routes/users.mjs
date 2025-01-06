@@ -109,7 +109,7 @@ router.get("/unverified", async (req, res) => {
     query._id = {$gt: cursor}
   }
   try {
-    const unverifiedUsers = await Users.find({ isVerified: false, documents: { $exists: true, $ne: null } }, null, { limit: 5 })
+    const unverifiedUsers = await Users.find({ isVerified: false, userType: { $exists: true, $ne: 'visitor' } }, null, { limit: 5 })
     return res.send(unverifiedUsers)
     
   } catch (error) {
