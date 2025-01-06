@@ -71,7 +71,7 @@ export default function UserCardVerify({ listing }) {
               <ul className="menu bg-base-200 rounded-box w-56">
                 {user.documents.map((item) => (
                   <li key={item}>
-                    <a target="_blank" href={url + '/' + item}>
+                    <a className="btn btn-primary" target="_blank" href={url + '/' + item}>
                       <FaLink />
                     </a>
                   </li>
