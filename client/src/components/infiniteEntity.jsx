@@ -37,7 +37,7 @@ export default function InfiniteEntity({
   const fetchMoreData = async () => {
     try {
       const response = await fetch(
-        fetchMoreURL + `?cursor=${cursor || ''}`,
+        fetchMoreURL + `cursor=${cursor || ''}`,
         {
           method: 'GET',
           credentials: 'include',

@@ -12,7 +12,7 @@ export default function LandIndex() {
       <InfiniteEntity
         loaderRoute={`/loaders/allLandLoader`}
         UnitEntity={LandCard}
-        fetchMoreURL={url + `/land/`}
+        fetchMoreURL={url + `/land/?`}
       />
     </div>
   )

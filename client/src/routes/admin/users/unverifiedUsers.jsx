@@ -10,7 +10,7 @@ export default function UnverifiedUsers() {
       <InfiniteEntity
         loaderRoute={`/loaders/unverifiedUsersLoader`}
         UnitEntity={UserCardVerify}
-        fetchMoreURL={url + `/users/unverified`}
+        fetchMoreURL={url + `/users/unverified?`}
       />
     </div>
   )

@@ -19,7 +19,7 @@ export default function LandFilter() {
         UnitEntity={LandCard}
         fetchMoreURL={
           url +
-          `/land/?document=${document}&country=${country}`
+          `/land/?document=${document}&country=${country}&`
         }
       />
     </div>

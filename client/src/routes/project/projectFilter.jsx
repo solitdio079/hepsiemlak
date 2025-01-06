@@ -18,7 +18,7 @@ export default function ProjectFilter() {
       <InfiniteEntity
         loaderRoute={`/loaders/projectFilterLoader?country=${country}`}
         UnitEntity={ProjectCard}
-        fetchMoreURL={url + `/projects/?country=${country}`}
+        fetchMoreURL={url + `/projects/?country=${country}&`}
       />
     </div>
   )

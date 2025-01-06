@@ -22,7 +22,7 @@ export default function NotaryIndex() {
       <InfiniteEntity
         loaderRoute={loaderRoute}
         UnitEntity={NotaryCard}
-        fetchMoreURL={url + `/users/notary?userType=${userType}`}
+        fetchMoreURL={url + `/users/notary?userType=${userType}&`}
       />
     </div>
   )
