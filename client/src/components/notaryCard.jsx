@@ -10,7 +10,7 @@ export default function NotaryCard({ listing }) {
     const user = listing
     return (
       <>
-        <div className="card bg-base-100 w-full text-center max-w-sm shrink-0 shadow-2xl">
+        <div className="card bg-base-100 flex justify-center w-full  items-center max-w-sm shrink-0 shadow-2xl">
           <div className="avatar">
             <div className="w-24 rounded-full mx-auto my-3">
               <img
@@ -27,9 +27,9 @@ export default function NotaryCard({ listing }) {
             encType="multipart/form-data"
             className="card-body"
           >
-            <span className="flex">{user.fullName}{' '}
+            <span className="flex items-center justify-center">{user.fullName}{' '}
             {user.isVerified ? (
-              <FaRegCircleCheck className="text-blue-700" />
+              <FaRegCircleCheck className="text-blue-700 m-2 " />
             ) : (
               ''
             )}</span>
