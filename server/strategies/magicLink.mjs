@@ -65,6 +65,7 @@ passport.serializeUser(function (user, cb) {
           phone: user.phone || null,
          isAdmin: user.isAdmin || false,
          isVerified: user.isVerified || false,
+         userType: user.userType || 'visitor',
         })
       return 
     }

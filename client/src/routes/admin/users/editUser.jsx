@@ -91,7 +91,11 @@ export default function EditUser() {
             encType="multipart/form-data"
             className="card-body"
           >
-            {user.isVerified ? <FaRegCircleCheck className="text-blue-700"/>: ''}
+            {user.isVerified ? (
+              <FaRegCircleCheck className="text-blue-700" />
+            ) : (
+              ''
+            )}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -126,6 +130,24 @@ export default function EditUser() {
                 defaultValue={user.phone || ''}
                 required
               />
+            </div>
+            <div className="form-control m-1">
+              <label className="label">
+                <span className="label-text">Type</span>
+              </label>
+              <select
+                className="select select-bordered w-full max-w-xs"
+                defaultValue={user.userType}
+                name="userType"
+              >
+                <option value="Propriétaire">Propriétaire </option>
+                <option value="Banque">Banque</option>
+                <option value="Agence Immobilière">Agence Immobilière</option>
+                <option value="Notaire">Notaire</option>
+                <option value="Architecte">Architecte</option>
+              </select>
+
+              
             </div>
             <div className="form-control">
               <label className="label">Description</label>
