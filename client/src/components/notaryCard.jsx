@@ -3,7 +3,7 @@ import { url } from "../utils/serverUrl"
 
 // import { userContext } from "../../../utils/contexts"
 import { FaPhone, FaWhatsapp } from 'react-icons/fa6'
-import { FaRegCircleCheck } from 'react-icons/fa6'
+import { RiVerifiedBadgeFill } from 'react-icons/ri'
 
 
 export default function NotaryCard({ listing }) {
@@ -27,13 +27,18 @@ export default function NotaryCard({ listing }) {
             encType="multipart/form-data"
             className="card-body"
           >
-            <span className="flex items-center justify-center">{user.fullName}{' '}
-            {user.isVerified ? (
-              <FaRegCircleCheck className="text-blue-700 m-2 " />
-            ) : (
-              ''
-            )}</span>
-           
+            <span className="flex flex-col items-center justify-center">
+              {user.fullName}{' '}
+              {user.isVerified ? (
+                <>
+                  <RiVerifiedBadgeFill className="text-blue-700 m-2 " />
+                  Verified
+                </>
+              ) : (
+                ''
+              )}
+            </span>
+
             <div className="form-control">
               <input
                 type="text"
