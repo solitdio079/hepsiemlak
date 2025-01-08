@@ -77,7 +77,7 @@ export default function NotaryCard({ listing }) {
             ) : (
               <a
                 href={`https://wa.me/22300000000`}
-                className="btn bg-green-600"
+                className="btn bg-green-600 text-white"
               >
                 <FaWhatsapp /> Message
               </a>
