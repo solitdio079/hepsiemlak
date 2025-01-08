@@ -43,7 +43,7 @@ export default function NotaryCard({ listing }) {
               <input
                 type="text"
                 placeholder="+223 43 34 34 34 33"
-                className="input input-bordered"
+                className="input"
                 defaultValue={user.phone || ''}
                 readOnly
               />
@@ -51,7 +51,7 @@ export default function NotaryCard({ listing }) {
             <div className="form-control">
               <label className="label">Services</label>
               <textarea
-                className="textarea textarea-bordered"
+                className="textarea"
                 placeholder="Mes services"
                 defaultValue={user.description || ''}
                 readOnly
