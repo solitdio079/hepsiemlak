@@ -10,7 +10,7 @@ export default function NotaryCard({ listing }) {
     const user = listing
     return (
       <>
-        <div className="card bg-base-100 flex justify-center w-full  items-center max-w-sm shrink-0 shadow-2xl">
+        <div className="card bg-base-100 p-5 flex justify-center w-full  items-center max-w-sm shrink-0 shadow-2xl">
           <div className="avatar">
             <div className="w-24 rounded-full mx-auto my-3">
               <img
