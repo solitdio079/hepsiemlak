@@ -30,10 +30,10 @@ export default function NotaryCard({ listing }) {
             <span className="flex flex-col items-center justify-center">
               {user.fullName}{' '}
               {user.isVerified ? (
-                <>
-                  <RiVerifiedBadgeFill className="text-blue-700 m-2 " />
-                  Verified
-                </>
+                <div className="flex">
+                  <RiVerifiedBadgeFill className="text-blue-700 m-2 h-10 w-10" />
+                  Verifié
+                </div>
               ) : (
                 ''
               )}
