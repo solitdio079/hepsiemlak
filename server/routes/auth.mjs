@@ -30,12 +30,13 @@ router.get(
   }),
   (req, res) => {
     const { slug } = req.params
-    console.log(req.signedCookies);
+  
     req.login(req.user, function (err) {
       if (err) {
         return next(err)
       }
-      slug==="app" ? res.redirect("sahelimmo://"):res.redirect('https://sahelimmo.info/')
+      console.log(req.signedCookies)
+      slug!=="verify" ? res.redirect("sahelimmo://"):res.redirect('https://sahelimmo.info/')
     })
   }
 )
