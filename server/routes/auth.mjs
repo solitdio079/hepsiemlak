@@ -34,7 +34,7 @@ router.get(
         return next(err)
       }
       if(app) return res.redirect("myapp://")
-      res.redirect('https://fasocard.com/')
+      res.redirect('https://sahelimmo.info/')
     })
   }
 )
