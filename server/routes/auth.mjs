@@ -34,7 +34,7 @@ router.get(
       if (err) {
         return next(err)
       }
-      slug==="app" ? res.redirect("myapp://"):res.redirect('https://sahelimmo.info/')
+      slug==="app" ? res.redirect("sahelimmo://"):res.redirect('https://sahelimmo.info/')
     })
   }
 )
