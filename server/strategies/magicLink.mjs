@@ -12,13 +12,15 @@ passport.use(
   new MagicLinkStrategy(
     {
       secret: 'keyboard cat',
-      userFields: ['email'],
+      userFields: ['email', 'isNative'],
       tokenField: 'token',
       verifyUserAfterToken: true,
     },
     function send(user, token) {
       var link =
-        'https://api.sahelimmo.info/auth/login/email/verify?token=' + token
+        user.isNative === false
+          ? 'https://api.sahelimmo.info/auth/login/email/verify?token=' + token
+          : 'https://api.sahelimmo.info/auth/login/email/verify?app=true&token=' + token
       var msg = {
         to: user.email,
         from: process.env.EMAIL,

@@ -25,9 +25,18 @@ router.post(
 router.get(
   '/login/email/verify',
   passport.authenticate('magiclink', {
-    successReturnToOrRedirect: 'https://sahelimmo.info/',
-    failureMessage: 'Token Invalid',
-  })
+    action: 'acceptToken',
+  }),
+  (req, res) => {
+    const {app} = req.query
+    req.login(req.user, function (err) {
+      if (err) {
+        return next(err)
+      }
+      if(app) return res.redirect("myapp://")
+      res.redirect('https://fasocard.com/')
+    })
+  }
 )
 
 // Get Login status

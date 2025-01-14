@@ -26,7 +26,12 @@ export async function action({ request }) {
 }
 export default function Login() {
   const fetcher = useFetcher()
-  
+  let isNative = false
+  if (window.ReactNativeWebView.injectedObjectJson()) {
+     isNative = JSON.parse(
+      window.ReactNativeWebView.injectedObjectJson()
+    ).isNative
+  }
  const toastOptions = {
       duration: 5000,
  }
@@ -56,6 +61,7 @@ export default function Login() {
                     className="input input-bordered"
                     required
                   />
+                  <input name="isNative" type="hidden" value={isNative} />
                 </div>
                 <Toaster/>
                
