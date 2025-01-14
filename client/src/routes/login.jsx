@@ -27,8 +27,8 @@ export async function action({ request }) {
 export default function Login() {
   const fetcher = useFetcher()
   let isNative 
-  if (window.ReactNativeWebView.injectedObjectJson()) {
-     isNative = JSON.parse(
+  if (window.ReactNativeWebView && window.ReactNativeWebView.injectedObjectJson()) {
+    isNative = JSON.parse(
       window.ReactNativeWebView.injectedObjectJson()
     ).isNative
   }
