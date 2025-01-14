@@ -21,7 +21,7 @@ passport.use(
       var link =
         Boolean(user.isNative)
           ? ('https://api.sahelimmo.info/auth/login/email/verify?token=' + token)
-          : ('https://api.sahelimmo.info/auth/login/email/verify?app=true&token=' + token)
+          : ('https://api.sahelimmo.info/auth/login/email/app?token=' + token)
       var msg = {
         to: user.email,
         from: process.env.EMAIL,

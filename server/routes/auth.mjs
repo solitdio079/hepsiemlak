@@ -24,17 +24,17 @@ router.post(
 // verifying link send by email
 
 router.get(
-  '/login/email/verify',
+  '/login/email/:slug',
   passport.authenticate('magiclink', {
     action: 'acceptToken',
   }),
   (req, res) => {
-    const {app} = req.query
+    const {slug} = req.params
     req.login(req.user, function (err) {
       if (err) {
         return next(err)
       }
-      if(app) return res.redirect("myapp://")
+      if(slug==="app") return res.redirect("myapp://")
       res.redirect('https://sahelimmo.info/')
     })
   }
