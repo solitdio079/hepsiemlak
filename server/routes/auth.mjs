@@ -36,6 +36,7 @@ router.get(
         return next(err)
       }
       console.log(req.signedCookies)
+      console.log(res.signedCookies)
       slug!=="verify" ? res.redirect("sahelimmo://"):res.redirect('https://sahelimmo.info/')
     })
   }
