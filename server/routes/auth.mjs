@@ -1,14 +1,15 @@
-import { Router } from 'express'
+import express, { Router } from 'express'
 import passport from 'passport'
 import '../strategies/magicLink.mjs'
 
 const router = Router()
-
+router.use(express.json())
 router.get('/', (req, res) => {
   console.log('The main auth page!')
 })
 
 // Sending email requests and getting status messages
+
 router.post(
   '/login/email',
   passport.authenticate('magiclink', {
