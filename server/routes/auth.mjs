@@ -29,7 +29,8 @@ router.get(
     action: 'acceptToken',
   }),
   (req, res) => {
-    const {slug} = req.params
+    const { slug } = req.params
+    console.log(req.signedCookies);
     req.login(req.user, function (err) {
       if (err) {
         return next(err)
