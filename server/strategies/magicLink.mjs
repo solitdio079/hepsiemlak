@@ -18,7 +18,7 @@ passport.use(
     },
     function send(user, token) {
       var link =
-        user.isNative === false
+        user.isNative
           ? 'https://api.sahelimmo.info/auth/login/email/verify?token=' + token
           : 'https://api.sahelimmo.info/auth/login/email/verify?app=true&token=' + token
       var msg = {
