@@ -35,9 +35,11 @@ router.get(
       if (err) {
         return next(err)
       }
-      console.log(req.headers.cookie)
+      
     
-      slug!=="verify" ? res.redirect("sahelimmo://"):res.redirect('https://sahelimmo.info/')
+      slug !== 'verify'
+        ? res.redirect(`sahelimmo://?${req.headers.cookie}`)
+        : res.redirect('https://sahelimmo.info/')
     })
   }
 )
