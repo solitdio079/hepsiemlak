@@ -12,10 +12,11 @@ export async function loader() {
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
+                'Cookie': document.cookie
             }
         })
         const response = await req.json()
-        alert(document.cookie)
+        //alert(document.cookie)
         if(response.error) return null
         return response
     } catch (error) {
