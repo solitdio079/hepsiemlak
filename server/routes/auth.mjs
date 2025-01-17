@@ -36,10 +36,19 @@ router.get(
         return next(err)
       }
       
+     
+      if (slug !== 'verify') {
+         res.cookie('connect.sid', encodeURI(req.headers.cookie.split('=')[1]), {
+           httpOnly: true,
+           secure: true,
+           sameSite: 'none',
+         })
+        res.redirect(`sahelimmo://?${req.headers.cookie}`)
+      } else {
+        res.redirect('https://sahelimmo.info/')
+      }
     
-      slug !== 'verify'
-        ? res.redirect(`sahelimmo://?${req.headers.cookie}`)
-        : res.redirect('https://sahelimmo.info/')
+      
     })
   }
 )

@@ -15,7 +15,7 @@ export async function loader() {
             }
         })
         const response = await req.json()
-        console.log('cookies:',JSON.stringify(document.cookie))
+        //console.log(document.cookie)
         if(response.error) return null
         return response
     } catch (error) {
