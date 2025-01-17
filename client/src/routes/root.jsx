@@ -11,11 +11,11 @@ export async function loader() {
             credentials: 'include',
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             }
         })
         const response = await req.json()
-        alert(document.cookie)
+        //alert(document.cookie)
         if(response.error) return null
         return response
     } catch (error) {
