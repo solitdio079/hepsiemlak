@@ -12,7 +12,6 @@ export async function loader() {
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'Cookie': document.cookie
             }
         })
         const response = await req.json()
