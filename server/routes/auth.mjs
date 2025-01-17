@@ -52,6 +52,7 @@ router.get(
 // Get Login status
 
 router.get('/login/status', (req, res) => {
+  console.log(req.cookies);
   req.user ? res.send(req.user) : res.send({ error: 'You are not logged in!' })
 })
 
