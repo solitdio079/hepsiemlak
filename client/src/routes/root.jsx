@@ -24,6 +24,7 @@ export async function loader() {
 }
 export default function Root() {
     const user = useLoaderData()
+    alert("user: "+ user)
     return (<userContext.Provider value={user}>
         <Navbar user={user} />
         <Outlet/>
