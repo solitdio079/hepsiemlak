@@ -15,7 +15,7 @@ export async function loader() {
             }
         })
         const response = await req.json()
-        //alert(document.cookie)
+        alert(document.cookie)
         if(response.error) return null
         return response
     } catch (error) {
