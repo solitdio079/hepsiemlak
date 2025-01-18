@@ -24,9 +24,10 @@ export async function loader() {
     }
 }
 export default function Root() {
-    const [cookies, setCookie] = useCookies(['connect.sid'])
+    const [cookies, setCookie] = useCookies(['test'])
     function onChange(newName) {
-    setCookie('test', newName, { path: '/',sameSite:true, httpOnly: true, domain: 'api.sahelimmo.info' });
+        setCookie('test', newName, { path: '/', sameSite: true, httpOnly: true, domain: 'api.sahelimmo.info' });
+        alert(cookies.test)
     }
     
     onChange('testCookie')
