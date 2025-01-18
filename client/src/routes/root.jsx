@@ -4,7 +4,7 @@ import { userContext } from "../utils/contexts"
 import Navbar from "../components/navbar"
 import { Outlet, useLoaderData } from "react-router-dom"
 import { url } from '../utils/serverUrl'
-import { useCookies } from 'react-cookie'
+//import { useCookies } from 'react-cookie'
 export async function loader() {
     try {
         const req = await fetch(url + "/auth/login/status", {
@@ -16,7 +16,7 @@ export async function loader() {
             }
         })
         const response = await req.json()
-        //alert(document.cookie)
+        alert(document.cookie)
         if(response.error) return null
         return response
     } catch (error) {
@@ -24,18 +24,15 @@ export async function loader() {
     }
 }
 export default function Root() {
-    const [cookies, setCookie] = useCookies(['test'])
-    function onChange(newName) {
-        setCookie('test', newName, { path: '/', sameSite: true, httpOnly: true, domain: 'api.sahelimmo.info' });
-        alert(cookies.test)
-    }
+   
     
-    onChange('testCookie')
+    
     const user = useLoaderData()
+  
     //alert("user: "+ user)
     return (<userContext.Provider value={user}>
         <Navbar user={user} />
-        <Outlet context={[cookies.test]} />
+        <Outlet />
         <Footer/>
     </userContext.Provider>)
 }
