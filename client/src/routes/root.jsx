@@ -23,7 +23,6 @@ export async function loader() {
             headers: fetchHeader
         })
         const response = await req.json()
-        alert(response)
         if(response.error) return null
         return response
     } catch (error) {
@@ -31,11 +30,8 @@ export async function loader() {
     }
 }
 export default function Root() {
-    
-    
-    
     const user = useLoaderData()
-  
+    alert(JSON.stringify(user))
     //alert("user: "+ user)
     return (<userContext.Provider value={user}>
         <Navbar user={user} />
