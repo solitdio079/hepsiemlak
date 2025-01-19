@@ -109,6 +109,9 @@ export default function Home() {
                     <button className="btn btn-lg btn-primary  join-item">
                       Search
                     </button>
+                    <a  className="btn btn-lg btn-primary  join-item">
+                      App
+                    </a>
                   </div>
                 </div>
               </Form>
@@ -145,7 +148,6 @@ export default function Home() {
               },
             }}
             navigation
-           
             className="w-full text-center"
           >
             <SwiperSlide>
@@ -166,7 +168,10 @@ export default function Home() {
               </Link>
             </SwiperSlide>
             <SwiperSlide>
-              <Link to={'/project/'} className="badge badge-outline badge-lg hover:bg-primary">
+              <Link
+                to={'/project/'}
+                className="badge badge-outline badge-lg hover:bg-primary"
+              >
                 Projects
               </Link>
             </SwiperSlide>
