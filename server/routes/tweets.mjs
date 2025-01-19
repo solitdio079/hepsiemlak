@@ -3,6 +3,8 @@ import Tweets from '../models/tweets.mjs'
 import Users from '../models/users.mjs'
 import Notifications from '../models/notifications.mjs'
 import webpush from 'web-push'
+import passport from 'passport'
+import '../strategies/jwt.mjs'
 import 'dotenv/config'
 
 // Initiate webpush
@@ -19,7 +21,7 @@ const checkIfConnected = (req, res, next) => {
   next()
 }
 router
-router.post('/', checkIfConnected, async (req, res) => {
+router.post('/', passport.authenticate('jwt',{session:false}),checkIfConnected, async (req, res) => {
   const { content } = req.body
   const author = await Users.findById(req.user._id)
   try {

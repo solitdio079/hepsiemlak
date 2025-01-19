@@ -5,6 +5,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 import sendgrid from '@sendgrid/mail'
 import { } from 'dotenv/config'
+import passport from 'passport'
+//import '../strategies/magicLink.mjs'
+import '../strategies/jwt.mjs'
 
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
@@ -58,7 +61,7 @@ router.put('/:id', upload.single('picture'), async (req, res) => {
   }
 })
 //Verification submit
-router.patch("/verifySubmit/:id", checkIfConnected,upload.array("documents", 5),async (req, res) => {
+router.patch("/verifySubmit/:id", passport.authenticate('jwt',{session:false}),checkIfConnected,upload.array("documents", 5),async (req, res) => {
   const { id } = req.params
   const {userType} = req.body
   // Get the user to be updated
@@ -150,47 +153,47 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.patch("/verifyResult/:id", checkIfAdmin, async (req, res) => {
-  const { id } = req.params
-  const { adminMsg,isVerified } = req.body
-  // Get the user to be updated
-  const toBeUpdated = await Users.findById(id)
-  if (!toBeUpdated) return res.send({ error: 'No user found!' })
-  toBeUpdated.isVerified = isVerified
-  
-  try {
-    await Users.findByIdAndUpdate(id, toBeUpdated)
+router.patch(
+  '/verifyResult/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkIfAdmin,
+  async (req, res) => {
+    const { id } = req.params
+    const { adminMsg, isVerified } = req.body
+    // Get the user to be updated
+    const toBeUpdated = await Users.findById(id)
+    if (!toBeUpdated) return res.send({ error: 'No user found!' })
+    toBeUpdated.isVerified = isVerified
 
-    const link = 'https://sahelimmo.info/login/'
-    const msg = {
-      to: toBeUpdated.email,
-      from: process.env.EMAIL,
-      subject: 'Statut de votre verification!',
-      text:
-        `Salut ${toBeUpdated.fullName}! votre verifiction a ete ${
-          isVerified ? 'approve' : 'rejette'
-        } avec le message suivant:.\r\n\r\n` +
-        adminMsg +
-        ' .Reconnectez vous!' +
-        link,
-      html:
-        `<h3>Salut ${toBeUpdated.fullName}!</h3><p>votre verifiction a ete ${
-          isVerified ? 'approve' : 'rejette'
-        } avec le message suivant: ${adminMsg}. Reconnectez vous!</p><p><a href="` +
-        link +
-        `">Sign in</a></p>`,
+    try {
+      await Users.findByIdAndUpdate(id, toBeUpdated)
+
+      const link = 'https://sahelimmo.info/login/'
+      const msg = {
+        to: toBeUpdated.email,
+        from: process.env.EMAIL,
+        subject: 'Statut de votre verification!',
+        text:
+          `Salut ${toBeUpdated.fullName}! votre verifiction a ete ${
+            isVerified ? 'approve' : 'rejette'
+          } avec le message suivant:.\r\n\r\n` +
+          adminMsg +
+          ' .Reconnectez vous!' +
+          link,
+        html:
+          `<h3>Salut ${toBeUpdated.fullName}!</h3><p>votre verifiction a ete ${
+            isVerified ? 'approve' : 'rejette'
+          } avec le message suivant: ${adminMsg}. Reconnectez vous!</p><p><a href="` +
+          link +
+          `">Sign in</a></p>`,
+      }
+      sendgrid.send(msg)
+      return res.send({ msg: 'Message envoye!' })
+    } catch (error) {
+      return res.send({ error: error.message })
     }
-    sendgrid.send(msg)
-    return res.send({msg: 'Message envoye!'})
-    
-  } catch (error) {
-    return res.send({error: error.message})
   }
-  
-   
-  
-  
-})
+)
 
 
 // Change notification url

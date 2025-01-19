@@ -1,7 +1,10 @@
 import express, { Router } from 'express'
 import passport from 'passport'
 import '../strategies/magicLink.mjs'
+import '../strategies/jwt.mjs'
+import jwt from 'jsonwebtoken'
 
+import {} from 'dotenv/config'
 const router = Router()
 router.use(express.json())
 router.get('/', (req, res) => {
@@ -38,8 +41,15 @@ router.get(
       
       console.log(req.headers.cookie);
       if (slug !== 'verify') {
-         
-        res.redirect(`sahelimmo://?${req.headers.cookie}`)
+        console.log(req.user._id);
+          const accessToken = jwt.sign(
+            {
+              id: req.user._id,
+            },
+            process.env.JWT_SECRET,
+            { expiresIn: '5d' }
+          )
+        res.redirect(`sahelimmo://?${token=accessToken}`)
       } else {
         res.redirect('https://sahelimmo.info/')
       }
@@ -54,6 +64,10 @@ router.get(
 router.get('/login/status', (req, res) => {
   console.log(req.session);
   console.log(req.signedCookies);
+  req.user ? res.send(req.user) : res.send({ error: 'You are not logged in!' })
+})
+router.get('/jwt/status', passport.authenticate('jwt',{session:false}),(req, res) => {
+ 
   req.user ? res.send(req.user) : res.send({ error: 'You are not logged in!' })
 })
 

@@ -3,7 +3,8 @@ import multer from 'multer'
 import fs from 'node:fs'
 import path from 'node:path'
 import Residence from '../../models/listings/residence.mjs'
-
+import passport from 'passport'
+import '../../strategies/jwt.mjs'
 // Setting the destination path for product photos
 const root = path.resolve()
 const destination = path.join(root, '/public/')
@@ -96,7 +97,7 @@ const upload = multer({ storage })
 
 const router = Router()
 
-router.post('/', upload.array('images', 20), checkUser,async (req, res) => {
+router.post('/', upload.array('images', 20),  passport.authenticate('jwt',{session:false}),checkUser,async (req, res) => {
  
   const data = reArrangeListing(req)
 
@@ -111,7 +112,7 @@ router.post('/', upload.array('images', 20), checkUser,async (req, res) => {
 
 
 
-router.put('/:id', checkUser, (req, res, next) => {
+router.put('/:id',  passport.authenticate('jwt',{session:false}),checkUser, (req, res, next) => {
   console.log("before", req.body)
   next()
 },upload.array('images', 20),(req, res, next) => {
@@ -139,7 +140,7 @@ router.put('/:id', checkUser, (req, res, next) => {
 
 router.use(express.json())
 
-router.patch("/:id", checkUser, async (req, res) => {
+router.patch("/:id",  passport.authenticate('jwt',{session:false}),checkUser, async (req, res) => {
   console.log('Inside patch residence')
   const { id } = req.params
  

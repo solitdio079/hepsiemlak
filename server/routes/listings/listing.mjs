@@ -4,6 +4,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import residenceRouter from './residence.mjs'
 import commercialRouter from './commercial.mjs'
+import passport from 'passport'
+import '../../strategies/jwt.mjs'
 //import listing from '../../models/listings/listing.mjs'
 // Setting the destination path for product photos
 const root = path.resolve()
