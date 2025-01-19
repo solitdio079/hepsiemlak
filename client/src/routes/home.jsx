@@ -109,9 +109,7 @@ export default function Home() {
                     <button className="btn btn-lg btn-primary  join-item">
                       Search
                     </button>
-                    <a  className="btn btn-lg btn-primary  join-item">
-                      App
-                    </a>
+                   
                   </div>
                 </div>
               </Form>
