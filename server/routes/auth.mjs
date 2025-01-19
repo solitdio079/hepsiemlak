@@ -49,7 +49,7 @@ router.get(
             process.env.JWT_SECRET,
             { expiresIn: '5d' }
           )
-        res.redirect(`sahelimmo://?${token=accessToken}`)
+        res.redirect(`sahelimmo://?token=${accessToken}`)
       } else {
         res.redirect('https://sahelimmo.info/')
       }
