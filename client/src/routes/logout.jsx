@@ -1,6 +1,7 @@
 import { redirect } from 'react-router-dom'
 import { url } from '../utils/serverUrl'
 export async function action() {
+  localStorage.removeItem('token')
   try {
     const req = await fetch(url + '/auth/logout', {
       method: 'POST',
@@ -10,6 +11,7 @@ export async function action() {
         'Content-Type': 'application/json',
       },
     })
+    
     const response = await req.json()
     if (response.error) {
       console.log(response.error)
