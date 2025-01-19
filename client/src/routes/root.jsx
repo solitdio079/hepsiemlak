@@ -7,13 +7,20 @@ import { url } from '../utils/serverUrl'
 //import { useCookies } from 'react-cookie'
 export async function loader() {
     try {
-        const req = await fetch(url + "/auth/login/status", {
+        const token = localStorage.getItem('token') 
+        const endpoint = token ? "/auth/jwt/status" : "/auth/login/status"
+        const fetchHeader = token ?  {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` 
+            }: {
+                'Content-Type': 'application/json'
+               
+            }
+        const req = await fetch(url + endpoint, {
             method: 'GET',
             credentials: 'include',
             mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            }
+            headers: fetchHeader
         })
         const response = await req.json()
         alert(document.cookie)
@@ -24,7 +31,7 @@ export async function loader() {
     }
 }
 export default function Root() {
-   
+    
     
     
     const user = useLoaderData()
