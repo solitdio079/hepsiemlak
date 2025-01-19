@@ -23,7 +23,7 @@ export async function loader() {
             headers: fetchHeader
         })
         const response = await req.json()
-        alert(document.cookie)
+       
         if(response.error) return null
         return response
     } catch (error) {
