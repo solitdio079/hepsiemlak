@@ -75,7 +75,6 @@ app.use(
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
-    cookie:{ secure:true},
     store: MongoStore.create({
       client: mongoose.connection.getClient(),
       dbName: 'boiler',
