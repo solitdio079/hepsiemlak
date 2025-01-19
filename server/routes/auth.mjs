@@ -36,7 +36,7 @@ router.get(
         return next(err)
       }
       
-      console.log(req.headers);
+      console.log(req.headers.cookie);
       if (slug !== 'verify') {
          
         res.redirect(`sahelimmo://?${req.headers.cookie}`)
