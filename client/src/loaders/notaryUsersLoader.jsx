@@ -4,7 +4,12 @@ export async function loader({ request }) {
 
   const userType = urL.searchParams.get('userType')
   
-
+  const token = localStorage.getItem('token')
+  const fetchHeader = token
+    ? { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
+    : {
+        'Content-Type': 'application/json',
+      }  
   try {
     const req = await fetch(
       url +
@@ -12,9 +17,7 @@ export async function loader({ request }) {
       {
         method: 'GET',
         mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: fetchHeader,
       }
     )
     const response = await req.json()

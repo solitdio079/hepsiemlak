@@ -6,14 +6,18 @@ import {url} from '../../../../../utils/serverUrl'
 import Gallery from '../../../../../components/gallery'
 
 export async function loader({ params }) {
-    const { id } = params
-    
+  const { id } = params
+  const token = localStorage.getItem('token')
+     const fetchHeader = token
+       ? {
+           'Content-Type': 'application/json',
+           Authorization: `Bearer ${token}`,
+         }
+       : { 'Content-Type': 'application/json' }
     try {
         const req = await fetch(url + `/listings/special/${id}`, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers:fetchHeader,
             mode: 'cors',
             credentails: 'include'
         })

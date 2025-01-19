@@ -3,14 +3,19 @@ import { url } from '../../../utils/serverUrl'
 
 export async function action({ params }) {
   const { id } = params
+   const token = localStorage.getItem('token')
+   const fetchHeader = token
+     ? {
+         Authorization: `Bearer ${token}`,
+         'Content-Type': 'application/json',
+       }
+     : { 'Content-Type': 'application/json' }
   try {
     const req = await fetch(url + `/land/${id}`, {
       method: 'DELETE',
       mode: 'cors',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: fetchHeader,
     })
 
     const response = (await req.json()) || (await req.text())

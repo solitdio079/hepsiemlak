@@ -6,12 +6,18 @@ import Gallery from '../../../components/gallery'
 export async function action({ params, request }) {
     const formData = await request.formData()
     const { id } = params
-    let fetchMethod = 'PUT'
-    let fetchHeaders = {}
+  let fetchMethod = 'PUT'
+  const token = localStorage.getItem("token")
+    let fetchHeaders =token ?  { Authorization: `Bearer ${token}` }: {}
     let fetchBody = formData
     if (formData.get('images').name === '') {
           fetchMethod = 'PATCH'
-          fetchHeaders = {'Content-Type': 'application/json'}
+          fetchHeaders = token
+            ? {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              }
+            : { 'Content-Type': 'application/json' }
           fetchBody = JSON.stringify(Object.fromEntries(formData))
     }
 

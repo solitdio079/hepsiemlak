@@ -8,16 +8,21 @@ import { FaRegCircleCheck } from "react-icons/fa6"
 
 export async function loader({ params }) {
     const { id } = params
-    
-
+    const token = localStorage.getItem('token') 
+    const fetchHeader = token
+      ? {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        }
+      : {
+          'Content-Type': 'application/json',
+        }
     try {
         const req = await fetch(url + `/users/${id}`, {
             method: "GET",
             mode: 'cors',
             credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: fetchHeader
         })
         const response = await req.json()
         if(response.error) return null
@@ -31,15 +36,16 @@ export async function action({ request, params }) {
     const {id} = params
     const formData = await request.formData()
     const name = formData.get('picture').name === '' ? false : true
-    console.log(name)
+    const token = localStorage.getItem('token') 
     let fetchBody = formData
     let fetchMethod = 'PUT'
-    let fetchHeaders = {}
+    let fetchHeaders = { Authorization: `Bearer ${token}` }
 
     if (!name) {
         fetchBody = JSON.stringify(Object.fromEntries(formData))
         fetchHeaders = {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         }
         fetchMethod = 'PATCH'
     }

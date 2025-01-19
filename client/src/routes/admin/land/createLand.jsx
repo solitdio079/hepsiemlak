@@ -4,13 +4,19 @@ import { useEffect } from "react"
 import {url} from "../../../utils/serverUrl"
 export async function action({request}) {
     const formData = await request.formData()
-
+     const token = localStorage.getItem('token')
+     const fetchHeader = token
+       ? {
+           Authorization: `Bearer ${token}`,
+         }
+       : {}
    
     try {
         const req = await fetch(url + "/land/", {
             method: "POST",
             mode: 'cors',
-            credentials: 'include',
+          credentials: 'include',
+            headers: fetchHeader,
             body: formData
         })
         const response = await req.json()

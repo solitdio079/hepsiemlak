@@ -3,6 +3,7 @@ import { url } from '../../../utils/serverUrl'
 
 export async function action({ params }) {
   const { id } = params
+  const token = localStorage.getItem("token")
   try {
     const req = await fetch(url + `/projects/${id}`, {
       method: 'DELETE',
@@ -10,6 +11,7 @@ export async function action({ params }) {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
     })
 

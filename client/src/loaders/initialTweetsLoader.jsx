@@ -1,14 +1,21 @@
 import { url } from "../utils/serverUrl"
 
 export async function loader() {
+     const token = localStorage.getItem('token')
+     const fetchHeader = token
+       ? {
+           'Content-Type': 'application/json',
+           Authorization: `Bearer ${token}`,
+         }
+       : {
+           'Content-Type': 'application/json',
+         }  
     try {
         const req = await fetch(url + "/tweets/?cursor=", {
             method: "GET",
             mode: "cors",
             credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: fetchHeader
         })
         const response = await req.json()
         console.log(response)

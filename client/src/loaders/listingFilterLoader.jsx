@@ -7,7 +7,12 @@ export async function loader({ request }) {
   const country = urL.searchParams.get('country')
   const price = urL.searchParams.get('price')
   console.log(type)
-
+  const token = localStorage.getItem('token')
+  const fetchHeader = token
+    ? { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
+    : {
+        'Content-Type': 'application/json',
+      }  
   try {
     const req = await fetch(
       url +
@@ -15,9 +20,7 @@ export async function loader({ request }) {
       {
         method: 'GET',
         mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: fetchHeader,
       }
     )
     const response = await req.json()

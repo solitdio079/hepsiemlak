@@ -3,6 +3,8 @@ import toast, { Toaster } from 'react-hot-toast'
 import { useEffect } from 'react'
 import { url } from '../../../utils/serverUrl'
 import Gallery from '../../../components/gallery'
+
+const token = localStorage.getItem("token") 
 export async function action({ params, request }) {
   const formData = await request.formData()
   const { id } = params
@@ -11,7 +13,7 @@ export async function action({ params, request }) {
   let fetchBody = formData
   if (formData.get('images').name === '') {
     fetchMethod = 'PATCH'
-    fetchHeaders = { 'Content-Type': 'application/json' }
+    fetchHeaders = { 'Content-Type': 'application/json'  , 'Authorization': `Bearer ${token}`, }
     fetchBody = JSON.stringify(Object.fromEntries(formData))
   }
 
@@ -38,6 +40,7 @@ export async function loader({ params }) {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
     })
     const response = await req.json()

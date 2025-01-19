@@ -17,6 +17,9 @@ export async function action({ request }) {
     if(!step1 || !step2 || !step3) return
   const totalStep = { ...step1, ...step2, ...step3 }
   const listingType = formData.get("type")
+
+  const token = localStorage.getItem("token")
+  const fetchHeader = token ? {'Authorization': `Bearer ${token}`} : {}
   if (listingType === "Commercial") {
     fetchUrl = url + '/listings/commercial/'
   }
@@ -31,7 +34,8 @@ export async function action({ request }) {
         const req = await fetch(fetchUrl, {
             method: "POST",
             mode: 'cors',
-            credentials: 'include',
+          credentials: 'include',
+            headers: fetchHeader,
             body: formData
         })
         const response = await req.json()

@@ -27,13 +27,21 @@ export async function action({ request, params }) {
    }
    
     let fetchMethod = "PUT"
-    let fetchHeaders = {}
+    const token = localStorage.getItem('token')
+    let fetchHeaders = token
+      ? {
+          Authorization: `Bearer ${token}`,
+        }
+      : { }
     let fetchBody = formData
     //console.log(fetchBody.get("numOfRooms"))
     const name = Boolean(formData.get('images').name)
     if (!name) {
         fetchMethod = "PATCH"
-        fetchHeaders = { 'Content-Type': 'application/json' }
+        fetchHeaders = {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }
         fetchBody = JSON.stringify(Object.fromEntries(formData))
         console.log('Fetch Body: ' + fetchBody)
     }

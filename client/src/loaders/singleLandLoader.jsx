@@ -2,14 +2,18 @@ import { url } from '../utils/serverUrl'
 export async function loader({ params }) {
   const { id } = params
   console.log(id)
+   const token = localStorage.getItem('token')
+   const fetchHeader = token
+     ? { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
+     : {
+         'Content-Type': 'application/json',
+       }  
   try {
     const req = await fetch(url + `/land/${id}`, {
       method: 'GET',
       mode: 'cors',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: fetchHeader,
     })
 
     const response = await req.json()

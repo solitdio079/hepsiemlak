@@ -5,15 +5,22 @@ export async function loader({ request }) {
 
     const document = urL.searchParams.get("document")
     const country = urL.searchParams.get("country")
+     const token = localStorage.getItem('token')
+     const fetchHeader = token
+       ? {
+           'Content-Type': 'application/json',
+           Authorization: `Bearer ${token}`,
+         }
+       : {
+           'Content-Type': 'application/json',
+         }  
 
     try {
         const req = await fetch(url + `/land/?cursor=&document=${document}&country=${country}`, {
             method: 'GET',
             mode: 'cors',
             credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: fetchHeader,
 
         })
         const response = await req.json()
