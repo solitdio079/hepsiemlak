@@ -63,6 +63,7 @@ import UnverifiedRoot from './routes/admin/users/unverifiedRoot'
 import UnverifiedUsers from './routes/admin/users/unverifiedUsers'
 import {action as verifyUserSubmitAction} from "./routes/admin/users/verifyUserResult"
 import NotaryIndex from './routes/admin/users/notaryUsers'
+import Terms from './routes/terms'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -213,6 +214,12 @@ const router = createBrowserRouter([
             loader: singleListingLoader,
           },
         ],
+      },
+      {
+        path: "/privacy",
+        element: <Terms />,
+        errorElement:<ErrorPage/>
+
       },
 
       {
