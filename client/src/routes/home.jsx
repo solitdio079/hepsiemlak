@@ -150,15 +150,6 @@ export default function Home() {
           >
             <SwiperSlide>
               <Link
-                to={'/notaire?userType=Notaire'}
-                className="badge badge-outline badge-lg hover:bg-primary"
-              >
-                Notaire
-              </Link>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <Link
                 to={'/land/'}
                 className="badge badge-outline badge-lg hover:bg-primary"
               >

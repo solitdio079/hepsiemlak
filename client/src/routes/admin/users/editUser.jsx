@@ -149,7 +149,6 @@ export default function EditUser() {
                 <option value="Propriétaire">Propriétaire </option>
                 <option value="Banque">Banque</option>
                 <option value="Agence Immobilière">Agence Immobilière</option>
-                <option value="Notaire">Notaire</option>
                 <option value="Architecte">Architecte</option>
               </select>
 
