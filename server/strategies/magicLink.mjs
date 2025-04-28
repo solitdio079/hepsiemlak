@@ -2,6 +2,7 @@ import passport from 'passport'
 import MagicLink from 'passport-magic-link'
 import brevo from '@getbrevo/brevo'
 import Users from '../models/users.mjs'
+import mongoose from 'mongoose'
 import {} from 'dotenv/config'
 
 const MagicLinkStrategy = MagicLink.Strategy
@@ -16,7 +17,6 @@ let apiInstance = new brevo.TransactionalEmailsApi()
 apiKey.apiKey = process.env.BREVO_API_KEY
 
 let sendSmtpEmail = new brevo.SendSmtpEmail()
-
 
 
 passport.use(
