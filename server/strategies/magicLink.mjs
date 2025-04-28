@@ -1,6 +1,6 @@
 import passport from 'passport'
 import MagicLink from 'passport-magic-link'
-
+import brevo from '@getbrevo/brevo'
 import Users from '../models/users.mjs'
 import {} from 'dotenv/config'
 
