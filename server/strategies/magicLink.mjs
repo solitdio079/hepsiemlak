@@ -48,7 +48,7 @@ passport.use(
          name: 'Solitdio',
        }
 
-       apiInstance.sendTransacEmail(sendSmtpEmail).then(
+       defaultClient.sendTransacEmail(sendSmtpEmail).then(
          function (data) {
            console.log(
              'API called successfully. Returned data: ' + JSON.stringify(data)
